@@ -1,39 +1,27 @@
-# Python virtual environment
+# Python
+__pycache__/
+*.pyc
 .venv/
 venv/
 
-# Python cache
-__pycache__/
-*.py[cod]
-
-# Jupyter temporary files
-.ipynb_checkpoints/
-
-# Local environment variables and secrets
-.env
-
-# Operating system files
+# OS
 .DS_Store
 Thumbs.db
 
-# Temporary logs
-*.log
+# Raw datasets (large binaries — checksums are recorded in docs/dataset_sources.md)
+data/raw/**
+!data/raw/.gitkeep
 
-# Local dataset files — review before committing
-data/*
-!data/.gitkeep
+# Processed artefacts (regenerable)
+data/processed/**
 
+# Result blobs (JSON reports ARE committed for reproducibility — see exceptions below)
+results/*
+!results/.gitkeep
+!results/dataset_inspection.json
+!results/qr_decode_report.json
+
+# Model artefacts
 models/*.joblib
-.venv/
-__pycache__/
-*.pyc
-results/feedback.csv
-results/rl_policy_state.json
-.pytest_cache/
-
-# ARES training backups — do not commit
+models/*.joblib.bak
 *.bak
-*.joblib.bak
-*.json.bak
-models/*.joblib
-results/*.json

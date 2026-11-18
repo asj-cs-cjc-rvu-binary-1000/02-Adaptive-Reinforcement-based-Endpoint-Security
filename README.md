@@ -5,6 +5,39 @@ ARES is an educational and research prototype developed at **R V University** th
 
 > **Important Security Disclaimer:** ARES is an offline lexical URL analyzer, **not** a full Endpoint Detection and Response (EDR) agent, browser sandbox, or live threat-intelligence scanner. A low estimated phishing probability (`Allow` recommendation) **does not guarantee** that a website is safe, and `https://` indicates encrypted network transport rather than domain legitimacy. Never use ARES as the sole basis for trusting an unknown link.
 
+## Phase 1 — Dataset Selection & Comparison
+
+The rebuild branch (`update`) evaluates two QR-image datasets for the ARES quishing model:
+
+| Dataset | Images | Decode rate (benign / malicious) | Feature extraction failures |
+|---|---:|---|---:|
+| **Trad & Chehab** (Quishing, 2025/26) | 9,987 (5005 / 4982) | **0.990 / 0.975** | 0 |
+| **Mendeley** (1,000 QR Images, Feb 2025) | 1,000 (500 / 500) | **1.000 / 0.990** | 0 |
+
+Decode rate measured with the byte-identical production decoder from `origin/main` on a deterministic 200-per-class sample (`scripts/check_qr_compatibility.py`, `RNG_SEED = 42`).
+
+**Phase 1 artefacts:**
+- `docs/dataset_sources.md` — provenance, sha256, license status
+- `docs/dataset_comparison.md` — structure + Task 3 measurements
+- `docs/dataset_decision.md` — **final primary/secondary dataset choice (Task 4)**
+- `docs/experimental_protocol.md` — **split rules, seeds, metrics, gates (Task 5)**
+- `results/dataset_inspection.json` — authoritative structure JSON
+- `results/qr_decode_report.json` — authoritative decode-rate JSON
+
+**Reproduce:**
+```bash
+python scripts/inspect_datasets.py       # → results/dataset_inspection.json
+python scripts/check_qr_compatibility.py # → results/qr_decode_report.json  (~3.5 min)
+```
+
+**BRIEF EXPLANATION:**
+
+1. **`dataset_comparison.md` is filled with real numbers only.** Every field in the "Measured" tables is copied verbatim from `results/qr_decode_report.json` that you just produced. Where I could not measure (full-dataset overlap; full-dataset decode rate), the document says "sample-level" and "Phase 2 gate" — not a fabricated number.
+2. **`dataset_sources.md` gains a small "Task 3 measured" section** that links forward. Existing content is left untouched so its provenance record remains stable. That matters for reproducibility: `dataset_sources.md` and `dataset_comparison.md` each point at one authoritative JSON.
+3. **`README.md` gains a compact Phase 1 summary** so a reviewer landing on the repo sees the numbers before clicking through docs. This is the only place I would put "headline" numbers in the README — everything else in the README remains unchanged.
+4. **The "known limitations" list in `dataset_comparison.md`** is deliberate — `plain_text` handling, size confounding, sample-only overlap — the three things an IEEE Access reviewer would catch first. Better to state them than to have them pried out.
+5. **No code touched.** `scripts/qr_utils.py` and `scripts/feature_extractor.py` remain byte-identical (`d6510490…`, `45e13436…`). `scripts/check_qr_compatibility.py` is unchanged from the last version you ran. `scripts/inspect_datasets.py` is unchanged from Task 1.
+
 ## Contributors
 
 Developed as part of an AIML Semester 3 academic project at **R V University**:

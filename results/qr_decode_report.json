@@ -1,0 +1,134 @@
+{
+  "phase": "1",
+  "task": "3 \u2014 QR decode + ARES compatibility",
+  "generated_utc": "2026-11-18T06:02:54.444790+00:00",
+  "decoder_provenance": {
+    "qr_utils_path": "scripts/qr_utils.py",
+    "qr_utils_sha256": "d65104906924bff1b762cd48267a6b839f4fc01c06e3a7bf5b8945c2d27db8fa",
+    "feature_extractor_path": "scripts/feature_extractor.py",
+    "feature_extractor_sha256": "45e13436f738b50f5992b84ef56a5c35aed3b828e0005bb475f96b56b5c0ee32",
+    "source": "byte-identical copies of `origin/main`"
+  },
+  "sample_cap": {
+    "trad_per_class": 200,
+    "mendeley_per_class": 200
+  },
+  "trad_chehab": {
+    "dataset": "Trad & Chehab",
+    "n_total": 9987,
+    "n_processed": 400,
+    "sample_cap_per_class": 200,
+    "per_class_category_counts": {
+      "0_benign": {
+        "url": 197,
+        "plain_text": 1,
+        "undecodable": 2
+      },
+      "1_malicious": {
+        "url": 180,
+        "plain_text": 15,
+        "undecodable": 5
+      }
+    },
+    "decode_rate_benign": 0.99,
+    "decode_rate_malicious": 0.975,
+    "feature_extraction": {
+      "attempted_urls": 393,
+      "succeeded": 377,
+      "failed": 0
+    },
+    "duplicate_check": {
+      "0": {
+        "unique_payloads": 198,
+        "total_decoded": 198,
+        "duplicates": 0
+      },
+      "1": {
+        "unique_payloads": 195,
+        "total_decoded": 195,
+        "duplicates": 0
+      }
+    },
+    "domain_overlap": {
+      "n_benign_domains": 168,
+      "n_malicious_domains": 166,
+      "n_overlap": 0,
+      "overlap_examples": []
+    },
+    "payload_examples": {
+      "0_benign": [
+        "www.benchmarkhosting.com/index.html",
+        "sra.itc.it/people/massa/index.html",
+        "www.media.mit.edu/resenv/classes/MAS965/readings/TextilePressureSensor.pdf",
+        "www.washington.edu/computing/unix/shell.html",
+        "www.lastbit.com/trafmeter/"
+      ],
+      "1_malicious": [
+        "paypal.com.us.cgi.bin.webscr.cmd.login.member.verifed.interhottap.com.mx/54855458214/23bf9c1ccadeb59398f870bc932bd60e/",
+        "pastehtml.com/view/bp9b6a48d.html",
+        "www.promo-james.ru/logo/",
+        "www.fsjinlan.cn/images/?secure.runescape.com/m=weblogin/loginform.ws?mod=www&clntgdsamp;ssl=0&dest",
+        "mobilevirtualbusiness.com/~amfaceli/webscr.php"
+      ]
+    }
+  },
+  "mendeley": {
+    "dataset": "Mendeley",
+    "n_processed": {
+      "benign": 200,
+      "malicious": 200
+    },
+    "sample_cap_per_class": 200,
+    "per_class_category_counts": {
+      "benign": {
+        "url": 200
+      },
+      "malicious": {
+        "url": 197,
+        "undecodable": 2,
+        "plain_text": 1
+      }
+    },
+    "decode_rate_benign": 1.0,
+    "decode_rate_malicious": 0.99,
+    "feature_extraction": {
+      "attempted_urls": 398,
+      "succeeded": 397,
+      "failed": 0
+    },
+    "duplicate_check": {
+      "benign": {
+        "unique_payloads": 200,
+        "total_decoded": 200,
+        "duplicates": 0
+      },
+      "malicious": {
+        "unique_payloads": 198,
+        "total_decoded": 198,
+        "duplicates": 0
+      }
+    },
+    "domain_overlap": {
+      "n_benign_domains": 190,
+      "n_malicious_domains": 114,
+      "n_overlap": 0,
+      "overlap_examples": []
+    },
+    "payload_examples": {
+      "benign": [
+        "https://data.worldbank.org/",
+        "https://www.notion.so/",
+        "https://www.freecodecamp.org/",
+        "https://www.hathitrust.org/",
+        "https://www.myfitnesspal.com/"
+      ],
+      "malicious": [
+        "http://mobildeniz2025firsatlari.duckdns.org/",
+        "http://www.avc3c.com/SharePointFileProposal/",
+        "http://www.webogram.org/z/",
+        "https://pub-6ec7dc245c434057b766048a50064ade.r2.dev/home.html\u2026",
+        "https://app--sso--robinhood---com.webflow.io/"
+      ]
+    }
+  }
+}

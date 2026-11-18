@@ -1,0 +1,102 @@
+{
+  "inspection_tool": "scripts/inspect_datasets.py",
+  "inspection_date_utc": "2026-11-18T05:43:34.523203Z",
+  "license_files_found_in_repo": [
+    "README.md"
+  ],
+  "license_status_per_dataset": {
+    "trad_chehab": "UNVERIFIED_IN_REPO (no license file shipped in archive; confirm against publication data-availability statement)",
+    "mendeley": "UNVERIFIED_IN_REPO (no license file shipped in archive; confirm at Mendeley Data DOI landing page)"
+  },
+  "trad_chehab": {
+    "dataset": "Trad & Chehab (Quishing)",
+    "files": {
+      "images": {
+        "path": "data/raw/qr_codes_29.pickle",
+        "sha256": "0ae3be29c804fc862e21713e0d77a496b4339976d126273e1bf2975d2800ad1f",
+        "bytes": 95096378
+      },
+      "labels": {
+        "path": "data/raw/qr_codes_29_labels.pickle",
+        "sha256": "200e56c31e815c3fe920646edcfb1d9c510b08d23f94236ac83a0bd6772d5719",
+        "bytes": 40099
+      }
+    },
+    "images_shape": [
+      9987,
+      69,
+      69
+    ],
+    "images_dtype": "int16",
+    "images_value_range": [
+      0,
+      1
+    ],
+    "labels_shape": [
+      9987
+    ],
+    "labels_dtype": "int32",
+    "label_counts": {
+      "0": 5005,
+      "1": 4982
+    },
+    "label_to_class": {
+      "0": "benign",
+      "1": "malicious"
+    },
+    "label_mapping_source": "empirical: matches paper (5005 benign / 4982 malicious)",
+    "n_total": 9987,
+    "classes_present": [
+      0,
+      1
+    ]
+  },
+  "mendeley": {
+    "dataset": "Mendeley 1,000 QR Images",
+    "files": {
+      "total_pngs": {
+        "n_files": 1000,
+        "bytes": 682225
+      }
+    },
+    "per_class": {
+      "benign": {
+        "folder": "data/raw/qr-images/benign",
+        "n_files": 500,
+        "size_histogram": {
+          "330x330": 437,
+          "370x370": 53,
+          "290x290": 9,
+          "450x450": 1
+        },
+        "mode_histogram": {
+          "1": 500
+        },
+        "n_corrupt": 0,
+        "corrupt": []
+      },
+      "malicious": {
+        "folder": "data/raw/qr-images/malicious",
+        "n_files": 500,
+        "size_histogram": {
+          "370x370": 246,
+          "330x330": 155,
+          "410x410": 68,
+          "450x450": 18,
+          "650x650": 3,
+          "530x530": 2,
+          "570x570": 2,
+          "610x610": 1,
+          "490x490": 1,
+          "290x290": 3,
+          "1010x1010": 1
+        },
+        "mode_histogram": {
+          "1": 500
+        },
+        "n_corrupt": 0,
+        "corrupt": []
+      }
+    }
+  }
+}
