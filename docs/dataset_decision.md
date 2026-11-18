@@ -72,27 +72,22 @@ Reported as 430,000 benign + 575,000 malicious QR images; access, license, and e
 **QRïS — REJECTED.**
 400,000 synthetic QR layouts. **Synthetic-data-only** does not match ARES's threat model (real-world quishing captures). Its presence in the manuscript as a "comparison dataset" would weaken, not strengthen, the evaluation.
 
-## 5. ⬜ Decision (your call — see note)
+## 5. Decision (CONFIRMED 2026-11-18)
 
-**Primary dataset chosen:**
+**Primary dataset chosen:** **Trad & Chehab** (9,987 images — 5,005 benign / 4,982 malicious)
+**External validation dataset:** **Mendeley** (1,000 images — 500 / 500)
 
-> ⬜ **Trad & Chehab** *or* ⬜ **Mendeley**
+**Rationale:** Config A was chosen as it satisfies IEEE Access's external-validation
+expectation by construction, avoids the small-sample domain-grouped split problem of
+Config B, and neither candidate has a decode rate or feature-extraction failure
+that would disqualify it. The 7.5% `plain_text` malicious payloads in Trad & Chehab
+are handled by the Phase 2 pipeline via the plain-text/URL filtering policy — they
+are documented, not silently dropped.
 
-**External validation dataset:**
-
-> ⬜ **Mendeley** (as external set, if primary is Trad & Chehab)  
-> ⬜ **None** (if primary is Mendeley — it has only 1,000 images; external validation would require acquiring CIC-Trap4Phish)
-
-**Rationale (you fill in):** ………………………………………………………………………………………………………
-
-**The two configurations and their consequences (documented factually — not a recommendation):**
-
-| Config | Primary | External val | Strengths | Costs |
-|---|---|---|---|---|
-| **A** | Trad & Chehab (9,987) | Mendeley (1,000) | Largest training set + truly independent external set; both balanced; both decode ≥0.975 | `plain_text` 7.5% in malicious class must be handled; ~44 min full decode; Mendeley size-class confound in *external* set is acceptable (it's validation, not training) |
-| **B** | Mendeley (1,000) | None (or CIC-Trap4Phish if acquired) | Cleanest payloads, highest decode rate | 1,000 images is very small for a domain-grouped split (5-fold × 20% ≈ 5 validation domains/class/fold); would need CIC-Trap4Phish for external validation to satisfy IEEE Access reviewers |
-
-**Manuscript consequence:** IEEE Access reviewers expect external validation. **Config B without CIC-Trap4Phish** would be flagged. **Config A** satisfies external validation by construction, at the cost of preprocessing Trad & Chehab's 69×69 matrices (our already-documented 4× upscale + 20px border).
+**Pipeline note:** Every Phase 2 script reads this decision from
+`scripts/dataset_config.py`, which defaults to Config A but is overridable with
+`--dataset` / `--external`. A future switch to Config B is a one-line change,
+not a code rewrite.
 
 ## 6. Known limitations (recorded for the manuscript)
 

@@ -149,3 +149,9 @@ These payloads are **recognizably** benign vs malicious — no labelling ambigui
 3. **Decoder cost** — Trad & Chehab ~0.29 s/image → ~44 min full 9987 decode. Not a blocker; recorded.
 4. **Mendeley size-class confounding** — benign is mostly 330², malicious spread up to 1010². Phase 2 must normalize resolution.
 5. **License files not shipped in either archive** — `UNVERIFIED IN REPO`; external-capture step required before manuscript submission (see `dataset_sources.md`).
+
+---
+
+## Phase 2 Task 1 — Full-dataset duplicate + label-conflict audit
+
+See `results/full_overlap_audit.json` for the authoritative numbers. This section will be populated **after** the gate script completes; nothing is written here in advance.

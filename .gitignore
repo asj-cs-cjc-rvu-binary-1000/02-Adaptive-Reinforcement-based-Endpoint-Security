@@ -24,4 +24,7 @@ results/*
 # Model artefacts
 models/*.joblib
 models/*.joblib.bak
-*.bak
+*.bakresults/.gate1_pass
+results/.gate2_pass
+results/.tmp_decode/
+results/gate1_run.log
