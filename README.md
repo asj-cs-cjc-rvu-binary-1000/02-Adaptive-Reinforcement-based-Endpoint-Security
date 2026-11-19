@@ -47,7 +47,8 @@ python scripts/check_qr_compatibility.py # → results/qr_decode_report.json  (~
 - ✅ Task 5 (PCA): 13 components at 95.86 % cumulative variance; 4 constants dropped before scaling. Commit `02a2e71`.
 - ✅ Task 6 (model comparison): `raw_xgb` selected on validation (F1=0.8651, ROC-AUC=0.9494); all 8 model/feature combos trained; test untouched. Commit `c5dead0`.
 - ✅ Task 7 (evaluation): test acc 0.8910, F1 0.8947, ROC-AUC 0.9490; external validation on Mendeley is **domain-shift-failed** (acc 42.73 %) — documented as manuscript limitation, not a code defect. Commit `a3f516d`.
-- ⏳ Task 8 (calculus threshold optimisation): `scripts/calculus_threshold.py` + `scripts/run_calculus_experiment.py` fit `(t_review, t_block)` on **validation only** via sigmoid-smoothed gradient descent.
+- ✅ Task 8 (calculus): sigmoid-smoothed cost, GD converges to KKT boundary `(0.60, 0.79)`; optimized policy hard cost > default (documented in `mathematical_techniques.md` §3.6). Commit `cff1c5d`.
+- ⏳ Task 9 (inference pipeline): `scripts/predict_pipeline.py` + `scripts/smoke_test_pipeline.py` — final Phase 2 integration.
 
 **BRIEF EXPLANATION:**
 

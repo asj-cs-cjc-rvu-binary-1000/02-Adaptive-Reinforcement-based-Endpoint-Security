@@ -59,3 +59,4 @@ notebooks/.ipynb_checkpoints/
 !results/feature_drift_diagnosis.json
 !results/calculus_experiment.json
 !results/calculus_cost_landscape.png
+!results/smoke_test_results.json
