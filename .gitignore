@@ -32,3 +32,8 @@ results/gate1_run.log
 !results/full_decode_audit.json
 !results/.gate1_manifest.json
 !results/.gate2_manifest.json
+results/decoded_payloads.json
+data/processed/*.parquet
+!results/feature_summary.json
+!results/excluded_samples.json
+!data/processed/.gitkeep
