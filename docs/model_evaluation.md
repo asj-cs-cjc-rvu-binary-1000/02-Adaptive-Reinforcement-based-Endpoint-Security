@@ -100,3 +100,25 @@ The validation results (Task 6) show every `raw_*` model beats its `pca_*` count
 | LR  | 0.8223 | 0.7718 | +0.0505 | 0.9119 | 0.8576 | +0.0543 |
 
 PCA is not a free win. It captured 95.86 % of *variance*, but on weakly correlated features (no |r| ≥ 0.95 pairs) dimensionality reduction removes discriminative signal. **PC1 is still interpretable** (composite URL "suspiciousness" axis — `url_length`, `digits_count`, `entropy`, `suspicious_words`, `num_dots`, `susp_subdomain_count` all load positively) and worth reporting for narrative purposes. But deployment uses `raw_xgb`.
+
+## Task 8 — calculus threshold optimization
+
+**Fit on:** validation split only. **Test set:** not used to fit; only reported for the manuscript.
+
+**Default policy:** `(t_review, t_block) = (0.35, 0.70)`.
+**Optimized policy:** see `results/calculus_experiment.json` `optimized_thresholds`.
+
+**Measured deltas (from `results/calculus_experiment.json`):**
+
+| Dataset | Policy | FPR | FNR | Review-rate |
+|---|---|---:|---:|---:|
+| Validation | Default (0.35, 0.70) | *(filled after run)* | *(filled after run)* | *(filled after run)* |
+| Validation | Optimized | *(filled after run)* | *(filled after run)* | *(filled after run)* |
+| Test | Default (0.35, 0.70) | *(filled after run)* | *(filled after run)* | *(filled after run)* |
+| Test | Optimized | *(filled after run)* | *(filled after run)* | *(filled after run)* |
+
+**Interpretation for the manuscript:** *(filled after run)*
+
+**Cost function caveat:** GD minimizes a sigmoid-smoothed surrogate; the hard-cost
+validation at the final point is what determines whether the optimized policy is
+actually better than default. See `docs/mathematical_techniques.md` §3.6.

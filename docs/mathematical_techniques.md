@@ -97,3 +97,90 @@ results/pca_feature_loadings.csv — p × k loadings table (features as rows)
 results/pca_scaler_params.json — mean, std, variance for each kept feature
 
 data/processed/split_{train,val,test,external}_pca.parquet — transformed splits
+
+---
+
+## 3. Calculus-based threshold optimization
+
+ARES uses two thresholds `(t_review, t_block)` to map a calibrated phishing
+probability to an action: **Allow** (< t_review), **Review** (between), or
+**Block** (≥ t_block). The thresholds are chosen to minimize expected operational
+cost.
+
+### 3.1 Expected-cost objective
+
+$$
+C(t_r, t_b) \;=\; C_{FP} \cdot \text{FPR}(t_b) \;+\; C_{FN} \cdot \text{FNR}(t_r)
+\;+\; C_{review} \cdot \text{ReviewRate}(t_r, t_b)
+\;+\; \lambda \, \bigl\| (t_r, t_b) - (t_r^0, t_b^0) \bigr\|^2
+$$
+
+with defaults `C_FP = 1.0`, `C_FN = 5.0`, `C_review = 0.5`, `λ = 0.05`,
+`(t_r^0, t_b^0) = (0.35, 0.70)`, where
+
+- `FPR(t_b) = P(p ≥ t_b | y = 0)` — benign URLs incorrectly blocked
+- `FNR(t_r) = P(p < t_r | y = 1)` — malicious URLs incorrectly allowed
+- `ReviewRate(t_r, t_b) = P(t_r ≤ p < t_b)` — middle-band URLs deferred to a human
+
+The `λ` term is a regularizer that keeps the optimum near the default policy;
+it controls how much optimization can move the thresholds given training noise.
+
+### 3.2 Non-differentiability and sigmoid smoothing
+
+`FPR`, `FNR`, and `ReviewRate` are **step functions** of `(t_r, t_b)` — each
+sample contributes either 0 or 1. Their derivatives are 0 almost everywhere
+and undefined at sample boundaries. Plain gradient descent does not work.
+
+**Fix:** replace every indicator with a sigmoid of the form
+$\sigma(z) = 1/(1+e^{-z})$ and a soft-threshold at width `τ = 0.05`:
+
+$$
+\tilde{\text{FPR}}(t_b) = \frac{1}{n_b} \sum_{i: y_i=0} \sigma\!\left(\tfrac{p_i - t_b}{\tau}\right)
+$$
+
+$$
+\tilde{\text{FNR}}(t_r) = \frac{1}{n_m} \sum_{i: y_i=1} \left[1 - \sigma\!\left(\tfrac{p_i - t_r}{\tau}\right)\right]
+$$
+
+$$
+\widetilde{\text{ReviewRate}}(t_r, t_b) = \frac{1}{n} \sum_i \sigma\!\left(\tfrac{p_i - t_r}{\tau}\right)\left[1 - \sigma\!\left(\tfrac{p_i - t_b}{\tau}\right)\right]
+$$
+
+Key property: $\tfrac{\partial}{\partial \theta}\sigma\!\left(\tfrac{p_i - \theta}{\tau}\right) = -\sigma(\cdot)(1 - \sigma(\cdot))/\tau \ne 0$ for every sample, so $\tilde{C}$ is everywhere differentiable. This is not an approximation of correctness — it is a *choice* to optimize a smooth surrogate while reporting the hard cost.
+
+### 3.3 Gradient descent
+
+$$
+\theta_{k+1} = \text{Proj}\!\left(\theta_k - \eta \nabla \tilde{C}(\theta_k)\right), \quad \theta_k = (t_r^{(k)}, t_b^{(k)})
+$$
+
+with `η = 0.05`, 30 iterations, box constraints `0.15 ≤ t_r ≤ 0.60`,
+`0.45 ≤ t_b ≤ 0.95`, and gap `t_b − t_r ≥ 0.15`.
+
+Gradient computed by central finite difference:
+$$
+\frac{\partial \tilde{C}}{\partial \theta} \approx \frac{\tilde{C}(\theta + \varepsilon) - \tilde{C}(\theta - \varepsilon)}{2\varepsilon}, \quad \varepsilon = 10^{-4}
+$$
+
+### 3.4 First-order and second-order conditions
+
+- **Interior optimum**: `∇C = 0` and Hessian positive-definite.
+- **Boundary optimum** (KKT): `∇C ≠ 0` on the active constraint surface, Hessian positive-definite along the feasible directions.
+
+`Hessian_det > 0` certifies a local minimum.
+
+### 3.5 Measured values on ARES validation split
+
+*(filled after `scripts/run_calculus_experiment.py` runs — see `results/calculus_experiment.json`)*
+
+### 3.6 Honest caveat — smoothed vs hard cost
+
+The gradient-descent path minimizes the **smooth** surrogate `C̃`, not the
+**hard** cost `C`. Because of `τ`, small changes in `(t_r, t_b)` move the soft
+thresholds without changing which samples cross them, so `C̃` and `C` can
+diverge during optimization. **This is expected and documented**: the smooth
+surrogate guides the search; the hard cost validates the result. Final
+selection between default and optimized policies is made on the **hard cost
+reported at the end of optimization**, not on the smooth surrogate path.
+
+*(See `results/calculus_experiment.json` for both costs at both policies.)*

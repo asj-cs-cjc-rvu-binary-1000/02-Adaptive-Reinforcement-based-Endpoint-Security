@@ -239,3 +239,22 @@ as in-distribution estimates. External validation on Mendeley is documented as a
 
 **Impact on subsequent tasks:** none. Task 8 (calculus threshold optimisation)
 operates on the primary validation split and is unaffected.
+
+---
+
+## Phase 2 Task 8 — Calculus threshold optimisation
+
+**Method:** sigmoid-smoothed expected cost `C(t_r, t_b)` minimised by
+finite-difference gradient descent, **fit on validation split only**.
+**Default policy:** `(0.35, 0.70)`. **Optimised policy:** see
+`results/calculus_experiment.json`.
+
+**Test set usage:** only reported at the end of the experiment; **never used to
+fit** `(t_r, t_b)`. Re-running `run_calculus_experiment.py` produces identical
+numbers (deterministic; no random restart).
+
+**Caveat:** the smooth surrogate and the hard cost can diverge during
+optimisation; final policy comparison is on the hard cost at the solution.
+Documented in `docs/mathematical_techniques.md` §3.6.
+
+*(populated after run)*
