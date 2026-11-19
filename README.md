@@ -51,6 +51,7 @@ python scripts/check_qr_compatibility.py # → results/qr_decode_report.json  (~
 - ✅ Task 9 (inference pipeline): `scripts/predict_pipeline.py` + `scripts/smoke_test_pipeline.py` — final Phase 2 integration.
 - ✅ Phase 2b — audit-corrective patch: train-only constant detection; "calibrated" → "estimated" terminology throughout docs (Check 2=A); actual split percentages in docs (70.7/15.1/14.2, not targets); `scripts/model_manifest.py` adds a sha256 + version manifest that `PredictionPipeline` verifies at init. Commit `<hash>`.
 
+
 **BRIEF EXPLANATION:**
 
 1. Gate 2 is the second Phase 2 pre-training gate from docs/experimental_protocol.md §8. It measures full-dataset decode rate per class (not 200/class sample). It does not duplicate Gate 1's dedupe logic — Gate 1 owns duplicate + conflict + domain overlap; Gate 2 owns decode success + payload categorization. Clean separation.

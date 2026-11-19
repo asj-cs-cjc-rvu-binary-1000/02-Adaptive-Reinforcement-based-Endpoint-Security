@@ -1,0 +1,190 @@
+{
+  "phase": "3",
+  "task": "0 \u2014 repository and integration audit",
+  "generated_utc": "2026-11-19T19:12:29.308449+00:00",
+  "file_inventory": {
+    "app.py": {
+      "path": "app.py",
+      "exists": false
+    },
+    "adaptive_agent.py": {
+      "path": "adaptive_agent.py",
+      "exists": false
+    },
+    "calculus_threshold.py": {
+      "path": "calculus_threshold.py",
+      "exists": false
+    },
+    "feature_extractor.py": {
+      "path": "feature_extractor.py",
+      "exists": false
+    },
+    "qr_utils.py": {
+      "path": "qr_utils.py",
+      "exists": false
+    },
+    "scripts/predict_pipeline.py": {
+      "path": "scripts/predict_pipeline.py",
+      "exists": true,
+      "bytes": 7823,
+      "sha256": "37c0d6b4947a323c41452b6565dcdb9d1c9d02c0fe1f7399e5fa7ebaaae86f42"
+    },
+    "train_model.py": {
+      "path": "train_model.py",
+      "exists": false
+    },
+    "requirements.txt": {
+      "path": "requirements.txt",
+      "exists": true,
+      "bytes": 249,
+      "sha256": "7e7e323fe6c6dcbcf53850bd8a9f1d1bc76b6bdabdafa070cb001793cef19073"
+    },
+    "results/model_manifest.json": {
+      "path": "results/model_manifest.json",
+      "exists": true,
+      "bytes": 1160,
+      "sha256": "65473f7a3a47cbf0fb6b7fa902b75c778d8c92176d4393684ed284b4638dfeb0"
+    },
+    "scripts/model_manifest.py": {
+      "path": "scripts/model_manifest.py",
+      "exists": true,
+      "bytes": 6235,
+      "sha256": "5c54400fac1c0b0003a93d169fd1254fa5e8732e057219fccc222a66130e7d48"
+    },
+    "scripts/run_gates.py": {
+      "path": "scripts/run_gates.py",
+      "exists": true,
+      "bytes": 18913,
+      "sha256": "d021ebcf5b94bf6804ecb8b45583c80f95d8326b8e25f4a0dd3158877f4aa9aa"
+    },
+    "scripts/smoke_test_pipeline.py": {
+      "path": "scripts/smoke_test_pipeline.py",
+      "exists": true,
+      "bytes": 5007,
+      "sha256": "6a72db53a303ff2814d16315402b09445984558feb3d646a98e3c77b8f181192"
+    },
+    "scripts/evaluate_models.py": {
+      "path": "scripts/evaluate_models.py",
+      "exists": true,
+      "bytes": 10657,
+      "sha256": "3c039591e7bfe28b7bb30ee9afd37d1d6f894da1df35f7294fc4a8fd4811e3d2"
+    },
+    "scripts/run_calculus_experiment.py": {
+      "path": "scripts/run_calculus_experiment.py",
+      "exists": true,
+      "bytes": 8787,
+      "sha256": "3a4ae6f4d924a235c1b867476961c12ef589081bc288d35871336719da0f6bd3"
+    }
+  },
+  "consumed_artifacts": {
+    "results/model_selection.json": {
+      "path": "results/model_selection.json",
+      "exists": true,
+      "bytes": 4618,
+      "sha256": "d06dd530c83607935cd21bb8dfc960237febc1895045b4944afe4d6fc7117714"
+    },
+    "results/pca_report.json": {
+      "path": "results/pca_report.json",
+      "exists": true,
+      "bytes": 4109,
+      "sha256": "ac4d1a448ee3f2b1677b088900a7475029d3efee2f633cf6f4754f01f0854a7a"
+    },
+    "results/calculus_experiment.json": {
+      "path": "results/calculus_experiment.json",
+      "exists": true,
+      "bytes": 8153,
+      "sha256": "5830343f68ada6160d41cc820e2fb87bd10efdfcc5f32b66d194f897c6b3d592"
+    },
+    "models/raw_xgb.joblib": {
+      "path": "models/raw_xgb.joblib",
+      "exists": true,
+      "bytes": 1057738,
+      "sha256": "648438e2a2b68a753bd7491862dfc57d604f9d8efeea6f777d75ae4669c26a21"
+    },
+    "results/model_manifest.json": {
+      "path": "results/model_manifest.json",
+      "exists": true,
+      "bytes": 1160,
+      "sha256": "65473f7a3a47cbf0fb6b7fa902b75c778d8c92176d4393684ed284b4638dfeb0"
+    }
+  },
+  "predict_pipeline_contract": {
+    "imports": [
+      "__future__",
+      "argparse",
+      "feature_extractor",
+      "joblib",
+      "json",
+      "model_manifest",
+      "numpy",
+      "pathlib",
+      "qr_utils",
+      "sys",
+      "tempfile"
+    ],
+    "public_class": "PredictionPipeline",
+    "methods": [
+      "__init__",
+      "decode_image",
+      "_categorize",
+      "predict",
+      "_decide",
+      "run"
+    ],
+    "output_keys": [
+      "action",
+      "features",
+      "payload",
+      "payload_category",
+      "policy",
+      "prob_phishing",
+      "reason"
+    ]
+  },
+  "manifest_check": {
+    "ok": true,
+    "mismatches": []
+  },
+  "gate_check": {
+    "returncode": 0,
+    "stdout_tail": "{\n  \"gate1\": {\n    \"gate\": \"gate1\",\n    \"marker_present\": true,\n    \"manifest_present\": true,\n    \"result_json_present\": true,\n    \"ok\": true,\n    \"stale_fields\": [],\n    \"reason\": null\n  },\n  \"gate2\": {\n    \"gate\": \"gate2\",\n    \"marker_present\": true,\n    \"manifest_present\": true,\n    \"result_json_present\": true,\n    \"ok\": true,\n    \"stale_fields\": [],\n    \"reason\": null\n  }\n}\nALL GATES OK \u2014 safe to proceed to training.\n"
+  },
+  "smoke_test": {
+    "returncode": 0,
+    "stdout_tail": "239322066307068\n  [PASS] trad_chehab:benign:11          \u2192 Allow        p=0.031074663624167442\n  [PASS] trad_chehab:malicious:1        \u2192 Block        p=0.9997696280479431\n  [PASS] trad_chehab:malicious:2        \u2192 Allow        p=0.13079817593097687\n  [PASS] mendeley:benign                \u2192 Block        p=0.8753223419189453\n  [PASS] mendeley:malicious             \u2192 Block        p=0.9906396865844727\n  [PASS] corrupted                      \u2192 Undecodable  p=None\n\n8/8 cases produced well-formed output\nwrote /workspaces/02-Adaptive-Reinforcement-based-Endpoint-Security/results/smoke_test_results.json\n"
+  },
+  "duplication_risks": {
+    "app.py": {
+      "exists": false,
+      "inline_joblib_load": [],
+      "inline_predict_proba": [],
+      "inline_extract_features": [],
+      "inline_xgb": []
+    },
+    "adaptive_agent.py": {
+      "exists": false,
+      "inline_joblib_load": [],
+      "inline_predict_proba": [],
+      "inline_extract_features": [],
+      "inline_xgb": []
+    },
+    "calculus_threshold.py": {
+      "exists": false,
+      "inline_joblib_load": [],
+      "inline_predict_proba": [],
+      "inline_extract_features": [],
+      "inline_xgb": []
+    },
+    "train_model.py": {
+      "exists": false,
+      "inline_joblib_load": [],
+      "inline_predict_proba": [],
+      "inline_extract_features": [],
+      "inline_xgb": []
+    }
+  },
+  "tests_inventory": {
+    "tests_dir_exists": false,
+    "files": []
+  }
+}
