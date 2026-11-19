@@ -44,3 +44,8 @@ data/processed/split_*_pca.parquet
 !results/pca_explained_variance.png
 !results/pca_feature_loadings.csv
 !results/pca_scaler_params.json
+!models/.gitkeep
+results/training_logs/
+!results/model_comparison.json
+!results/model_comparison.csv
+!results/model_selection.json

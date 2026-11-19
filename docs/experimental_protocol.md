@@ -128,6 +128,7 @@ Any task requiring gate status (e.g. `train_models.py`, `split_dataset.py`) must
 
 ```bash
 python scripts/run_gates.py check --dataset trad_chehab --external mendeley
+```
 
 ## 11. What is deliberately *not* in this protocol
 
@@ -181,3 +182,24 @@ on the primary training feature matrix; drop list is in `results/pca_report.json
 **Transformed splits:** `data/processed/split_{train,val,test,external}_pca.parquet`.
 
 **Reported values (from `results/pca_report.json`):** *(filled after run)*
+
+---
+
+## Phase 2 Task 6 — Model comparison record
+
+**Feature representations:** 2 — raw (20 features) and PCA (13 components).
+**Model families:** 4 — LR, DT, RF, XGB.
+**Total combinations:** 8.
+
+**Train/validation split:** Task 4 output — 6,658 / 1,425 rows.
+**Test split:** **Not touched** in Task 6. Model selection freezes on validation,
+then Phase 2 Task 7 evaluates on test **once** with the frozen selection.
+
+**Fixed hyperparameters:** documented in `docs/model_experiments.md`. Hyperparameter
+search is deferred to a Phase 2 extension; it must use **inner GroupKFold CV on
+train only**, not val, not test.
+
+**Selection rule:** `mean(F1, ROC-AUC)` on validation; tiebreaks as in
+`results/model_selection.json`. **Rule fixed before test evaluation.**
+
+**Measured results:** *(filled after run)*

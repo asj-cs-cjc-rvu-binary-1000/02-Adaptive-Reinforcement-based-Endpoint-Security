@@ -1,0 +1,211 @@
+{
+  "generated_utc": "2026-11-19T07:11:46.800627+00:00",
+  "seed": 42,
+  "features_kept_count": 20,
+  "feature_kinds": [
+    "raw",
+    "pca"
+  ],
+  "families": [
+    "lr",
+    "dt",
+    "rf",
+    "xgb"
+  ],
+  "test_set_used": false,
+  "selection_policy": "best mean(F1, ROC-AUC) on VALIDATION only; test never touched in this task",
+  "metrics": {
+    "raw_lr": {
+      "n": 1425,
+      "accuracy": 0.8498245614035088,
+      "precision": 0.8669001751313485,
+      "recall": 0.7819905213270142,
+      "f1": 0.8222591362126246,
+      "confusion_matrix": [
+        [
+          716,
+          76
+        ],
+        [
+          138,
+          495
+        ]
+      ],
+      "roc_auc": 0.9118615060558186,
+      "pr_auc": 0.9146335867237109,
+      "brier": 0.11312534827772544,
+      "fit_seconds": 0.47,
+      "feature_kind": "raw",
+      "family": "lr",
+      "model_name": "raw_lr"
+    },
+    "raw_dt": {
+      "n": 1425,
+      "accuracy": 0.8680701754385964,
+      "precision": 0.8777589134125636,
+      "recall": 0.8167456556082149,
+      "f1": 0.8461538461538461,
+      "confusion_matrix": [
+        [
+          720,
+          72
+        ],
+        [
+          116,
+          517
+        ]
+      ],
+      "roc_auc": 0.8931235738107774,
+      "pr_auc": 0.868799154731736,
+      "brier": 0.11348574958165285,
+      "fit_seconds": 0.04,
+      "feature_kind": "raw",
+      "family": "dt",
+      "model_name": "raw_dt"
+    },
+    "raw_rf": {
+      "n": 1425,
+      "accuracy": 0.8807017543859649,
+      "precision": 0.8752025931928687,
+      "recall": 0.8530805687203792,
+      "f1": 0.864,
+      "confusion_matrix": [
+        [
+          715,
+          77
+        ],
+        [
+          93,
+          540
+        ]
+      ],
+      "roc_auc": 0.9486053265674118,
+      "pr_auc": 0.9490891275869252,
+      "brier": 0.0857410308218053,
+      "fit_seconds": 2.2,
+      "feature_kind": "raw",
+      "family": "rf",
+      "model_name": "raw_rf"
+    },
+    "raw_xgb": {
+      "n": 1425,
+      "accuracy": 0.8814035087719299,
+      "precision": 0.8741935483870967,
+      "recall": 0.8562401263823065,
+      "f1": 0.86512370311253,
+      "confusion_matrix": [
+        [
+          714,
+          78
+        ],
+        [
+          91,
+          542
+        ]
+      ],
+      "roc_auc": 0.9494271307067516,
+      "pr_auc": 0.9506588090238944,
+      "brier": 0.08803369849920273,
+      "fit_seconds": 0.79,
+      "feature_kind": "raw",
+      "family": "xgb",
+      "model_name": "raw_xgb"
+    },
+    "pca_lr": {
+      "n": 1425,
+      "accuracy": 0.8203508771929825,
+      "precision": 0.885480572597137,
+      "recall": 0.684044233807267,
+      "f1": 0.7718360071301248,
+      "confusion_matrix": [
+        [
+          736,
+          56
+        ],
+        [
+          200,
+          433
+        ]
+      ],
+      "roc_auc": 0.8575685767628896,
+      "pr_auc": 0.8779255629953412,
+      "brier": 0.13389233898525804,
+      "fit_seconds": 0.07,
+      "feature_kind": "pca",
+      "family": "lr",
+      "model_name": "pca_lr"
+    },
+    "pca_dt": {
+      "n": 1425,
+      "accuracy": 0.8196491228070175,
+      "precision": 0.7993630573248408,
+      "recall": 0.7930489731437599,
+      "f1": 0.796193497224425,
+      "confusion_matrix": [
+        [
+          666,
+          126
+        ],
+        [
+          131,
+          502
+        ]
+      ],
+      "roc_auc": 0.8768939393939394,
+      "pr_auc": 0.865750402149122,
+      "brier": 0.13698051557472435,
+      "fit_seconds": 0.13,
+      "feature_kind": "pca",
+      "family": "dt",
+      "model_name": "pca_dt"
+    },
+    "pca_rf": {
+      "n": 1425,
+      "accuracy": 0.8603508771929824,
+      "precision": 0.8665540540540541,
+      "recall": 0.8104265402843602,
+      "f1": 0.8375510204081633,
+      "confusion_matrix": [
+        [
+          713,
+          79
+        ],
+        [
+          120,
+          513
+        ]
+      ],
+      "roc_auc": 0.9302513683437854,
+      "pr_auc": 0.9303065073811412,
+      "brier": 0.09966085732488726,
+      "fit_seconds": 4.59,
+      "feature_kind": "pca",
+      "family": "rf",
+      "model_name": "pca_rf"
+    },
+    "pca_xgb": {
+      "n": 1425,
+      "accuracy": 0.8617543859649123,
+      "precision": 0.8585526315789473,
+      "recall": 0.8246445497630331,
+      "f1": 0.8412570507655117,
+      "confusion_matrix": [
+        [
+          706,
+          86
+        ],
+        [
+          111,
+          522
+        ]
+      ],
+      "roc_auc": 0.926117414269073,
+      "pr_auc": 0.9286570020706534,
+      "brier": 0.10096104443073273,
+      "fit_seconds": 1.0,
+      "feature_kind": "pca",
+      "family": "xgb",
+      "model_name": "pca_xgb"
+    }
+  }
+}
