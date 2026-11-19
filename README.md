@@ -45,7 +45,8 @@ python scripts/check_qr_compatibility.py # → results/qr_decode_report.json  (~
 - ✅ Task 3 (feature extraction): `features_primary.parquet` (9,422 URL rows), `features_external.parquet` (990), `excluded_samples.json` (565 + 10 non-URL samples), `feature_summary.json` (4 constant features detected: has_https, has_ip, has_userinfo, embedded_url_in_query). Commit `e6836e7`.
 - ✅ Task 4 (split): 6658 / 1425 / 1339 train/val/test (70.7 / 15.1 / 14.2 %), 0 domain & sample overlap, coverage_verified. Commit `2f7c5dd`.
 - ✅ Task 5 (PCA): 13 components at 95.86 % cumulative variance; 4 constants dropped before scaling. Commit `02a2e71`.
-- ⏳ Task 6 (model comparison): 8 model/feature combos trained on train; selection frozen on validation, test untouched.
+- ✅ Task 6 (model comparison): `raw_xgb` selected on validation (F1=0.8651, ROC-AUC=0.9494); all 8 model/feature combos trained; test untouched. Commit `c5dead0`.
+- ⏳ Task 7 (evaluation): `scripts/evaluate_models.py` evaluates `raw_xgb` on test + external once, produces confusion matrices + comparison plots + threshold sweep; `notebooks/Phase2_walkthrough.ipynb` provides read-only view.
 
 **BRIEF EXPLANATION:**
 

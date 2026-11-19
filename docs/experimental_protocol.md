@@ -203,3 +203,21 @@ train only**, not val, not test.
 `results/model_selection.json`. **Rule fixed before test evaluation.**
 
 **Measured results:** *(filled after run)*
+
+---
+
+## Phase 2 Task 7 — Evaluation record
+
+**Frozen model evaluated:** `raw_xgb` (see `results/model_selection.json`).
+**Evaluation sets:** primary test split + external (Mendeley) split.
+**Decision threshold:** 0.50 for reported point metrics.
+**Test-set touch count:** exactly one (this task). Re-runs of `evaluate_models.py`
+produce identical numbers by construction (deterministic predict_proba on fixed
+inputs); the test number is fixed.
+
+**Threshold sweep output** (`results/threshold_sweep.json`) is the input to Task 8's
+calculus optimiser. It reports FPR / FNR / TPR / TNR for 91 thresholds from
+0.05 to 0.95 on the test set. Task 8 will fit `(t_review, t_block)` on **validation**
+only, not on test — this sweep is for reporting, not for tuning.
+
+*(test and external metrics filled after run)*

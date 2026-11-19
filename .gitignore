@@ -49,3 +49,10 @@ results/training_logs/
 !results/model_comparison.json
 !results/model_comparison.csv
 !results/model_selection.json
+notebooks/.ipynb_checkpoints/
+!notebooks/Phase2_walkthrough.ipynb
+!results/final_metrics.json
+!results/threshold_sweep.json
+!results/confusion_matrices/
+!results/model_accuracy_comparison.png
+!results/model_precision_recall_comparison.png

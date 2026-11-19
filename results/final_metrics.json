@@ -1,0 +1,75 @@
+{
+  "generated_utc": "2026-11-19T07:27:40.609728+00:00",
+  "selected_model": "raw_xgb",
+  "selection_source": "results/model_selection.json (frozen in Task 6; not re-selected here)",
+  "test": {
+    "n": 1339,
+    "accuracy": 0.8909634055265123,
+    "precision": 0.9077598828696926,
+    "recall": 0.8819345661450925,
+    "f1": 0.8946608946608947,
+    "roc_auc": 0.949034685132004,
+    "pr_auc": 0.9640794424010513,
+    "brier": 0.08405402302742004,
+    "confusion_matrix": [
+      [
+        573,
+        63
+      ],
+      [
+        83,
+        620
+      ]
+    ]
+  },
+  "external": {
+    "n": 990,
+    "accuracy": 0.42727272727272725,
+    "precision": 0.45539906103286387,
+    "recall": 0.790224032586558,
+    "f1": 0.5778108711839166,
+    "roc_auc": 0.5262010783277349,
+    "pr_auc": 0.6225132425467504,
+    "brier": 0.49648725986480713,
+    "confusion_matrix": [
+      [
+        35,
+        464
+      ],
+      [
+        103,
+        388
+      ]
+    ]
+  },
+  "deltas_external_minus_test": {
+    "accuracy": -0.4637,
+    "f1": -0.3169,
+    "roc_auc": -0.4228,
+    "pr_auc": -0.3416,
+    "brier": 0.4124
+  },
+  "decision_threshold": 0.5,
+  "confusion_matrices": {
+    "test": [
+      [
+        573,
+        63
+      ],
+      [
+        83,
+        620
+      ]
+    ],
+    "external": [
+      [
+        35,
+        464
+      ],
+      [
+        103,
+        388
+      ]
+    ]
+  }
+}
