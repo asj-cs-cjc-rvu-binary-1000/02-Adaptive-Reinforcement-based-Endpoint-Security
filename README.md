@@ -46,7 +46,7 @@ python scripts/check_qr_compatibility.py # → results/qr_decode_report.json  (~
 - ✅ Task 4 (split): 6658 / 1425 / 1339 train/val/test (70.7 / 15.1 / 14.2 %), 0 domain & sample overlap, coverage_verified. Commit `2f7c5dd`.
 - ✅ Task 5 (PCA): 13 components at 95.86 % cumulative variance; 4 constants dropped before scaling. Commit `02a2e71`.
 - ✅ Task 6 (model comparison): `raw_xgb` selected on validation (F1=0.8651, ROC-AUC=0.9494); all 8 model/feature combos trained; test untouched. Commit `c5dead0`.
-- ⏳ Task 7 (evaluation): `scripts/evaluate_models.py` evaluates `raw_xgb` on test + external once, produces confusion matrices + comparison plots + threshold sweep; `notebooks/Phase2_walkthrough.ipynb` provides read-only view.
+- ✅ Task 7 (evaluation): frozen `raw_xgb` test acc=0.8910, F1=0.8947, ROC-AUC=0.9490. **External validation on Mendeley fails (acc=0.4273, AUC=0.5262)** — diagnosed as era+technique domain shift (`results/feature_drift_diagnosis.json`); documented as manuscript limitation. Commit `99363a3` + diagnostic commit.
 
 **BRIEF EXPLANATION:**
 

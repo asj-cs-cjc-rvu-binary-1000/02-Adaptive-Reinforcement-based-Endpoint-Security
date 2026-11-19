@@ -221,3 +221,21 @@ calculus optimiser. It reports FPR / FNR / TPR / TNR for 91 thresholds from
 only, not on test — this sweep is for reporting, not for tuning.
 
 *(test and external metrics filled after run)*
+
+## Task 7 addendum — external validation failure (domain shift)
+
+Post-evaluation diagnostic (`results/feature_drift_diagnosis.json`) confirms the
+external validation collapse (acc 42.73 %, ROC-AUC 0.526) is a **dataset-level
+distribution shift**, not a code defect:
+
+- benign-class feature drift: `mean |z_shift| = 0.1724`, **0/20 features with |z| > 1.0**
+- malicious-class mean raw deltas: `url_length` −39.38, `path_length` −23.29,
+  `suspicious_words` −0.591 — Mendeley malicious URLs are systematically shorter
+  and less phishing-token-rich than Trad & Chehab malicious URLs
+
+The primary test-set metrics (acc 89.10 %, ROC-AUC 0.949, F1 0.895) **remain valid**
+as in-distribution estimates. External validation on Mendeley is documented as a
+**manuscript limitation**, not a supported claim.
+
+**Impact on subsequent tasks:** none. Task 8 (calculus threshold optimisation)
+operates on the primary validation split and is unaffected.
