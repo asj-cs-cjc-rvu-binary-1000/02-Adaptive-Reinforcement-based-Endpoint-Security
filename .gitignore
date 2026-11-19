@@ -28,3 +28,6 @@ models/*.joblib.bak
 results/.gate2_pass
 results/.tmp_decode/
 results/gate1_run.log
+!results/full_decode_audit.json
+!results/.gate1_manifest.json
+!results/.gate2_manifest.json

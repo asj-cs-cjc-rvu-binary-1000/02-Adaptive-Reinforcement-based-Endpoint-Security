@@ -114,6 +114,21 @@ All metrics computed on the **holdout test set** of the primary dataset, and sep
 | `scripts/qr_utils.py` byte-identical | `d6510490…` | ✅ |
 | `scripts/feature_extractor.py` byte-identical | `45e13436…` | ✅ |
 
+### Gate reuse — content-addressed, not time-based
+
+Both gates write a **manifest** (`results/.gateN_manifest.json`) recording the
+sha256 of:
+
+- the dataset files that were audited (Trad & Chehab pickles; Mendeley PNGs);
+- `scripts/qr_utils.py`, `scripts/feature_extractor.py`, `scripts/dataset_config.py`;
+- `scripts/run_gates.py` (the gate script itself);
+- the resulting audit JSON (`full_overlap_audit.json` / `full_decode_audit.json`).
+
+Any task requiring gate status (e.g. `train_models.py`, `split_dataset.py`) must call:
+
+```bash
+python scripts/run_gates.py check --dataset trad_chehab --external mendeley
+
 ## 11. What is deliberately *not* in this protocol
 
 - **No model architecture choice** — Phase 2 decides XGBoost vs. LR vs. baseline, using the CV protocol in §6.

@@ -155,3 +155,25 @@ These payloads are **recognizably** benign vs malicious — no labelling ambigui
 ## Phase 2 Task 1 — Full-dataset duplicate + label-conflict audit
 
 See `results/full_overlap_audit.json` for the authoritative numbers. This section will be populated **after** the gate script completes; nothing is written here in advance.
+
+---
+
+## Phase 2 Task 2 — Full-dataset QR decoding audit (Gate 2)
+
+Authoritative source: `results/full_decode_audit.json`. Regenerate with:
+
+```bash
+python scripts/run_gates.py gate2-decode --dataset trad_chehab --external mendeley
+```
+
+Gate 2 acceptance criterion: decode rate ≥ 0.95 in both classes for the primary dataset.
+Marker written on pass: results/.gate2_pass. Phase 2 Task 4 (split_dataset.py) refuses to run without it.
+
+---
+
+## Phase 2 Task 2 — Full-dataset QR decoding audit (Gate 2)
+
+Authoritative source: `results/full_decode_audit.json`. Regenerate with:
+
+```bash
+python scripts/run_gates.py gate2-decode --dataset trad_chehab --external mendeley

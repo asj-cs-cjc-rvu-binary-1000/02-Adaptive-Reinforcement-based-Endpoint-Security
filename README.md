@@ -38,6 +38,28 @@ python scripts/check_qr_compatibility.py # → results/qr_decode_report.json  (~
 4. **The "known limitations" list in `dataset_comparison.md`** is deliberate — `plain_text` handling, size confounding, sample-only overlap — the three things an IEEE Access reviewer would catch first. Better to state them than to have them pried out.
 5. **No code touched.** `scripts/qr_utils.py` and `scripts/feature_extractor.py` remain byte-identical (`d6510490…`, `45e13436…`). `scripts/check_qr_compatibility.py` is unchanged from the last version you ran. `scripts/inspect_datasets.py` is unchanged from Task 1.
 
+## Phase 2 progress:
+- ✅ **Task 1 (Gate 1 — full-dataset duplicate + label audit):** PASSED — 0 label conflicts on 9,987 + 1,000 images; 44 cross-dataset benign-domain overlaps (documented, non-blocking). Runtime 52.5 min. Artifacts: `results/full_overlap_audit.json`, `results/label_conflicts.json`, `results/.gate1_pass`.
+- ⏳ **Task 2 (Gate 2 — full-dataset decode audit):** in progress — see `docs/dataset_comparison.md` §"Phase 2 Task 2".
+
+**BRIEF EXPLANATION:**
+
+1. Gate 2 is the second Phase 2 pre-training gate from docs/experimental_protocol.md §8. It measures full-dataset decode rate per class (not 200/class sample). It does not duplicate Gate 1's dedupe logic — Gate 1 owns duplicate + conflict + domain overlap; Gate 2 owns decode success + payload categorization. Clean separation.
+
+2. The _decode_audit_one_dataset helper is deliberately separate from _audit_one_dataset. Sharing would couple the dedupe logic to the decode audit — if a future Task 1b revision changes dedupe, it would silently change Gate 2 output too. Separate functions with separate outputs is the honest structure.
+
+3. --external mendeley audits the external set too. Protocol §7 requires an external dataset that passes the 0.95 gate as well — a Mendeley image that fails to decode would make the "external validation" number dishonest. So Gate 2 covers both.
+
+4. gate_pass is False if either class or either dataset drops below 0.95. That is what docs/experimental_protocol.md §8 says; the code matches the doc. If a specific subgroup fails, we drill in — the gate cannot be quietly waived.
+
+5. results/.gate2_pass marker mirrors the .gate1_pass pattern. split_dataset.py in Task 4 will require both markers. That is how "gates are actually gates" becomes a code-enforced invariant, not a documentation promise.
+
+6. Runtime expectation: ~52–55 min at Trad & Chehab 0.29 s/image + Mendeley ~0.25 s/image, same as Gate 1. Run it in the background with nohup and tail -f the log, exactly as you did for Gate 1.
+
+7. _iter_spec is reused from Gate 1. No re-implementation, no drift — the primary iteration (Trad & Chehab pickle → border+4× upscale → BGR) is identical to what Gate 1 used, so Gate 2's decode rate is comparable to Gate 1's category counts (subsets of the same decode attempts).
+
+8. _sha256_file reuses the Phase 1 helper. Production-hash verification still happens at gate time. If someone edits scripts/qr_utils.py between Gate 1 and Gate 2, the two gates' production_hashes fields will diverge and we will catch the drift on inspection.
+
 ## Contributors
 
 Developed as part of an AIML Semester 3 academic project at **R V University**:

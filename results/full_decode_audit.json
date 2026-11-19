@@ -1,0 +1,53 @@
+{
+  "gate": "gate2-decode",
+  "generated_utc": "2026-11-19T05:26:15.973101+00:00",
+  "primary": {
+    "dataset": "Trad & Chehab",
+    "n_total": 9987,
+    "n_processed": 9987,
+    "class_counts": {
+      "benign": 5005,
+      "malicious": 4982
+    },
+    "per_class_category": {
+      "benign__url": 4912,
+      "malicious__url": 4510,
+      "malicious__plain_text": 387,
+      "benign__undecodable": 50,
+      "malicious__undecodable": 85,
+      "benign__plain_text": 43
+    },
+    "decode_rate": {
+      "benign": 0.99,
+      "malicious": 0.9829
+    },
+    "gate_pass": true
+  },
+  "external": {
+    "dataset": "Mendeley",
+    "n_total": 1000,
+    "n_processed": 1000,
+    "class_counts": {
+      "benign": 500,
+      "malicious": 500
+    },
+    "per_class_category": {
+      "benign__url": 499,
+      "benign__undecodable": 1,
+      "malicious__url": 491,
+      "malicious__undecodable": 7,
+      "malicious__plain_text": 2
+    },
+    "decode_rate": {
+      "benign": 0.998,
+      "malicious": 0.986
+    },
+    "gate_pass": true
+  },
+  "gate_pass": true,
+  "gate_fail_reason": null,
+  "production_hashes": {
+    "qr_utils_sha256": "d65104906924bff1b762cd48267a6b839f4fc01c06e3a7bf5b8945c2d27db8fa",
+    "feature_extractor_sha256": "45e13436f738b50f5992b84ef56a5c35aed3b828e0005bb475f96b56b5c0ee32"
+  }
+}
