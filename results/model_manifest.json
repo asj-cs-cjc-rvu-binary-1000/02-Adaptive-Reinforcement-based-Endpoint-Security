@@ -1,0 +1,40 @@
+{
+  "generated_utc": "2026-11-19T08:03:25.716834+00:00",
+  "git_commit_hash": "8a4b2937b7800571758d4402c65c9a1f06cfa1dd",
+  "python_version": "3.14.2",
+  "packages": {
+    "scikit-learn": "1.9.1",
+    "xgboost": "3.0.2",
+    "numpy": "2.5.5",
+    "pandas": "3.1.1",
+    "pyarrow": "26.0.1"
+  },
+  "artifacts": {
+    "model_selection": {
+      "path": "results/model_selection.json",
+      "sha256": "d06dd530c83607935cd21bb8dfc960237febc1895045b4944afe4d6fc7117714",
+      "bytes": 4618
+    },
+    "pca_report": {
+      "path": "results/pca_report.json",
+      "sha256": "ac4d1a448ee3f2b1677b088900a7475029d3efee2f633cf6f4754f01f0854a7a",
+      "bytes": 4109
+    },
+    "calculus_experiment": {
+      "path": "results/calculus_experiment.json",
+      "sha256": "5830343f68ada6160d41cc820e2fb87bd10efdfcc5f32b66d194f897c6b3d592",
+      "bytes": 8153
+    },
+    "model_joblib": {
+      "path": "models/raw_xgb.joblib",
+      "sha256": "648438e2a2b68a753bd7491862dfc57d604f9d8efeea6f777d75ae4669c26a21",
+      "bytes": 1057738
+    }
+  },
+  "prediction_pipeline_reads": [
+    "calculus_experiment",
+    "model_joblib",
+    "model_selection",
+    "pca_report"
+  ]
+}

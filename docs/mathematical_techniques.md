@@ -102,8 +102,7 @@ data/processed/split_{train,val,test,external}_pca.parquet — transformed split
 
 ## 3. Calculus-based threshold optimization
 
-ARES uses two thresholds `(t_review, t_block)` to map a calibrated phishing
-probability to an action: **Allow** (< t_review), **Review** (between), or
+ARES uses two thresholds `(t_review, t_block)` to map an **estimated** phishing probability to an action: **Allow** (< t_review), **Review** (between), or
 **Block** (≥ t_block). The thresholds are chosen to minimize expected operational
 cost.
 
@@ -234,3 +233,20 @@ selection between default and optimized policies is made on the **hard cost
 reported at the end of optimization**, not on the smooth surrogate path.
 
 *(See `results/calculus_experiment.json` for both costs at both policies.)*
+
+### 3.7 Probability semantics — not calibrated in the isotonic sense
+
+The probabilities consumed by this optimiser come from `raw_xgb` — a raw
+`XGBClassifier.predict_proba` output. **It is not isotonic-calibrated.**
+No `CalibratedClassifierCV` wrapper is applied in the Phase 2 pipeline.
+
+The Brier scores reported in `results/final_metrics.json` (0.0841 on test,
+0.0880 on validation) measure how well this **estimated** probability behaves
+empirically — they do not constitute an isotonic-calibration claim. Any reference
+in this document or in the manuscript should use "estimated probability" or
+"predicted probability", not "calibrated probability".
+
+If formal calibration is desired in a future version, the correct procedure is to
+wrap the estimator in `CalibratedClassifierCV(XGBClassifier, method="isotonic", cv=5)`,
+re-fit on the training split, and re-evaluate — a Phase 3 task, not a Phase 2
+retro-fit.

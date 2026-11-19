@@ -17,7 +17,8 @@ Produces:
     "payload": str | None,          # decoded URL text
     "payload_category": str,         # "url" | "plain_text" | "non_url_scheme" | "undecodable"
     "features": dict | None,         # 20 features (constant-dropped) if payload is URL
-    "prob_phishing": float | None,   # model's calibrated probability
+    "prob_phishing": float | None,   # model's *estimated* phishing probability
+                                     # (raw XGBoost output; NOT isotonic-calibrated)
     "action": str,                   # "Allow" | "Review" | "Block" | "Undecodable"
     "reason": str,
   }
@@ -46,10 +47,32 @@ MODELS = PROJECT_ROOT / "models"
 
 
 class PredictionPipeline:
-    """Frozen ARES inference pipeline — model + feature policy + decision thresholds."""
+    """Frozen ARES inference pipeline — model + feature policy + decision thresholds.
+
+    Note on probability semantics: the returned `prob_phishing` field is the
+    *estimated* phishing probability from the raw XGBoost `predict_proba` output.
+    It is **not** isotonic-calibrated (the Phase 2 model is raw XGBoost, not
+    CalibratedClassifierCV). Brier scores measure how well this estimate behaves
+    empirically, but do not assert formal calibration.
+    """
 
     def __init__(self, policy: str = "default"):
-        """policy ∈ {"default", "optimized"}; thresholds read from Task 8 output."""
+        """policy ∈ {"default", "optimized"}; thresholds read from Task 8 output.
+
+        Fails closed if the on-disk artifacts have drifted from
+        results/model_manifest.json (checks sha256 of model_selection.json,
+        pca_report.json, calculus_experiment.json, and the selected joblib).
+        """
+        from model_manifest import check_manifest
+        ok, mismatches = check_manifest()
+        if not ok:
+            raise SystemExit(
+                "FATAL: PredictionPipeline artifact mismatch vs results/model_manifest.json:\n"
+                + "\n".join(f"  - {m}" for m in mismatches)
+                + "\nRe-run scripts/model_manifest.py to refresh the manifest after "
+                  "intentional changes, or restore the drifted artifacts."
+            )
+
         sel = json.loads((RESULTS / "model_selection.json").read_text(encoding="utf-8"))
         pca = json.loads((RESULTS / "pca_report.json").read_text(encoding="utf-8"))
         self.feature_kind = sel["selected_model"]["feature_kind"]

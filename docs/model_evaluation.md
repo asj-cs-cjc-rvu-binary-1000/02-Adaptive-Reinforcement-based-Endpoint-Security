@@ -7,9 +7,11 @@
 
 - **Selected model:** `raw_xgb`, frozen in `results/model_selection.json` (Task 6).
 - **Selection rule:** `mean(F1, ROC-AUC)` on validation, tiebreaks precision → brier → name.
-- **Test set:** touched **once** in this task; no re-selection, no hyperparameter change.
-- **External set (Mendeley):** touched **once**; frozen model; no tuning; no threshold change.
+- **Split sizes (actual):** Train 6,658 · Validation 1,425 · Test 1,339 — 70.7 % / 15.1 % / 14.2 % of the URL-feature subset. This is a **domain-grouped approximation** to the 70:15:15 target; the manuscript reports actuals, not targets.
+- **External set (Mendeley):** 990 rows (499 benign, 491 malicious). Frozen model; no tuning; no threshold change.
 - **Decision threshold:** 0.50 for all reported point metrics. Threshold optimisation is Task 8.
+- **Probability semantics:** all `prob_phishing` values are **estimated** (raw XGBoost `predict_proba`); not isotonic-calibrated. See `mathematical_techniques.md` §3.7.
+- **Reproducibility artifacts:** `results/model_manifest.json` records git HEAD, package versions, and sha256 of every artifact consumed by `PredictionPipeline`.
 
 ## Validation metrics for all 8 models (from Task 6)
 
@@ -139,7 +141,7 @@ from scripts.predict_pipeline import PredictionPipeline
 pipe = PredictionPipeline(policy="default")  # or policy="optimized"
 result = pipe.run("path/to/qr.png")
 # result["action"] ∈ {"Allow", "Review", "Block", "Undecodable"}
-# result["prob_phishing"] is the calibrated probability
+# result["prob_phishing"] is the estimated phishing probability
 ```
 
 Behaviour
@@ -173,3 +175,28 @@ What this does not prove
 The smoke test does not establish external-validation generalization (that
 was already characterised as failing — see "External validation — domain shift
 finding"). It establishes that the plumbing is correct, nothing more.
+
+---
+
+## Model artifact manifest (Check 4)
+
+`results/model_manifest.json` records everything `PredictionPipeline` depends on:
+
+- `git_commit_hash` — HEAD at manifest write time.
+- `python_version` — e.g. 3.14.2.
+- `packages` — `scikit-learn`, `xgboost`, `numpy`, `pandas`, `pyarrow`.
+- `artifacts` — path + sha256 + byte size for:
+  - `results/model_selection.json`
+  - `results/pca_report.json`
+  - `results/calculus_experiment.json`
+  - `models/raw_xgb.joblib`
+- `prediction_pipeline_reads` — explicit list of consumed artifacts.
+
+`PredictionPipeline.__init__` calls `model_manifest.check_manifest()` and **fails closed**
+on any sha256 or package-version mismatch. To regenerate the manifest after an
+intentional pipeline change:
+
+```bash
+python scripts/model_manifest.py           # write
+python scripts/model_manifest.py --check   # verify
+```

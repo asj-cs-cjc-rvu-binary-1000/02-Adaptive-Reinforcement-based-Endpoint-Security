@@ -60,3 +60,5 @@ notebooks/.ipynb_checkpoints/
 !results/calculus_experiment.json
 !results/calculus_cost_landscape.png
 !results/smoke_test_results.json
+!results/model_manifest.json
+!results/feature_constants_difference.json

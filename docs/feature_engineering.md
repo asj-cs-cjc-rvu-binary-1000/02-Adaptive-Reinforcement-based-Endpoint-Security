@@ -53,3 +53,25 @@ python scripts/prepare_features.py
 The script fails fast if either gate is stale (run_gates.py check exit ≠ 0).
 Decoding is cached (results/decoded_payloads.json), content-addressed to the
 data + decoder + extractor hashes. First run ~52 min; subsequent runs ~seconds.
+
+## Constant-feature detection — training partition only
+
+Phase 2b (check 1) recomputes the constant-feature list from
+`data/processed/split_train.parquet` only and records the result in
+`results/feature_summary.json` under `train_only_constant_features`.
+
+- `scripts/recompute_train_constants.py` recomputes the list on train only.
+- If the train-only list matches the full-data list (which it should, because the
+  four constants are zero on every split), `constant_features_match_train_only: true`
+  is recorded and **no downstream artifact changes**.
+- If the lists differ, the script exits non-zero and flags the downstream
+  artifacts as stale (PCA, models, evaluation, calculus, prediction all
+  re-run required).
+
+The current result is recorded in `results/feature_summary.json`.
+
+**Manuscript wording:** "features with zero variance on the **training partition** were
+removed before PCA and model fitting. Four features qualified
+(`has_https`, `has_ip`, `has_userinfo`, `embedded_url_in_query`). Full-data and
+train-only detection produced the same set, confirming the selection has no
+label-scope leakage."

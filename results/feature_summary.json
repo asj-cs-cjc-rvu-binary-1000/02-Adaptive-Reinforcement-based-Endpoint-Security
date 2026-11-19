@@ -236,6 +236,44 @@
         "has_userinfo",
         "embedded_url_in_query"
       ]
+    },
+    "train_only_constant_features": [
+      "embedded_url_in_query",
+      "has_https",
+      "has_ip",
+      "has_userinfo"
+    ],
+    "constant_features_match_train_only": true,
+    "train_only_constant_detection": {
+      "fit_on": "data/processed/split_train.parquet",
+      "timestamp_utc": "2026-11-19T08:03:20.025316+00:00",
+      "n_train_rows": 6658,
+      "nunique_per_feature": {
+        "url_length": 269,
+        "num_dots": 22,
+        "has_https": 1,
+        "has_ip": 1,
+        "num_subdirs": 18,
+        "num_params": 12,
+        "suspicious_words": 9,
+        "special_char_count": 22,
+        "digits_count": 125,
+        "entropy": 4838,
+        "host_length": 155,
+        "path_length": 163,
+        "query_length": 144,
+        "subdomain_count": 21,
+        "digit_ratio": 1074,
+        "susp_token_hits": 9,
+        "susp_compound_hits": 5,
+        "susp_in_subdomain": 2,
+        "is_shortener": 2,
+        "is_punycode": 2,
+        "has_port": 2,
+        "has_userinfo": 1,
+        "embedded_url_in_query": 1,
+        "tld_risk": 2
+      }
     }
   },
   "external": {

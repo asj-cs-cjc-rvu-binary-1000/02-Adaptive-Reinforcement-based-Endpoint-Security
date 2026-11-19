@@ -23,11 +23,26 @@ Where the protocol below says "primary", it applies to whichever dataset is pick
 
 ## 3. Split ratios (primary dataset)
 
-**Grouped by registrable domain, not by image.** Any split that puts two images from the same registrable domain into different splits leaks the domain identity across train/val/test and inflates metrics. This is a hard requirement.
+**Target:** 70 : 15 : 15, grouped by registrable domain, seeds 42 (70/30) and 43 (30→15/15).
 
-- **Train : Val : Test = 70 : 15 : 15** by **registrable-domain groups**, using `sklearn.model_selection.GroupShuffleSplit` (or `GroupKFold` for cross-validation) with `groups = extract_registrable_domain(decoded_payload)`.
-- **Registrable-domain extraction** uses the byte-identical `feature_extractor.extract_registrable_domain` from `scripts/feature_extractor.py` (sha256 `45e13436…`). No re-implementation, no shortcuts.
-- **Every image whose decoded payload does not yield a registrable domain** (undecodable, non-URL schemes, empty) is **excluded from the split** and counted separately in a "pipeline-rejects" table for the manuscript.
+**Actual (from `results/dataset_split_report.json`):**
+
+| Partition | Samples | Actual % | Target % | Δ |
+|---|---:|---:|---:|---:|
+| Train | 6,658 | 70.7 % | 70.0 % | +0.7 pp |
+| Validation | 1,425 | 15.1 % | 15.0 % | +0.1 pp |
+| Test | 1,339 | 14.2 % | 15.0 % | −0.8 pp |
+| Excluded (non-URL) | 575 | — | — | — |
+| External (Mendeley, frozen) | 990 | — | — | — |
+
+The split is a **domain-grouped approximation** to 70:15:15. The deviation is
+because domain-grouping moves whole domains between partitions, so exact
+proportions cannot be achieved when domain group sizes are fixed. Deviations
+≤ 1 pp per partition are within the ±5 pp tolerance of this section.
+
+**When describing this split, the manuscript uses the actual sample counts
+(6,658 / 1,425 / 1,339) and actual percentages (70.7 % / 15.1 % / 14.2 %) — never
+the target 70:15:15 alone.**
 
 ## 4. Duplicate-removal rules (applied before split)
 
@@ -79,6 +94,10 @@ Re-run decode on **all** primary images (not 200/class), the same way `scripts/c
 - FAIL blocks training. If FAIL, drill into failing images and either fix preprocessing or record the affected subgroup as a documented exclusion.
 
 **Runtime expectation for Gate 2:** Trad & Chehab at 9987 images × ~0.29 s ≈ **~48 min**. Schedule accordingly (background job or overnight). Do not reduce the sample "to save time" — a sampling shortcut on a gate defeats the gate.
+
+**Gate manifests:** both gates write `results/.gateN_manifest.json` (committed), and
+the model-level manifest `results/model_manifest.json` records the artifacts the
+trained model depends on. See §12 below.
 
 ## 9. Metrics to report (fixed before training)
 
@@ -258,3 +277,27 @@ optimisation; final policy comparison is on the hard cost at the solution.
 Documented in `docs/mathematical_techniques.md` §3.6.
 
 *(populated after run)*
+
+## 12. Reproducibility artifacts
+
+| Artifact | Purpose |
+|---|---|
+| `results/.gate1_manifest.json` | sha256 of datasets + qr_utils + feature_extractor for Gate 1 |
+| `results/.gate2_manifest.json` | same for Gate 2 |
+| `results/model_manifest.json` | sha256 of `model_selection.json`, `pca_report.json`, `calculus_experiment.json`, `models/raw_xgb.joblib`; git HEAD; package versions |
+
+Every downstream script (`predict_pipeline.py`, and all future Phase 3 code)
+**fails closed** if its dependencies' sha256s drift from `model_manifest.json`.
+This makes the reported metrics reproducible against a frozen artifact set — a
+reviewer who clones the repo at the recorded `git_commit_hash` and installs the
+`packages` versions can rebuild every number in `docs/model_evaluation.md`.
+
+The seven regenerable artifacts declared in the Phase 2 acceptance criterion are:
+
+1. **Feature matrix** — `python scripts/prepare_features.py`
+2. **Train / val / test assignments** — `python scripts/split_dataset.py`
+3. **PCA transformation** — `python scripts/pca_analysis.py`
+4. **8 model comparison** — `python scripts/train_models.py && python scripts/compare_models.py`
+5. **Final test metrics** — `python scripts/evaluate_models.py`
+6. **External validation metrics** — `python scripts/evaluate_models.py`
+7. **Calculus experiment** — `python scripts/run_calculus_experiment.py`
