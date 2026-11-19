@@ -83,8 +83,24 @@ def _collect() -> dict:
         joblib_rel = sel["selected_model"]["joblib_path"]
         artifact_paths["model_joblib"] = PROJECT_ROOT / joblib_rel
 
+    # Production SOURCE files — must be present and byte-identical to what
+    # produced the recorded metrics. Missing or corrupted source invalidates
+    # the artifact hashes above even if the JSONs themselves are unchanged.
+    source_paths = {
+        "scripts__predict_pipeline": PROJECT_ROOT / "scripts" / "predict_pipeline.py",
+        "scripts__calculus_threshold": PROJECT_ROOT / "scripts" / "calculus_threshold.py",
+        "scripts__run_calculus_experiment": PROJECT_ROOT / "scripts" / "run_calculus_experiment.py",
+        "scripts__train_models": PROJECT_ROOT / "scripts" / "train_models.py",
+        "scripts__prepare_features": PROJECT_ROOT / "scripts" / "prepare_features.py",
+        "scripts__split_dataset": PROJECT_ROOT / "scripts" / "split_dataset.py",
+        "scripts__pca_analysis": PROJECT_ROOT / "scripts" / "pca_analysis.py",
+        "scripts__evaluate_models": PROJECT_ROOT / "scripts" / "evaluate_models.py",
+        "root__qr_utils": PROJECT_ROOT / "scripts" / "qr_utils.py",
+        "root__feature_extractor": PROJECT_ROOT / "scripts" / "feature_extractor.py",
+    }
+
     artifacts = {}
-    for name, path in artifact_paths.items():
+    for name, path in {**artifact_paths, **source_paths}.items():
         if not path.exists():
             artifacts[name] = {"path": str(path.relative_to(PROJECT_ROOT)),
                                "missing": True}
