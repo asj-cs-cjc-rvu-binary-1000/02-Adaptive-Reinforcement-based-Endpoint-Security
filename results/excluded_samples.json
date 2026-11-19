@@ -1,0 +1,3456 @@
+{
+  "primary": [
+    {
+      "sample_id": "trad_chehab:00010",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'update-informations025.creativeplaythings.com.au/?/cgi-\\%0D\\%5Cn\\%0D\\%5Cnbin/webscr?cmd=_login-\\%0D\\%5Cn\\%0D\\%5Cnsubmit"
+    },
+    {
+      "sample_id": "trad_chehab:00017",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:00044",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.gljsw.com.cn/images/login.htm?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Focorgruus.battle.net\\%2Fd3\\%2Fen\\%2Findex"
+    },
+    {
+      "sample_id": "trad_chehab:00076",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'2933517.com/js/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fjuievckus.battle.net\\%2Fd3\\%2Fen\\%2Findex&app=com-d3'"
+    },
+    {
+      "sample_id": "trad_chehab:00125",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:00143",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.cqpszx.com/images/?app=com-d3&amp;ref=http\\%3A\\%2F\\%2Fholghtbus.battle.net\\%2Fd3\\%2Fen\\%2Findex'"
+    },
+    {
+      "sample_id": "trad_chehab:00165",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cqf_I-G914nsBcrCdCCdEjjA"
+    },
+    {
+      "sample_id": "trad_chehab:00169",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:00173",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:00175",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:00183",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:00233",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:00234",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'login.live.com/login.srf?wa=wsignin1.0&rpsnv=11&ct=1349939301&rver=6.1.6206.0&wp=MBI&wreply=http:\\%2F\\%2Fmail.live.com\\"
+    },
+    {
+      "sample_id": "trad_chehab:00263",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:00286",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'bjcurio.com/js/index.htm?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fzednsifus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app="
+    },
+    {
+      "sample_id": "trad_chehab:00288",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'information-update018.expolatina.net/?/cgi-\\%0D\\%5Cn\\%0D\\%5Cnbin/webscr?cmd=_login-\\%0D\\%5Cn\\%0D\\%5Cnsubmit&dispatch=58"
+    },
+    {
+      "sample_id": "trad_chehab:00296",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:00308",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'csucdc.com/images/?amp;app=com-d3&amp;us.battle.net/login/en/ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex'"
+    },
+    {
+      "sample_id": "trad_chehab:00330",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:00337",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'ladygold.info/Remax/Secure Login.html'"
+    },
+    {
+      "sample_id": "trad_chehab:00379",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cpXWkMW5xvij0mB0UOOcDff-"
+    },
+    {
+      "sample_id": "trad_chehab:00396",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'dgnbzx.cn/images/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app=com-d3'"
+    },
+    {
+      "sample_id": "trad_chehab:00400",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:00406",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'www.freewebs.com/accountingforengineers/BP3093/Case\\%20Study-Manuel.doc'"
+    },
+    {
+      "sample_id": "trad_chehab:00418",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:00428",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7crZrrHcZk8WJgvPShEgJh0Fs"
+    },
+    {
+      "sample_id": "trad_chehab:00456",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cpK7yYl-4PGdP-_4MCFTgoRV"
+    },
+    {
+      "sample_id": "trad_chehab:00463",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:00476",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7crkiLyqFNiDiKjFCx-wZp9MN"
+    },
+    {
+      "sample_id": "trad_chehab:00481",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'lanzanow.com/redinkdigital2/libraries/joomla/client/eBayISAPI.php?dll\\%3FeBayISAPI.dll\\%3FSignIn'"
+    },
+    {
+      "sample_id": "trad_chehab:00583",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7crq-97WUzYDVrJbF2_Mz1gUY"
+    },
+    {
+      "sample_id": "trad_chehab:00593",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.midea-0512.com/js/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fvcacoqlus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;amp;ap"
+    },
+    {
+      "sample_id": "trad_chehab:00613",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cp3slKiGyIgH1YyGTbHYAetI"
+    },
+    {
+      "sample_id": "trad_chehab:00615",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cpWzJWohxhu7JEsBz2sgd2-0"
+    },
+    {
+      "sample_id": "trad_chehab:00635",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'1pcables-inox.com/ebay.com-cgi-bin-eBayIssapidll89634591&amp;X-EBAY-SGW-FAIL-REASON=PRESERVICE_RETURN_reqId=32524433558"
+    },
+    {
+      "sample_id": "trad_chehab:00649",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cqad-fujPlUYWN80GfrZwJei"
+    },
+    {
+      "sample_id": "trad_chehab:00667",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'appsyndicator.com/Your\\%20Virgin\\%20Money\\%C2\\%A9\\%20account\\%20details.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:00722",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'www-lih.univ-lehavre.fr/\\%7Ebertelle/epnacs2007.html'"
+    },
+    {
+      "sample_id": "trad_chehab:00735",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:00742",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:00751",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:00752",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:00767",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cosC203GBp1lHjTvBDiHJGSj"
+    },
+    {
+      "sample_id": "trad_chehab:00775",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:00779",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:00798",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'118bm.com/images/?ref=http\\%3A\\%2F\\%2Fbmtlzkhus.battle.net\\%2Fd3\\%2Fen\\%2Findex'"
+    },
+    {
+      "sample_id": "trad_chehab:00805",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:00826",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.gxyzx.com/js/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fdtiwlueus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app=com-d3'"
+    },
+    {
+      "sample_id": "trad_chehab:00843",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'genomeskittle.org/\\%20\\%20\\%20/online/user/agv/'"
+    },
+    {
+      "sample_id": "trad_chehab:00864",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:00874",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.ccswy.com/css/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app=com-d3'"
+    },
+    {
+      "sample_id": "trad_chehab:00875",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'disenof.com/templates/system/Nets/Sikker\\%20nettbetaling.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:00876",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.tsemtulku.com/v8/wp-content/upgrade/ssl/open24/encrypted-session/session=\\%7bKR3SI5953036pbc-TLSv1SSLv3-6FKI06485\\%"
+    },
+    {
+      "sample_id": "trad_chehab:00896",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:00925",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.hnqsfz.com/images/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;amp;app=com-d"
+    },
+    {
+      "sample_id": "trad_chehab:00932",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:00954",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "bin/webscr?cmd=_login-"
+    },
+    {
+      "sample_id": "trad_chehab:00973",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:00975",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'www.cs.duke.edu/courses/cps140/spring03/lects/sectRecEnumH.pdf#search=&quot;recursively enumerable languages&quot;'"
+    },
+    {
+      "sample_id": "trad_chehab:00976",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7crIFU6EJu4PNil6BTX_yswd2"
+    },
+    {
+      "sample_id": "trad_chehab:00986",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:00990",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cpdJdnAA1BtE0clvcincHUu0"
+    },
+    {
+      "sample_id": "trad_chehab:01010",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:01036",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:01040",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cpO0L5s2OxmvnAxuiawDSdEO"
+    },
+    {
+      "sample_id": "trad_chehab:01072",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:01111",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'www.techiwarehouse.com/cms/engine.php?page_id=99ba92a7#What to Expect at the Testing Center'"
+    },
+    {
+      "sample_id": "trad_chehab:01162",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:01171",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cpwbBYB84dcHmkB9mNC-Fd_3"
+    },
+    {
+      "sample_id": "trad_chehab:01193",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.ghpm.net.cn/image/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;amp;app=com-d"
+    },
+    {
+      "sample_id": "trad_chehab:01209",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:01232",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:01351",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:01368",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'angkanas.com/AOL/Aol/Update-Billing/update_form/bill_form.html?sitedomain=sns.webmail.aol.com&amp;amp;lang=en&amp;amp;l"
+    },
+    {
+      "sample_id": "trad_chehab:01381",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.177899.com/images/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex'"
+    },
+    {
+      "sample_id": "trad_chehab:01409",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:01451",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'marteinformatica.com/themes/prestashop/css/modules/blockadvertising/Remax- Secure Login.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:01452",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:01464",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'connex.lip6.fr/\\%7Ebinsztok/hhld.html'"
+    },
+    {
+      "sample_id": "trad_chehab:01472",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'service.runescape.com.forumlogin.ws/m=forum/forums.ws\\%3f124=147&amp;126=8712452534/'"
+    },
+    {
+      "sample_id": "trad_chehab:01474",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'taisen.ru/templates/atomic/CieloBankSpace/Banco\\%20do\\%20Brasil/'"
+    },
+    {
+      "sample_id": "trad_chehab:01477",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'us.battle.net-wow-net.d3-account.net/battle_net_account.php?amp;app=bam&amp;ref=https\\%3A\\%2F\\%2Fus.battle.net\\%2Faccou"
+    },
+    {
+      "sample_id": "trad_chehab:01483",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cqBZTnm7wKoUUsiF4VDFuc53"
+    },
+    {
+      "sample_id": "trad_chehab:01486",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=0&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:01492",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:01527",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'secure-runecsape.com/forums.ws15,16,650,91478196/'"
+    },
+    {
+      "sample_id": "trad_chehab:01552",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'home.comcast.net/~dajord/encrypt5885d80a13c0db1f8e263663d3fa.html?vid=Z2xJIscpuj\\%\\%202Bo=&action=validate23442'"
+    },
+    {
+      "sample_id": "trad_chehab:01563",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:01564",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.tuhu.cc/js/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex'"
+    },
+    {
+      "sample_id": "trad_chehab:01567",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:01570",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.google.fr/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=2&amp;cad=rja&amp;ved=0CDMQFjAB&amp;url=coliby"
+    },
+    {
+      "sample_id": "trad_chehab:01577",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:01592",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:01599",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'www.tno.it/tecno_it/fashion4_2_05/documenti/WTO\\%20Discussion\\%20Paper\\%20TExtile\\%20and\\%20Clothing\\%20after\\%202005.p"
+    },
+    {
+      "sample_id": "trad_chehab:01604",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:01622",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:01670",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.czmdzx.cn/Img/index.htm?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;amp;app="
+    },
+    {
+      "sample_id": "trad_chehab:01702",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.jcsykes.co.uk/images/PHP/index.php?action=add&amp;username=John\\%20Doe&amp;password=VFMPP-Q9XKX-96XF6-XR49R-YVYWD&a"
+    },
+    {
+      "sample_id": "trad_chehab:01704",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=0&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:01714",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'upload.hnteacher.net/tools/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fbfdfuhaus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;a"
+    },
+    {
+      "sample_id": "trad_chehab:01717",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'searchsap.techtarget.com/originalContent/0,289142,sid21_gci1171350,00.html'"
+    },
+    {
+      "sample_id": "trad_chehab:01742",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7coto1XZIn-eGRjjVjK4bvl0x"
+    },
+    {
+      "sample_id": "trad_chehab:01743",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=0&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:01749",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:01751",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cq5h6n5j7y-xmx5mVJ0xbchE"
+    },
+    {
+      "sample_id": "trad_chehab:01760",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:01784",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'alphadecor.com.br/modules/cid/inform/login\\%20to\\%20your\\%20account/'"
+    },
+    {
+      "sample_id": "trad_chehab:01815",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'psylux.psych.tu-dresden.de/i1/kaw/diverses\\%20Material/www.illusionworks.com/'"
+    },
+    {
+      "sample_id": "trad_chehab:01816",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:01839",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'esxcc.com/js/index.htm?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Falbeykjus.battle.net\\%2Fd3\\%2Fen\\%2Findex'"
+    },
+    {
+      "sample_id": "trad_chehab:01842",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:01900",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:01918",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'home.comcast.net/~a30t29r6/encrypt5885d80a13c0db1f8e263663d3fa.html?vid=Z2xJIscpuj\\%\\%202Bo=&action=validate23442'"
+    },
+    {
+      "sample_id": "trad_chehab:01925",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'sevkon.net/js/?us.battle.net/login/en/?ref=3Dhttp\\%3A\\%='"
+    },
+    {
+      "sample_id": "trad_chehab:01927",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:01941",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:01943",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:01973",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cqkT9KOtHwIROMOCEqF4UT9d"
+    },
+    {
+      "sample_id": "trad_chehab:01997",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'970010.ru/aol/login.php?sitedomain=startpage.aol.com&amp;siteState=OrigUrl=http\\%3A\\%2F\\%2Fwww.aol.com\\%2F&amp;authLev="
+    },
+    {
+      "sample_id": "trad_chehab:02001",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.blizzard56.tk/login.asp?ref=https\\%3A\\%2F\\%2Feu.battle.net\\%2Faccount\\%2Fmanagement\\%2Findex.xml&amp;amp;app=bam'"
+    },
+    {
+      "sample_id": "trad_chehab:02012",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:02014",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'runescapo.com/m=forum/forums.ws15,16,650,91478999/login.html'"
+    },
+    {
+      "sample_id": "trad_chehab:02036",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.jlcyedu.com.cn/news/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fxwzqzbwus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app="
+    },
+    {
+      "sample_id": "trad_chehab:02039",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'jjlzfd.com/Images/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fsvfthlwus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app=com-d3"
+    },
+    {
+      "sample_id": "trad_chehab:02053",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'information-update009.expolatina.net/?/cgi-\\%0D\\%5Cn\\%0D\\%5Cnbin/webscr?cmd=_login-\\%0D\\%5Cn\\%0D\\%5Cnsubmit&dispatch=58"
+    },
+    {
+      "sample_id": "trad_chehab:02092",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'en.wikipedia.org/wiki/Warhammer_40,000'"
+    },
+    {
+      "sample_id": "trad_chehab:02097",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:02112",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:02123",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:02128",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.casadavovo.com/flash/img/flash/bkp/temp/?app=store,4555uyr75,685,m,68,8,5686,8679545ytret'"
+    },
+    {
+      "sample_id": "trad_chehab:02155",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'services.runescape.co.cm/m=forums/forums.vs?1549,94,544,63330546,94,544,63330546'"
+    },
+    {
+      "sample_id": "trad_chehab:02165",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'staticgl.com/Remax/Secure Login.html'"
+    },
+    {
+      "sample_id": "trad_chehab:02167",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.xn--caabrava-e3a.com.pe/-/\\%20http:/acesso/cielo/'"
+    },
+    {
+      "sample_id": "trad_chehab:02172",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:02184",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&attachauth=ANoY7cr"
+    },
+    {
+      "sample_id": "trad_chehab:02204",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'us.battle.net.ddeu.asia/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;amp;app=com-d3'"
+    },
+    {
+      "sample_id": "trad_chehab:02218",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:02292",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'en.wikipedia.org/wiki/Marc_Ecko\\'s_Getting_Up:_Contents_Under_Pressure'"
+    },
+    {
+      "sample_id": "trad_chehab:02336",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'seucadastroagora.com.br/?\\%EE\\%83\\%87\\%EF\\%BC\\%82#sa\\%20premios\\%20santander&amp;pbx=1&amp;oq=&amp;aq=&amp;aqi=&amp;aql"
+    },
+    {
+      "sample_id": "trad_chehab:02339",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:02349",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:02354",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'www.time.com/time/magazine/article/0,9171,1001600,00.html'"
+    },
+    {
+      "sample_id": "trad_chehab:02364",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7coLLElp_lIhBUwysw1ahOf5n"
+    },
+    {
+      "sample_id": "trad_chehab:02369",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "darklight__1.tripod.com/assassinsinfraserburgh/"
+    },
+    {
+      "sample_id": "trad_chehab:02389",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www2.entionline.eu/online/www.lloydstsb.co.uk/online.lloydstsb.co.uk/LloydsTSB\\%20Customer.html'"
+    },
+    {
+      "sample_id": "trad_chehab:02408",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:02415",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:02424",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.ccswy.com/css/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex'"
+    },
+    {
+      "sample_id": "trad_chehab:02428",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cqT7BYEjFNpXVe87ivH-Izie"
+    },
+    {
+      "sample_id": "trad_chehab:02437",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "honera_guild.w.interia.pl/"
+    },
+    {
+      "sample_id": "trad_chehab:02460",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'sevkon.net/js/?ref=3D3D3D3Dhttp\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2='"
+    },
+    {
+      "sample_id": "trad_chehab:02470",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'us.battle.net-d3-net.d3-wow-account.net/battle_net_account.php?ref=https\\%3A\\%2F\\%2Fus.battle.net\\%2Faccount\\%2Fmanagem"
+    },
+    {
+      "sample_id": "trad_chehab:02486",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:02490",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "www.paypal.com.de-cgi-bin-webscrcmd_login-run-dispatch4578u45g66d8de5q9e33364.finphotography.com.au/"
+    },
+    {
+      "sample_id": "trad_chehab:02501",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7coVqINeNAbGyH4egbp0EHbo6"
+    },
+    {
+      "sample_id": "trad_chehab:02508",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:02513",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.olka.info/Nets/Sikker\\%20nettbetaling.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:02516",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.battleaa.tk/cert/login.asp?ref=https\\%3A\\%2F\\%2Fus.battle.net\\%2Faccount\\%2Fmanagement\\%2Findex.xml&amp;app=bam'"
+    },
+    {
+      "sample_id": "trad_chehab:02518",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'jcnnhs.com/js/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex'"
+    },
+    {
+      "sample_id": "trad_chehab:02521",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'etudieraucanada.fr/paypal\\%20fr/Fr/Info.Aspx/'"
+    },
+    {
+      "sample_id": "trad_chehab:02524",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.bio-energy.com.kz/nets\\%20BANK\\%202013/Sikker\\%20nettbetaling.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:02529",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:02533",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:02543",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:02570",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cp4-KFEPPf5KHwHtgV0_SLmd"
+    },
+    {
+      "sample_id": "trad_chehab:02594",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.gxyzx.com/js/?ref=http\\%3A\\%2F\\%2Fgyjvsbrus.battle.net\\%2Fd3\\%2Fen\\%2Findex'"
+    },
+    {
+      "sample_id": "trad_chehab:02626",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'services-runescape-com-ssl-forums.totalh.net/sl=0-forums.ws.14,15,437,63859515.html'"
+    },
+    {
+      "sample_id": "trad_chehab:02674",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'check.priwil.com/check\\%20your\\%20paypal/12cf734a6ac8899598b7a93844fcdf10/'"
+    },
+    {
+      "sample_id": "trad_chehab:02686",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.envioneer.com/board/verif/Error\\%20-\\%20Login\\%20-\\%20PayPal.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:02717",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.ccswy.com/css/?amp;amp;amp;us.battle.net\\%2Flogin\\%2Fen\\%2F\\%3Fref=http:\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&"
+    },
+    {
+      "sample_id": "trad_chehab:02718",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'searchsoa.techtarget.com/news/interview/0,289202,sid26_gci962762,00.html'"
+    },
+    {
+      "sample_id": "trad_chehab:02774",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&attachauth=ANoY7co"
+    },
+    {
+      "sample_id": "trad_chehab:02784",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'srovieces-rumescape.hostizzo.com/forums.ws15,16,650,91478696/login.html'"
+    },
+    {
+      "sample_id": "trad_chehab:02795",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:02808",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:02815",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'taesx.com/img/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;amp;amp;amp;app=com-d"
+    },
+    {
+      "sample_id": "trad_chehab:02818",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:02836",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.nbyixing.com/pro/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;amp;amp;amp;am"
+    },
+    {
+      "sample_id": "trad_chehab:02841",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.growthconsulting.org/Reed/hotmail\\%20\\%281\\%29/hotmail/hotmail.html'"
+    },
+    {
+      "sample_id": "trad_chehab:02846",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7coc-iFy1Spjdl7uTiqWz53WJ"
+    },
+    {
+      "sample_id": "trad_chehab:02850",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'makemoneyoveranet.com/internet\\%20banking/halifax.co.uk/login.php'"
+    },
+    {
+      "sample_id": "trad_chehab:02877",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:02955",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.sevkon.net/js/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;amp;app=com-d3'"
+    },
+    {
+      "sample_id": "trad_chehab:02960",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'esxcc.com/js/index.htm?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fxftsknwus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app=co"
+    },
+    {
+      "sample_id": "trad_chehab:02990",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:03029",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'tibla.com.eu.interia.pl/community\\%20guilds&amp;pageGuildName=Metal+Heroes+of+Nrana.html'"
+    },
+    {
+      "sample_id": "trad_chehab:03047",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'home.comcast.net/~dmcfadyen/confirm\\%20identity2.html'"
+    },
+    {
+      "sample_id": "trad_chehab:03055",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.hxhxlasm.com/Images/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fvssxduaus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app="
+    },
+    {
+      "sample_id": "trad_chehab:03056",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'us.battle.net.ttwow.asia/login/en/?app=com-d3&amp;ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex'"
+    },
+    {
+      "sample_id": "trad_chehab:03083",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "www.paypal.com.de-cgi-bin-webscrcmd_login-run-dispatch0334g90u55d0vb1f8e10014.finphotography.com.au/?cmd=_login-run&disp"
+    },
+    {
+      "sample_id": "trad_chehab:03114",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:03184",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'otomatic-security.com/facebook/suspend\\%20information\\%20account.php'"
+    },
+    {
+      "sample_id": "trad_chehab:03185",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:03202",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "www.paypal.com.de-cgi-bin-webscrcmd_login-run-dispatch6301p50a04d8bx5q8e10224.finphotography.com.au/?cmd=_login-run&disp"
+    },
+    {
+      "sample_id": "trad_chehab:03214",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:03240",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'bcdes.free.fr/PrivatDaglig+\\%C3\\%B8konomiInternet+og+telefonNetbank21891.html/Nordea/Sikker\\%20nettbetaling.htm?idE1512"
+    },
+    {
+      "sample_id": "trad_chehab:03276",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:03282",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'eu.batle.ner.woribofwaroraft.com/login/en/index.asp?app=wam&amp;amp;amp;amp\\%3bref=worldofwarcraft.com/account/&amp;amp"
+    },
+    {
+      "sample_id": "trad_chehab:03290",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:03306",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.ywfy.cn/js/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fczfebmpus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app=com-d3'"
+    },
+    {
+      "sample_id": "trad_chehab:03317",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'update-informations016.creativeplaythings.com.au/?/cgi-\\%20bin/webscr?cmd=_login-\\%20submit&amp;dispatch=5885d80ds0db1f"
+    },
+    {
+      "sample_id": "trad_chehab:03348",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cryo2onepraXN7oUQ-Lx3VO7"
+    },
+    {
+      "sample_id": "trad_chehab:03359",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'ssl.allegro.pl.jumptheq.net.au/?/enter_login.php?session=ZDVmMVYFVFQAUAUIVgVSA1VUVldXAFUDB1cAUFAMAlUGDVZSBgVQVQYNVgVSVw"
+    },
+    {
+      "sample_id": "trad_chehab:03377",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.gkjx168.com/images/?ref=http\\%3A\\%2F\\%2Fuqpzemuus.battle.net\\%2Fd3\\%2Fen\\%2Findex'"
+    },
+    {
+      "sample_id": "trad_chehab:03380",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'www.btrc.net/html/catalog/catmain.html#Macho Women with Guns'"
+    },
+    {
+      "sample_id": "trad_chehab:03390",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.wzae.com.cn/js/?https:\\%2F\\%2Fus.battle.net\\%2Flogin\\%2Fen\\%2Fref=http:\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex'"
+    },
+    {
+      "sample_id": "trad_chehab:03451",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cqLm_-insVCwr1HdCqzglVcU"
+    },
+    {
+      "sample_id": "trad_chehab:03460",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.internetwilli.de/login.yahoo.com.php?utvk\\%5o\\%82\\%9g\\%17vvstgr\\%3g=506'"
+    },
+    {
+      "sample_id": "trad_chehab:03466",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'jundajx.com/Images/?amp;app=com-d3&amp;us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex'"
+    },
+    {
+      "sample_id": "trad_chehab:03473",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'rclusez.org/information/&amp;direct\\%5E_ibank=&amp;revers09.98/09.45secure\\%5E_.secure=\\%5E7data&amp;/'"
+    },
+    {
+      "sample_id": "trad_chehab:03511",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'milah.org/wp-admin/includes/NewB2B/NewB2B/NewB2B/NewB2B/NewB2B/New B2B/New B2B/index.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:03540",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:03541",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'paypal.com.us.login-account.php.bin-cgi.webscr.member.confrime29402l5a4ca0176fcea75d8df98dc17f0d25aca0176fcea7.webskain"
+    },
+    {
+      "sample_id": "trad_chehab:03543",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.longshu.com/images/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Ftolzwftus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app=c"
+    },
+    {
+      "sample_id": "trad_chehab:03551",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'sayabak.com/js/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fbirikkfus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app=com-d3'"
+    },
+    {
+      "sample_id": "trad_chehab:03561",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:03573",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:03589",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:03608",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:03631",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.verifierby.eb2a.com/cgi-bin/verifiid by visa-us/verified by visa/us-us/security/vbv-by-visa/onlineshop/visa/US/info"
+    },
+    {
+      "sample_id": "trad_chehab:03633",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:03640",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7co-mjiU-orlWam15AlBCpG4K"
+    },
+    {
+      "sample_id": "trad_chehab:03652",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:03675",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'paypal.com.us.cgi-bin.webscr-cmd.login-run.dispatch.cpnfirmed5885d80a13c0db1f8e263663d3faee8d43b1bb6ca6ed6aee8d.confirm"
+    },
+    {
+      "sample_id": "trad_chehab:03686",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:03687",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:03712",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:03786",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'genomeskittle.org/\\%20\\%20/online/verify/ssz/'"
+    },
+    {
+      "sample_id": "trad_chehab:03790",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'manppul.com/bbshop/img/Nets-danemark/Sikker\\%20nettbetaling.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:03809",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:03826",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:03830",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'import7.com.br/paypal\\%20us/webscr.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:03832",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.digitizingemporium.com/~hailagra/signin/enter_login.php\\%3Fsession=NWFlNgcGAAYEVgEEB10OBFdWU1dXVgdVVFJRAwMGVlIHAABS"
+    },
+    {
+      "sample_id": "trad_chehab:03837",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:03839",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.dyj999.com/images/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fizqzmfjus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app=co"
+    },
+    {
+      "sample_id": "trad_chehab:03861",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7crzj6JnStHzoqmXQ48gdZTEr"
+    },
+    {
+      "sample_id": "trad_chehab:03891",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.battlezi.tk/cert/login.asp?ref=https\\%3A\\%2F\\%2Fus.battle.net\\%2Faccount\\%2Fmanagement\\%2Findex.xml&amp;app=bam'"
+    },
+    {
+      "sample_id": "trad_chehab:03937",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'update-informations.creativeplaythings.com.au/?/cgi-\\%0D\\%5Cn\\%0D\\%5Cnbin/webscr?cmd=_login-\\%0D\\%5Cn\\%0D\\%5Cnsubmit&di"
+    },
+    {
+      "sample_id": "trad_chehab:03941",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'paypal.com.ma.cgi.in.webscr.cmd.login-submit.dispatch5885d80a3c0d.5885d80a13c0d.klosterfelt.dk/Home/Usa/Home\\%20Paypal/"
+    },
+    {
+      "sample_id": "trad_chehab:04004",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:04024",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:04030",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.dongyuwl.com/images/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fqpbxecjus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;amp;"
+    },
+    {
+      "sample_id": "trad_chehab:04063",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:04078",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'search.ohiolink.edu/etd/send-pdf.cgi/Semones\\%20Marianne\\%20Rutledge.pdf?acc_num=ohiou1126294341'"
+    },
+    {
+      "sample_id": "trad_chehab:04092",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:04108",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.bfcst.org.uk/wp-content/uploads/.,/eb.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:04120",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'www.linuxsecurity.com/component/option,com_weblinks/catid,117/Itemid,134/'"
+    },
+    {
+      "sample_id": "trad_chehab:04132",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'ouroarte.com.br/securednet/IRS\\%20Updates/irs.html'"
+    },
+    {
+      "sample_id": "trad_chehab:04138",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'jvarosnebi.ge/wp-content/themes/sportpress/scripts/cache/northern\\%20rork.html'"
+    },
+    {
+      "sample_id": "trad_chehab:04148",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.zjxedu.com/Images/index.htm?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;amp;"
+    },
+    {
+      "sample_id": "trad_chehab:04167",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:04187",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7crKTLEQiSSLq1K2oqQqXs3__"
+    },
+    {
+      "sample_id": "trad_chehab:04223",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.hsqxx.com/js/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;amp;amp;amp;amp;am"
+    },
+    {
+      "sample_id": "trad_chehab:04229",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:04236",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:04240",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'payipal.co/paypal/paypal/secure/web-service/security\\%20ssh/confirmation\\%20by\\%20ssl\\%20security/system/security/paypa"
+    },
+    {
+      "sample_id": "trad_chehab:04242",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.cniplaw.net/Js/index.htm?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app=com"
+    },
+    {
+      "sample_id": "trad_chehab:04271",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:04314",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'andrewsupplies.com/templates/inks3/images/buttons/product/\\%7Erm/'"
+    },
+    {
+      "sample_id": "trad_chehab:04334",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'update-information010.bjit.com.au/?/cgi-\\%0D\\%5Cn\\%0D\\%5Cnbin/webscr?cmd=_login-\\%\\%5Cn\\%5Cn0d\\%5Cn\\%0D\\%\\%5Cn\\%5Cn0asu"
+    },
+    {
+      "sample_id": "trad_chehab:04368",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7coC52xzLxRdqTLn4xAOs6oT5"
+    },
+    {
+      "sample_id": "trad_chehab:04423",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:04428",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'onin.com/fp/afis/afis.html#Miscellaneous Sites'"
+    },
+    {
+      "sample_id": "trad_chehab:04490",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.duckhai.com.vn/upload/images/khonggianxinh/IFBank/IF/Intelligent\\%20Finance\\%20-\\%20Registration.html'"
+    },
+    {
+      "sample_id": "trad_chehab:04492",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:04500",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:04516",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:04518",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'battle.net.wowowen.com/login/en/?3fref=eu.battle.net/\\%20account/management/wow/dashboard.html?region=us&amp;'"
+    },
+    {
+      "sample_id": "trad_chehab:04521",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.fishtrip.net/auto/includes/pdfs/file/property/properties/investment/remax/loopnet/New B2B/New B2B/index.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:04562",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:04584",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:04594",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cr-IxjMaGZ7OFZ86NCMOSnWS"
+    },
+    {
+      "sample_id": "trad_chehab:04608",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:04622",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:04624",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:04643",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "www.paypal.com.de-cgi-bin-webscrcmd_login-run-dispatch0094h80u22c0db1f8e152552.finphotography.com.au/?cmd=_login-run&dis"
+    },
+    {
+      "sample_id": "trad_chehab:04649",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cpsjLVBuunUXM5tjw-ediaSy"
+    },
+    {
+      "sample_id": "trad_chehab:04693",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7coF1IZfCRoRlrJ59_IcQ_lpe"
+    },
+    {
+      "sample_id": "trad_chehab:04713",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7copSFYcwwKb0UTejALtrlnZy"
+    },
+    {
+      "sample_id": "trad_chehab:04746",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.1-luv-decorating-designs-1.com/Verficationbank/Paypalusa/Bankpplus/BankPaypalus/Paypalusa/Service-Paypal/banque/PPl"
+    },
+    {
+      "sample_id": "trad_chehab:04771",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'www.pearsonhighered.com/educator/academic/product/0,,0131429388,00\\%2Ben-USS_01DBC.html'"
+    },
+    {
+      "sample_id": "trad_chehab:04776",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:04787",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cpVlJj9xYQCStDvljLkshA8I"
+    },
+    {
+      "sample_id": "trad_chehab:04792",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'kandeepan.com/photogallery/Formulair\\%20de\\%20verification.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:04795",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:04824",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cp_KVAUjalOxky-v2gVLSQvn"
+    },
+    {
+      "sample_id": "trad_chehab:04839",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:04849",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cqFDB0Xphap8ifxXPmkRGcb0"
+    },
+    {
+      "sample_id": "trad_chehab:04878",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:04921",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.zhongdaxin.com/images/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fjhemrzwus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;ap"
+    },
+    {
+      "sample_id": "trad_chehab:04923",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'fgghjhhjj5.4ove.com/yahoo\\%20Index.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:04942",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:04949",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:04954",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'sbnews.ulmb.com/internet-banking/secured/private/login.php?accesscheck=\\%2Finternet-banking\\%2Fsecured\\%2Fprivate\\%2Fmy"
+    },
+    {
+      "sample_id": "trad_chehab:04973",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:04974",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.duckhai.com.vn/js/zoom/stgeorgemodified/stgeorge\\%20modified/stgeorge\\%20modified/stgeorge.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:04993",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:05025",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cpQS1mzHM0NtDLO1dGKPzi5N"
+    },
+    {
+      "sample_id": "trad_chehab:05026",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:05034",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "chris_bashaw.tripod.com/empowerment/"
+    },
+    {
+      "sample_id": "trad_chehab:05048",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'scapadecaldura.com/cruz/banuti.php?bidderblocklogin&hc=1&hm=uk\\%601d72f+j2b2vi\\%3C265bidderblocklogin&hc=1&hm=uk\\%601d7"
+    },
+    {
+      "sample_id": "trad_chehab:05065",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'www.tomshardware.com/charts/processors,6.html'"
+    },
+    {
+      "sample_id": "trad_chehab:05070",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'huaphone.net/js/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app=com-d3'"
+    },
+    {
+      "sample_id": "trad_chehab:05095",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:05112",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'news.zdnet.co.uk/software/0,1000000121,2070548,00.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:05150",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.forums-managementz.tk/login.asp?ref=https\\%3A\\%2F\\%2Fus.battle.net\\%2Faccount\\%2Fmanagement\\%2Findex.xml&amp;app=ba"
+    },
+    {
+      "sample_id": "trad_chehab:05159",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.dgsryh.com/js/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;amp;amp;app=com-d"
+    },
+    {
+      "sample_id": "trad_chehab:05186",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.esgojato.com/a/templates/rhuk_milkyway/Remax/Secure Login.html'"
+    },
+    {
+      "sample_id": "trad_chehab:05191",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'oyayildiz.com/en/form/file/property/properties/investment/remax/loopnet/New B2B/New B2B/index.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:05196",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&attachauth=ANoY7cq"
+    },
+    {
+      "sample_id": "trad_chehab:05208",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:05223",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7crbvGZUWVsl7DWfidDXV2CT3"
+    },
+    {
+      "sample_id": "trad_chehab:05227",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.sunxiancheng.com/images/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fqosidfdus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;"
+    },
+    {
+      "sample_id": "trad_chehab:05230",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'secure-runescape-services-forums-loginwebserver-jagex.tk/m=forum/forums.ws17,18,810,63120405'"
+    },
+    {
+      "sample_id": "trad_chehab:05240",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'venhaparticiperpraganhadores.tk/?super-premios.com.br?HitID=1346565548623&amp;StID=204607&amp;SID=1&amp;NID=1179300&amp"
+    },
+    {
+      "sample_id": "trad_chehab:05241",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'information-update011.expolatina.net/?/cgi-\\%0D\\%5Cn\\%0D\\%5Cnbin/webscr?cmd=_login-\\%0D\\%5Cn\\%0D\\%5Cnsubmit&dispatch=58"
+    },
+    {
+      "sample_id": "trad_chehab:05257",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'runeskeipaso-rusne.hostizzo.com/forums.ws15,16,650,91478696/login.html'"
+    },
+    {
+      "sample_id": "trad_chehab:05293",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=0&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:05296",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'institutocgr.com/web/tmp/dk-/Sikker nettbetaling.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:05316",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'beforenanny911.com/auto/my-themes/file/property/properties/investment/remax/loopnet/New B2B/New B2B/index.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:05319",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&attachauth=ANoY7cq"
+    },
+    {
+      "sample_id": "trad_chehab:05326",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:05343",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:05373",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7colhcaiDGI6ncWu8l98B6bdU"
+    },
+    {
+      "sample_id": "trad_chehab:05412",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:05416",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'www.dbms2.com/2007/12/03/data-warehouse-appliances-\\%E2\\%80\\%93-fact-and-fiction/'"
+    },
+    {
+      "sample_id": "trad_chehab:05423",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'nicolecustodio.com.br/paypal\\%20us/webscr.htm?cmd=_login-run&amp;dispatch=5885d80a13c0db1f998ca054efbdf2c29878a435fe324"
+    },
+    {
+      "sample_id": "trad_chehab:05489",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7co9B1d8lAkRKRVxU7mN56MCl"
+    },
+    {
+      "sample_id": "trad_chehab:05522",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.google.ch/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;ved=0CDEQFjAA&amp;url=www.lobbyaudit.ge/"
+    },
+    {
+      "sample_id": "trad_chehab:05523",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.allegro.xaa.pl/enter_login.html?session=OGY1YgQGXQALBwcxzvcxNYWgFVVgMPBgANAAcEAwMHDg1cUlEBAFNbDABQAwEHUlvcbcvxcgbcA"
+    },
+    {
+      "sample_id": "trad_chehab:05542",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'update-information009.bjit.com.au/?/cgi-\\%20bin/webscr?cmd=_login-\\%20submit&amp;dispatch=5885d80ds0db1f8e263663d3faee8"
+    },
+    {
+      "sample_id": "trad_chehab:05560",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:05575",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'www.acm.org/crossroads/doc/indices/features.html#Artificial Intelligence'"
+    },
+    {
+      "sample_id": "trad_chehab:05585",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.hsqxx.com/js/?http:\\%2F\\%2Fus.battle.net\\%2Flogin\\%2Fen\\%2F\\%3Fref=http:\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex'"
+    },
+    {
+      "sample_id": "trad_chehab:05614",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:05666",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:05669",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7coYRv8Olsp4kBPNDwH-OLzd3"
+    },
+    {
+      "sample_id": "trad_chehab:05688",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cpFV-h7sxDoKWB4Qa1fFM3eA"
+    },
+    {
+      "sample_id": "trad_chehab:05715",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7crCv2crO9sNYRrTQA1AVHaKF"
+    },
+    {
+      "sample_id": "trad_chehab:05725",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:05737",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'svk116.org.ua/en-us/37252-111/Verify.A0lAccou11update742260486042Verify.A0lAccou014844250120531012405228361841744314837"
+    },
+    {
+      "sample_id": "trad_chehab:05738",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'www.adityabirlanuvo.com/jayashreetextiles/profile.aspx?id=\\%2BXTJ2tXAgdE\\%3D'"
+    },
+    {
+      "sample_id": "trad_chehab:05747",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:05749",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'service.confirm.paypal.cmd.cgi-bin.2466sd4f3e654sqd4e6d23sd8ed52s3d24e8d4sd8e74ds4d3d.dsqd56d5e8d25s.fdsf456e6d5sde8d56"
+    },
+    {
+      "sample_id": "trad_chehab:05769",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'lanraid.com/secure/Alibaba\\%20Productlist/'"
+    },
+    {
+      "sample_id": "trad_chehab:05778",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'runesmipes.zxq.net/forums.ws15,16,650,91478123/login.html'"
+    },
+    {
+      "sample_id": "trad_chehab:05805",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'rumascape-servyces.zymichost.com/forums.ws15,16,650,91478123/login.html'"
+    },
+    {
+      "sample_id": "trad_chehab:05828",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cqwVgYBlR-WUUgnvV4mHomFQ"
+    },
+    {
+      "sample_id": "trad_chehab:05844",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'paypal-hilfeservice.com/de/news/dp/B0028YZ758/ref=sr_2_home\\%26locale/sicherheit/umstellung_auf_neue_sicherheitsstandar"
+    },
+    {
+      "sample_id": "trad_chehab:05853",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.ahtjgroup.com/images/index.htm?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;a"
+    },
+    {
+      "sample_id": "trad_chehab:05868",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'www.aeco.ttu.edu/Publications/1998\\%20Beltwide/CER-98-31.pdf'"
+    },
+    {
+      "sample_id": "trad_chehab:05912",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'1pcables-inox.com/index.php?amp;e=ian+at+vansales.com&amp;f=contact.ebay.com.ws.eBayISAPI.dll\\%3FMfcISAPICommand\\%3DUse"
+    },
+    {
+      "sample_id": "trad_chehab:05945",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cpb96T36X7aqcZH2TvV3Idc6"
+    },
+    {
+      "sample_id": "trad_chehab:05946",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cocIRWDmdYHtWqKcLVXQc0KK"
+    },
+    {
+      "sample_id": "trad_chehab:05959",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'taijishentie.com/js/index.htm?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fxwnrssfus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp"
+    },
+    {
+      "sample_id": "trad_chehab:06001",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'billsbootcamps.com/guage/Account update Form.html'"
+    },
+    {
+      "sample_id": "trad_chehab:06016",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'us.battlle.net.htm.fzpc.info/battle_net_account.html?ref=https\\%3A\\%2F\\%2Fus.battle.net\\%2Faccount\\%2Fmanagement\\%2Find"
+    },
+    {
+      "sample_id": "trad_chehab:06023",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7crb45FVFLE8-CjrE83Kmp-VH"
+    },
+    {
+      "sample_id": "trad_chehab:06031",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cr7wKrbJY6S5J4vtoV6k5Ssj"
+    },
+    {
+      "sample_id": "trad_chehab:06058",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:06063",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:06064",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.ghpm.net.cn/image/?http:\\%2F\\%2Fus.battle.net\\%2Flogin\\%2Fen\\%2F\\%3Fref=http:\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Fi"
+    },
+    {
+      "sample_id": "trad_chehab:06068",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'tibla.com.eu.interia.pl/community\\%20guilds&amp;pageGuildName=Metal+Heroes+of+Nrana.html?a=2'"
+    },
+    {
+      "sample_id": "trad_chehab:06128",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.donanimuzmani.net/forum/templates/beez/Sniper/my\\%20scama/'"
+    },
+    {
+      "sample_id": "trad_chehab:06134",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'home.comcast.net/~kandjlynch/sdfgfhsdzfshdgjrsewrwytu5rtngfbd/xcfcgvhbjjmhngfbsvdzfxdngcfhm\\%20nc/sdfngfmdbsvdafdgnmhgd"
+    },
+    {
+      "sample_id": "trad_chehab:06172",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:06183",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'update-information010.bjit.com.au/?/cgi- bin/webscr?cmd=_login-\\% 0d \\% 0asubmit&amp;dispatch=5885d80ds0db1f8e263663d3f"
+    },
+    {
+      "sample_id": "trad_chehab:06217",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'hongtongsoft.com.cn/images/index.htm?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp"
+    },
+    {
+      "sample_id": "trad_chehab:06233",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'facebook-external.fcbx.info/?e=YW5pX21hZ2EwMkBob3RtYWlsLmNvbQ\\%3D\\%3D&amp;d=YW5vbmRhbjIxQGhvdG1haWwuZXM\\%3D&amp;f=aHR0c"
+    },
+    {
+      "sample_id": "trad_chehab:06250",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'www.oecd.org/document/39/0,2340,en_2649_34255_28863271_1_1_1_1,00.html'"
+    },
+    {
+      "sample_id": "trad_chehab:06263",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:06283",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.0916hq.com/js/index.htm?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fthfiwcaus.battle.net\\%2Fd3\\%2Fen\\%2Findex&app=c"
+    },
+    {
+      "sample_id": "trad_chehab:06296",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.systempanel.bugs3.com/MAILBOX\\%20UPGRADE.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:06306",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7coVtKbK83CikETp9vWEEua_i"
+    },
+    {
+      "sample_id": "trad_chehab:06319",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.sermoto.ro/ext/modules/payment/worldpay/stgeorgemodified/stgeorge\\%20modified/stgeorge\\%20modified/if.php'"
+    },
+    {
+      "sample_id": "trad_chehab:06321",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:06329",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'www.custard.org/\\%7Eandrew/optimize.php'"
+    },
+    {
+      "sample_id": "trad_chehab:06334",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:06348",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.raoanurag.com/wp-admin/images/paypal.com.us/cgi-binwebscrcmd=_login-submit&dispatch/=5885d80a13c0db1f8e263663d3faee"
+    },
+    {
+      "sample_id": "trad_chehab:06350",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:06360",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'shshide.com/js/?http:\\%2F\\%2Fus.battle.net\\%2Flogin\\%2Fen\\%2F\\%3Fref=http:\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex'"
+    },
+    {
+      "sample_id": "trad_chehab:06386",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'us.battle.net.hhus.asia/login/en/?ref=http\\%3A\\%2F\\%2Fus.battl    url:'"
+    },
+    {
+      "sample_id": "trad_chehab:06387",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:06441",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'www.bitcity.de/1541\\%20Serial\\%20Interface.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:06455",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:06456",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.adr-arbitrator.com/css/peoplemedia/SeniorPeopleMeet.com - The Senior People Network.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:06459",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:06502",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:06516",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:06521",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:06559",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:06572",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'us.battle.net.rr-wow.asia/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app=com-d3'"
+    },
+    {
+      "sample_id": "trad_chehab:06651",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:06683",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:06692",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.gestion-des-impayes.com/visuel.php?param=iK1/I3EkRQjb1KxExSxoEkRQjb1KwEibjkbvI/EkRQjb1KxESFFSEkRQjb1KwEiQI3bi3EkRQj"
+    },
+    {
+      "sample_id": "trad_chehab:06708",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:06710",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:06725",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.fearofdrivingacar.com/verifiedbyvisa-mastercardsecurecode/ACSChecker\\%3bjsessionid=2D702ED5D6B3E2196A8CDC29FA47EB41"
+    },
+    {
+      "sample_id": "trad_chehab:06728",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'us.battle.net.ddwow.asia/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;amp;app=com-d3'"
+    },
+    {
+      "sample_id": "trad_chehab:06729",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:06743",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.divulgarce.com.br/images/investment/properties/investment/remax/loopnet/New B2B/New B2B/index.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:06744",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'home.comcast.net/~david.bunkley/encrypt5885d80a13c0db1f8e263663d3fa.html?vid=Z2xJIscpuj\\%\\%202Bo=&action=validate23442'"
+    },
+    {
+      "sample_id": "trad_chehab:06745",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'lgjyxx.com/JS/?ref=http\\%3A\\%2F\\%2Fhigvuidus.battle.net\\%2Fd3\\%2Fen\\%2Findex'"
+    },
+    {
+      "sample_id": "trad_chehab:06748",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=0&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:06762",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:06788",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&attachauth=ANoY7cr"
+    },
+    {
+      "sample_id": "trad_chehab:06816",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.nbtos.com/images/login.htm?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fnyvpwweus.battle.net\\%2Fd3\\%2Fen\\%2Findex&am"
+    },
+    {
+      "sample_id": "trad_chehab:06844",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'email-bilizzard.tk/login.asp?ref=https\\%3a\\%2f\\%2fus.battle.net\\%2faccount\\%2fmanagement\\%2findex.xml&amp;amp;amp;'"
+    },
+    {
+      "sample_id": "trad_chehab:06879",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'acrylicoilpainting.info/wp-content/themes/twentyten/Aolcom/login.php?sitedomain=startpage.aol.com&amp;siteState=OrigUrl"
+    },
+    {
+      "sample_id": "trad_chehab:06890",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:06891",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:06894",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:06929",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:06963",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'skvs.stedu.net/Images/index.htm?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fpkaxsjcus.battle.net\\%2Fd3\\%2Fen\\%2Findex&a"
+    },
+    {
+      "sample_id": "trad_chehab:06964",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'bjyfcc.com/images/index.htm?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app=com-"
+    },
+    {
+      "sample_id": "trad_chehab:06975",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'reviews.zdnet.co.uk/software/0,1000001048,39155022,00.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:07008",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'xfactorconsultancy.com/Remax/Secure\\%20Login.html'"
+    },
+    {
+      "sample_id": "trad_chehab:07021",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'konoridaba-blt-eiktu-nx.eu.pn/forums.ws15,16,650,91478123/'"
+    },
+    {
+      "sample_id": "trad_chehab:07053",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'users3.jabry.com/nextaol/Update\\%20Aol.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:07059",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.hsqxx.com/js/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;amp;amp;app=com-d3"
+    },
+    {
+      "sample_id": "trad_chehab:07060",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'antispam5.rilinfo.net/Message?action=Detail&amp;mid=219276427&amp;h=afdd9b905483c746c1163705751eb45f&amp;email=rgarcia2"
+    },
+    {
+      "sample_id": "trad_chehab:07067",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'paypal.com.nadooshop.com/bank\\%20acount.php?cmd=_login-run&dispatch=5885d80a13c0db1f998ca054efbdf2c29878a435fe324eec251"
+    },
+    {
+      "sample_id": "trad_chehab:07072",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.leepoo.com.cn/js/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app=com-d3'"
+    },
+    {
+      "sample_id": "trad_chehab:07086",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:07114",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'auto.91wd.cn/images/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Foydwqleus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app=com-"
+    },
+    {
+      "sample_id": "trad_chehab:07126",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:07128",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:07182",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'services.runescape.co.cm/m=forums/forums.vs?1437,94,544,63330546,94,544,63330546'"
+    },
+    {
+      "sample_id": "trad_chehab:07236",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:07272",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:07277",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'billsbootcamps.com/cufyloo/MTou/oxLig/Account\\%20update\\%20Form.html'"
+    },
+    {
+      "sample_id": "trad_chehab:07295",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.yuankangzs.com/js/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Feqvzozlus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app=co"
+    },
+    {
+      "sample_id": "trad_chehab:07309",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "www.paypal.com.de-cgi-bin-webscrcmd_login-run-dispatch5524k90u98d0dd0f8e10014.finphotography.com.au/?cmd=_login-run&amp;"
+    },
+    {
+      "sample_id": "trad_chehab:07320",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'searchcio.techtarget.com/originalContent/0,289142,sid19_gci1197441,00.html'"
+    },
+    {
+      "sample_id": "trad_chehab:07325",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.cakirkoy.com/plugins/tmp/\\%20/www.bradesco.com.br/identificacao/ibflogin/cadastro/'"
+    },
+    {
+      "sample_id": "trad_chehab:07335",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.nbyixing.com/pro/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app=com-d3'"
+    },
+    {
+      "sample_id": "trad_chehab:07352",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'novy.email.cz/download/i/bw0LrhhbPouHWH70Gff70Ex8Y8xCdhmwnrzEHiwsUNrUUMCxk7lGek_i0STb7l0wVvrpPNQ/Account\\%20information"
+    },
+    {
+      "sample_id": "trad_chehab:07356",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:07368",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'www.cse.iitb.ac.in/\\%7Eawk/'"
+    },
+    {
+      "sample_id": "trad_chehab:07398",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:07401",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.viverelagheula.net/wp-content/plugins/akismet/paypal.com.au/initthi.html?UsingSSL=&amp;bshowgif=&amp;cmd=SignIn&amp"
+    },
+    {
+      "sample_id": "trad_chehab:07473",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.hx51.com/JS/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;amp;app=com-d3'"
+    },
+    {
+      "sample_id": "trad_chehab:07482",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:07483",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:07484",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:07507",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cof2FYIHGzDEyBUCR2AEK7Qm"
+    },
+    {
+      "sample_id": "trad_chehab:07524",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.hzmuma.com/js/?secure.runescape.com/m=weblogin/loginform.ws?mod=www&amp;fjfxvmuamp\\%3bssl=0&amp;dest'"
+    },
+    {
+      "sample_id": "trad_chehab:07556",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'vocevaimelhordemastercard.net16.net/cadastre/agora/na/promo\\%e7\\%e3o/mastercard/'"
+    },
+    {
+      "sample_id": "trad_chehab:07573",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:07584",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:07604",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7coq66Acf_eoZs_0VBj7dCjNJ"
+    },
+    {
+      "sample_id": "trad_chehab:07674",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'hu.gmalli.com/login,12531247,L1N1P-1CC08,18224.html'"
+    },
+    {
+      "sample_id": "trad_chehab:07682",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:07726",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'services-runescape-com-ml-forums.totalh.net/sl=0-forums.ws.14,15,437,63859515.html'"
+    },
+    {
+      "sample_id": "trad_chehab:07734",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'www.businessweek.com/1998/23/b3581001.htm#Main Story'"
+    },
+    {
+      "sample_id": "trad_chehab:07778",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.makingitlive.co.uk/copperdragon/wp-content/themes/striking/cache/images/redirect.htm?signin.ebay.co.uk/ws/eBayISAPI"
+    },
+    {
+      "sample_id": "trad_chehab:07807",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'www.pearsonhighered.com/educator/academic/product/0,,0130280283,00\\%2Ben-USS_01DBC.html'"
+    },
+    {
+      "sample_id": "trad_chehab:07825",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.slbbanknepal.com/site\\%202013/scam\\%20paypal\\%202013/scam/webapps/mpp/home/?cmd=_home&dispatch=5885d80a13c0db1f8e&e"
+    },
+    {
+      "sample_id": "trad_chehab:07831",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:07846",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:07849",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:07905",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:07928",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cr_nkBumx9VTIZB5fWI5eMkR"
+    },
+    {
+      "sample_id": "trad_chehab:07955",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'serivcus-runescaqe.zxq.net/forums.ws15,16,650,91478123/'"
+    },
+    {
+      "sample_id": "trad_chehab:07972",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.yaoyuan.cc/JS/index.htm?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app=com-"
+    },
+    {
+      "sample_id": "trad_chehab:07977",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=0&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:07993",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'accounts.google.com/ServiceLogin?service=wise&passive=true&go=true&continue=docs.google.com/forms/d/19HM7zAGrf2U6CHnIXK"
+    },
+    {
+      "sample_id": "trad_chehab:08003",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:08018",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'liuheng.chengxuren.com/Images/?ref=http\\%3A\\%2F\\%2Fijoxgbyus.battle.net\\%2Fd3\\%2Fen\\%2Findex'"
+    },
+    {
+      "sample_id": "trad_chehab:08019",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:08021",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cqd_gaZK6KNEfMd5C7wJ8X5r"
+    },
+    {
+      "sample_id": "trad_chehab:08030",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.ctce200.neru9.com/#\\%20(\\%200.00000000000000)?\\%200.00000'"
+    },
+    {
+      "sample_id": "trad_chehab:08031",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.linsfotografias.com.br/Remax/Secure Login.html'"
+    },
+    {
+      "sample_id": "trad_chehab:08070",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'anupamnavsari.com/Remax/Secure Login.html'"
+    },
+    {
+      "sample_id": "trad_chehab:08082",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'www.certification-crazy.net/A\\%2B_study_guides.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:08083",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7coDe5PQTKMGxNspTFMdB6Nic"
+    },
+    {
+      "sample_id": "trad_chehab:08087",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:08125",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'update-informations041.creativeplaythings.com.au/?/cgi-\\%0D\\%5Cn\\%0D\\%5Cnbin/webscr?cmd=_login-\\%0D\\%5Cn\\%0D\\%5Cnsubmit"
+    },
+    {
+      "sample_id": "trad_chehab:08137",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.bl35.org/images/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fdkpljkgus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app=com-"
+    },
+    {
+      "sample_id": "trad_chehab:08139",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'rankings.big-boards.com/?filter=phpBB,all'"
+    },
+    {
+      "sample_id": "trad_chehab:08141",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:08145",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.bradesco-ib2net.allalla.com/index.php?8bradesco.com.br2012sansoftware\\%40hotmail.com'"
+    },
+    {
+      "sample_id": "trad_chehab:08213",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7crzSH-wvAMyH2lq5FvFLpoHQ"
+    },
+    {
+      "sample_id": "trad_chehab:08280",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:08318",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:08327",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:08372",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.jmc.edu.np/site\\%202013/verify\\%20paypal\\%202013/scam/webapps/mpp/home/index-new.php'"
+    },
+    {
+      "sample_id": "trad_chehab:08374",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "suresh_kr.tripod.com/tech.html"
+    },
+    {
+      "sample_id": "trad_chehab:08389",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:08391",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'familyeducation.com/article/0,1120,1-4913,00.html'"
+    },
+    {
+      "sample_id": "trad_chehab:08444",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'static.wix.com/client/app.swf?cacheKiller=v\\%3D821&amp;max-age=172800'"
+    },
+    {
+      "sample_id": "trad_chehab:08452",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:08480",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'www.countrysidemag.com/issues/3_1998.htm#Swiss Goats'"
+    },
+    {
+      "sample_id": "trad_chehab:08507",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:08549",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:08550",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:08560",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:08636",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:08647",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:08650",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'www.solvay.com/services/glossary/0,,765-2-0,00.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:08659",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'vip88bet.com/update/Secure Login.html'"
+    },
+    {
+      "sample_id": "trad_chehab:08718",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'partygoodtimes.com/Visa-dk/Sikker\\%20nettbetaling.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:08768",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:08805",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.gxyzx.com/js/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fopclpqxus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app=com-d3'"
+    },
+    {
+      "sample_id": "trad_chehab:08808",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'pim.net.au/wsaw/eBayISAPI.dII/?SignIn&ru=http\\%3A\\%2F\\%2Fwww.ebay.co.uk\\%2F'"
+    },
+    {
+      "sample_id": "trad_chehab:08819",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.scmaccelerators.com/wp-content/upgrade/session=\\%7BKR3SI5953036pbc-TLSv1SSLv3-6FKI06485\\%7D/index.html'"
+    },
+    {
+      "sample_id": "trad_chehab:08840",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;p=1&amp;u=/netahtml/search-bool.html&amp;r=1&amp;f=G"
+    },
+    {
+      "sample_id": "trad_chehab:08861",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.vvrose.com/images/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fqxrxotuus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app=co"
+    },
+    {
+      "sample_id": "trad_chehab:08896",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:08906",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.nlpinschool.com/~hailagra/signin/enter_login.php\\%3Fsession=NWFlNgcGAAYEVgEEB10OBFdWU1dXVgdVVFJRAwMGVlIHAABSAAEEUQ."
+    },
+    {
+      "sample_id": "trad_chehab:08943",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.wasabisushibar.com/media/com_akeeba/\\%20/httpd.www/?cli=Cliente/191273/830346.php'"
+    },
+    {
+      "sample_id": "trad_chehab:08944",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.alphadecor.com.br/modules/cid/inform/login\\%20to\\%20your\\%20account/6f186fd045fa59baf4b42c3e71906485/'"
+    },
+    {
+      "sample_id": "trad_chehab:08945",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:08950",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.bjzjg.com/js/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fyxcswmius.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;amp;amp;app"
+    },
+    {
+      "sample_id": "trad_chehab:09011",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'isapi-dll.biz.ht/http:signin.e.bay.com.au\\%5Cws\\%5CBayISAPI.dllSignIn&UsingSSL=1&pUserId\\%7Cinkid=contactbox_login_=&co"
+    },
+    {
+      "sample_id": "trad_chehab:09030",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cp_-l1eg1aKMFcuQ1RBIrPtb"
+    },
+    {
+      "sample_id": "trad_chehab:09045",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:09087",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'update-informations047.creativeplaythings.com.au/?/cgi-\\%0D\\%5Cn\\%0D\\%5Cnbin/webscr?cmd=_login-\\%0D\\%5Cn\\%0D\\%5Cnsubmit"
+    },
+    {
+      "sample_id": "trad_chehab:09090",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'update-informations013.creativeplaythings.com.au/?/cgi-\\%20bin/webscr?cmd=_login-\\%20submit&amp;dispatch=5885d80ds0db1f"
+    },
+    {
+      "sample_id": "trad_chehab:09108",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:09143",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:09175",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:09209",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:09211",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'houseconsultant.net/david/Remax_files/Remax\\%20\\%281\\%29\\%20luck/Remax.htm'"
+    },
+    {
+      "sample_id": "trad_chehab:09213",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7crCwKcTGxfmXEQWtXpMC-BXa"
+    },
+    {
+      "sample_id": "trad_chehab:09219",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'www.pcmag.com/article2/0,4149,1369024,00.asp'"
+    },
+    {
+      "sample_id": "trad_chehab:09222",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:09239",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:09262",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:09290",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'duoilaopo1314.hk.hntidc.com/login/en/?ref=https\\%3A\\%2F\\%2Fwww.battlenet.com.cn\\%2Faccount\\%2Fmanagement\\%2Findex.xml&a"
+    },
+    {
+      "sample_id": "trad_chehab:09318",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:09343",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'services-runescape-com-ssn-forum.totalh.net/sl=0-forums.ws.14,15,437,63859515.html'"
+    },
+    {
+      "sample_id": "trad_chehab:09368",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:09380",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'1pcables-inox.com/index.php?f=contact.ebay.com.ws.eBayISAPI.dll\\%3FMfcISAPICommand\\%3DUserQuery&amp;otheruserid=&amp;fi"
+    },
+    {
+      "sample_id": "trad_chehab:09385",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.google.nl/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;ved=0cdeqfjaa&amp;url=www.lobbyaudit.ge/"
+    },
+    {
+      "sample_id": "trad_chehab:09394",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:09395",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.serenapropiedades.cl/\\%7c/?cmd=_home&dispatch=5885d80a13c0db1f8e&ee=c221bf1d5e0e08f98a0d5b67bab0b087'"
+    },
+    {
+      "sample_id": "trad_chehab:09421",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7coP5dEg9MulfytUD_N2eEpnk"
+    },
+    {
+      "sample_id": "trad_chehab:09446",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'tharts.net/images/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;amp;app=com-d3'"
+    },
+    {
+      "sample_id": "trad_chehab:09453",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:09482",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.kingsportclub.com/js/?app=com-d3&amp;us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex"
+    },
+    {
+      "sample_id": "trad_chehab:09494",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:09511",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'www.stren.ind.tn/download.php?id=27326,58,1'"
+    },
+    {
+      "sample_id": "trad_chehab:09520",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'update-informations020.creativeplaythings.com.au/?/cgi-\\%0D\\%5Cn\\%0D\\%5Cnbin/webscr?cmd=_login-\\%0D\\%5Cn\\%0D\\%5Cnsubmit"
+    },
+    {
+      "sample_id": "trad_chehab:09543",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7cp74RLp0NHIDl7Mjy5TjvjVN"
+    },
+    {
+      "sample_id": "trad_chehab:09568",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'tad.ly/ZrWLIM?ios\\%20autenticado&pbx=1&oq=&aq=&aqi=&aql=&gs_sm=&gs_upl=&bav=on.2\\%2cor.r_gc.r_pw.\\%2ccf.osb&fp=aa151a29"
+    },
+    {
+      "sample_id": "trad_chehab:09585",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'services.runescape.co.cm/m=forums/forum.vs?v=1429,94,544,63330546'"
+    },
+    {
+      "sample_id": "trad_chehab:09613",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'esxcc.com/js/index.htm?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Falbeykjus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app=co"
+    },
+    {
+      "sample_id": "trad_chehab:09614",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'sz-leteng.com/images/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fbopgkotus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;app=com"
+    },
+    {
+      "sample_id": "trad_chehab:09630",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.google.com/url?q=http\\%3A\\%2F\\%2Fwww.vvneisfamily.com\\%2Ffile\\%2FGoogleDocs\\%2Fgoogle.mail\\%2Fgoogledoc\\%2FGoogleDo"
+    },
+    {
+      "sample_id": "trad_chehab:09685",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:09695",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'seciurie-rumascapie.freeiz.com/forums.ws15,16,650,91478125/login.html'"
+    },
+    {
+      "sample_id": "trad_chehab:09698",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.304050.com/js/?amp;app=com-d3&amp;us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex'"
+    },
+    {
+      "sample_id": "trad_chehab:09703",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7co-oWOQT4oJlPjcJGGLTfs0T"
+    },
+    {
+      "sample_id": "trad_chehab:09718",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.360chuchai.com/images/?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fus.battle.net\\%2Fd3\\%2Fen\\%2Findex&amp;amp;app=c"
+    },
+    {
+      "sample_id": "trad_chehab:09732",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:09739",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=2&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:09744",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:09765",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "trad_chehab:09787",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'www.jebnt.com/images/index.htm?us.battle.net/login/en/?ref=http\\%3A\\%2F\\%2Fmxvphbpus.battle.net\\%2Fd3\\%2Fen\\%2Findex&am"
+    },
+    {
+      "sample_id": "trad_chehab:09804",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'services-runescape-com-mss-forums.totalh.net/sl=0-forums.ws.14,15,437,63859515.html'"
+    },
+    {
+      "sample_id": "trad_chehab:09817",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3Battredirects=1&amp;attachauth=ANo"
+    },
+    {
+      "sample_id": "trad_chehab:09831",
+      "class": "benign",
+      "category": "plain_text",
+      "payload_preview": "'whatis.techtarget.com/definition/0,289893,sid9_gci211823,00.html'"
+    },
+    {
+      "sample_id": "trad_chehab:09931",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=ANoY7coiHL_Qj7u_QirlNQI-bIXFs"
+    },
+    {
+      "sample_id": "trad_chehab:09976",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "www.paypal.com.de-cgi-bin-webscrcmd_login-run-dispatch4000p44s04d8vv5q8e10014.finphotography.com.au/?cmd=_login-run&disp"
+    }
+  ],
+  "external": [
+    {
+      "sample_id": "mendeley:benign/qr_467_benign_images.png",
+      "class": "benign",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "mendeley:malicious/qr_127_malicious_images.png",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "mendeley:malicious/qr_177_malicious_images.png",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "mendeley:malicious/qr_1_malicious_images.png",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "http://mitamskmask_lgoinm.godaddysites.com/"
+    },
+    {
+      "sample_id": "mendeley:malicious/qr_290_malicious_images.png",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "mendeley:malicious/qr_307_malicious_images.png",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "mendeley:malicious/qr_321_malicious_images.png",
+      "class": "malicious",
+      "category": "plain_text",
+      "payload_preview": "http://mettaamasklogin_pp.godaddysites.com/"
+    },
+    {
+      "sample_id": "mendeley:malicious/qr_338_malicious_images.png",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "mendeley:malicious/qr_442_malicious_images.png",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    },
+    {
+      "sample_id": "mendeley:malicious/qr_457_malicious_images.png",
+      "class": "malicious",
+      "category": "undecodable",
+      "payload_preview": null
+    }
+  ]
+}

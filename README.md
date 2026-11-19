@@ -39,8 +39,10 @@ python scripts/check_qr_compatibility.py # → results/qr_decode_report.json  (~
 5. **No code touched.** `scripts/qr_utils.py` and `scripts/feature_extractor.py` remain byte-identical (`d6510490…`, `45e13436…`). `scripts/check_qr_compatibility.py` is unchanged from the last version you ran. `scripts/inspect_datasets.py` is unchanged from Task 1.
 
 ## Phase 2 progress:
-- ✅ **Task 1 (Gate 1 — full-dataset duplicate + label audit):** PASSED — 0 label conflicts on 9,987 + 1,000 images; 44 cross-dataset benign-domain overlaps (documented, non-blocking). Runtime 52.5 min. Artifacts: `results/full_overlap_audit.json`, `results/label_conflicts.json`, `results/.gate1_pass`.
-- ⏳ **Task 2 (Gate 2 — full-dataset decode audit):** in progress — see `docs/dataset_comparison.md` §"Phase 2 Task 2".
+**Phase 2 progress:**
+- ✅ Task 1 (Gate 1 — duplicate + label audit): 0 conflicts, `gate1_pass=True`.
+- ✅ Task 2 (Gate 2 — decode audit): primary 0.990/0.9829, external 0.998/0.986, `gate2_pass=True`. `run_gates.py check` runs in ~3 s.
+- ⏳ Task 3 (feature extraction): `scripts/prepare_features.py` produces `data/processed/features_{primary,external}.parquet`, `results/feature_summary.json`, `results/excluded_samples.json`.
 
 **BRIEF EXPLANATION:**
 
@@ -408,3 +410,4 @@ GD cost (smoothed) may rise 0.42→0.45 while hard cost falls 0.51→0.387 — e
 
 **Heuristic Not RL:**
 No MDP/Bellman/Q-learning. Two scalars threshold, reward +1/-1.5/-3.0, file persistence. Use phrase "feedback-driven heuristic policy inspired by RL reward shaping".
+

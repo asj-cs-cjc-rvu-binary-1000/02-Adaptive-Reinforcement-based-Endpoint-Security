@@ -1,0 +1,495 @@
+{
+  "generated_utc": "2026-11-19T06:38:06.290662+00:00",
+  "primary": {
+    "dataset": "Trad & Chehab",
+    "n_decoded": 9987,
+    "n_url_features_rows": 9422,
+    "class_counts": {
+      "benign": 5005,
+      "malicious": 4982
+    },
+    "n_excluded": 565,
+    "feature_summary": {
+      "n_rows": 9422,
+      "features": {
+        "url_length": {
+          "min": 9.0,
+          "max": 421.0,
+          "mean": 58.26056039057525,
+          "std": 50.40287419009871,
+          "n_missing": 0,
+          "n_unique": 291,
+          "is_constant": false
+        },
+        "num_dots": {
+          "min": 1.0,
+          "max": 28.0,
+          "mean": 3.2476119719804712,
+          "std": 2.320007970815986,
+          "n_missing": 0,
+          "n_unique": 24,
+          "is_constant": false
+        },
+        "has_https": {
+          "min": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "std": 0.0,
+          "n_missing": 0,
+          "n_unique": 1,
+          "is_constant": true
+        },
+        "has_ip": {
+          "min": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "std": 0.0,
+          "n_missing": 0,
+          "n_unique": 1,
+          "is_constant": true
+        },
+        "num_subdirs": {
+          "min": 0.0,
+          "max": 34.0,
+          "mean": 2.728189344088304,
+          "std": 1.7495152893399577,
+          "n_missing": 0,
+          "n_unique": 18,
+          "is_constant": false
+        },
+        "num_params": {
+          "min": 0.0,
+          "max": 27.0,
+          "mean": 0.334217788155381,
+          "std": 1.045481741728723,
+          "n_missing": 0,
+          "n_unique": 14,
+          "is_constant": false
+        },
+        "suspicious_words": {
+          "min": 0.0,
+          "max": 10.0,
+          "mean": 0.32169390787518576,
+          "std": 0.774647759616258,
+          "n_missing": 0,
+          "n_unique": 10,
+          "is_constant": false
+        },
+        "special_char_count": {
+          "min": 0.0,
+          "max": 28.0,
+          "mean": 1.201018891954999,
+          "std": 2.05380993245679,
+          "n_missing": 0,
+          "n_unique": 22,
+          "is_constant": false
+        },
+        "digits_count": {
+          "min": 0.0,
+          "max": 173.0,
+          "mean": 7.399702823179792,
+          "std": 18.865894128789638,
+          "n_missing": 0,
+          "n_unique": 137,
+          "is_constant": false
+        },
+        "entropy": {
+          "min": 2.5836521716366887,
+          "max": 5.889068592003751,
+          "mean": 4.16301173382385,
+          "std": 0.4067063572773703,
+          "n_missing": 0,
+          "n_unique": 6590,
+          "is_constant": false
+        },
+        "host_length": {
+          "min": 4.0,
+          "max": 242.0,
+          "mean": 22.085756739545744,
+          "std": 24.05475319779347,
+          "n_missing": 0,
+          "n_unique": 178,
+          "is_constant": false
+        },
+        "path_length": {
+          "min": 0.0,
+          "max": 269.0,
+          "mean": 25.418700912757377,
+          "std": 24.49717909435478,
+          "n_missing": 0,
+          "n_unique": 178,
+          "is_constant": false
+        },
+        "query_length": {
+          "min": 0.0,
+          "max": 287.0,
+          "mean": 10.580343876034812,
+          "std": 30.86349916200044,
+          "n_missing": 0,
+          "n_unique": 163,
+          "is_constant": false
+        },
+        "subdomain_count": {
+          "min": 0.0,
+          "max": 23.0,
+          "mean": 1.2838038632986628,
+          "std": 1.975790335419522,
+          "n_missing": 0,
+          "n_unique": 22,
+          "is_constant": false
+        },
+        "digit_ratio": {
+          "min": 0.0,
+          "max": 0.6851063829787234,
+          "mean": 0.07188742266465789,
+          "std": 0.11607493294510193,
+          "n_missing": 0,
+          "n_unique": 1359,
+          "is_constant": false
+        },
+        "susp_token_hits": {
+          "min": 0.0,
+          "max": 8.0,
+          "mean": 0.24814264487369986,
+          "std": 0.6463195687577229,
+          "n_missing": 0,
+          "n_unique": 9,
+          "is_constant": false
+        },
+        "susp_compound_hits": {
+          "min": 0.0,
+          "max": 8.0,
+          "mean": 0.07355126300148589,
+          "std": 0.32251350715067184,
+          "n_missing": 0,
+          "n_unique": 7,
+          "is_constant": false
+        },
+        "susp_in_subdomain": {
+          "min": 0.0,
+          "max": 1.0,
+          "mean": 0.04839736786244959,
+          "std": 0.21460443296082288,
+          "n_missing": 0,
+          "n_unique": 2,
+          "is_constant": false
+        },
+        "is_shortener": {
+          "min": 0.0,
+          "max": 1.0,
+          "mean": 0.004245383145828911,
+          "std": 0.06501815029492937,
+          "n_missing": 0,
+          "n_unique": 2,
+          "is_constant": false
+        },
+        "is_punycode": {
+          "min": 0.0,
+          "max": 1.0,
+          "mean": 0.00021226915729144556,
+          "std": 0.014567913340499674,
+          "n_missing": 0,
+          "n_unique": 2,
+          "is_constant": false
+        },
+        "has_port": {
+          "min": 0.0,
+          "max": 1.0,
+          "mean": 0.0007429420505200594,
+          "std": 0.02724683628661552,
+          "n_missing": 0,
+          "n_unique": 2,
+          "is_constant": false
+        },
+        "has_userinfo": {
+          "min": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "std": 0.0,
+          "n_missing": 0,
+          "n_unique": 1,
+          "is_constant": true
+        },
+        "embedded_url_in_query": {
+          "min": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "std": 0.0,
+          "n_missing": 0,
+          "n_unique": 1,
+          "is_constant": true
+        },
+        "tld_risk": {
+          "min": 0.0,
+          "max": 1.0,
+          "mean": 0.006261940140097644,
+          "std": 0.07888427121916941,
+          "n_missing": 0,
+          "n_unique": 2,
+          "is_constant": false
+        }
+      },
+      "high_correlation_pairs_r_ge_0_95": [],
+      "constant_features": [
+        "has_https",
+        "has_ip",
+        "has_userinfo",
+        "embedded_url_in_query"
+      ]
+    }
+  },
+  "external": {
+    "dataset": "Mendeley",
+    "n_decoded": 1000,
+    "n_url_features_rows": 990,
+    "class_counts": {
+      "benign": 500,
+      "malicious": 500
+    },
+    "n_excluded": 10,
+    "feature_summary": {
+      "n_rows": 990,
+      "features": {
+        "url_length": {
+          "min": 14.0,
+          "max": 259.0,
+          "mean": 34.39191919191919,
+          "std": 20.567797114297004,
+          "n_missing": 0,
+          "n_unique": 80,
+          "is_constant": false
+        },
+        "num_dots": {
+          "min": 1.0,
+          "max": 5.0,
+          "mean": 1.898989898989899,
+          "std": 0.6418872032656139,
+          "n_missing": 0,
+          "n_unique": 5,
+          "is_constant": false
+        },
+        "has_https": {
+          "min": 0.0,
+          "max": 1.0,
+          "mean": 0.7808080808080808,
+          "std": 0.4136989506306275,
+          "n_missing": 0,
+          "n_unique": 2,
+          "is_constant": false
+        },
+        "has_ip": {
+          "min": 0.0,
+          "max": 1.0,
+          "mean": 0.00808080808080808,
+          "std": 0.08952937295418317,
+          "n_missing": 0,
+          "n_unique": 2,
+          "is_constant": false
+        },
+        "num_subdirs": {
+          "min": 0.0,
+          "max": 6.0,
+          "mean": 1.2515151515151515,
+          "std": 0.6577991521109664,
+          "n_missing": 0,
+          "n_unique": 7,
+          "is_constant": false
+        },
+        "num_params": {
+          "min": 0.0,
+          "max": 3.0,
+          "mean": 0.026262626262626262,
+          "std": 0.21395074415957535,
+          "n_missing": 0,
+          "n_unique": 4,
+          "is_constant": false
+        },
+        "suspicious_words": {
+          "min": 0.0,
+          "max": 2.0,
+          "mean": 0.045454545454545456,
+          "std": 0.21778161950098124,
+          "n_missing": 0,
+          "n_unique": 3,
+          "is_constant": false
+        },
+        "special_char_count": {
+          "min": 0.0,
+          "max": 21.0,
+          "mean": 0.47373737373737373,
+          "std": 1.2451186190367127,
+          "n_missing": 0,
+          "n_unique": 11,
+          "is_constant": false
+        },
+        "digits_count": {
+          "min": 0.0,
+          "max": 92.0,
+          "mean": 2.397979797979798,
+          "std": 6.65705336880721,
+          "n_missing": 0,
+          "n_unique": 35,
+          "is_constant": false
+        },
+        "entropy": {
+          "min": 3.1086949695628414,
+          "max": 5.820237563080049,
+          "mean": 3.965365494869986,
+          "std": 0.3527791252488107,
+          "n_missing": 0,
+          "n_unique": 739,
+          "is_constant": false
+        },
+        "host_length": {
+          "min": 4.0,
+          "max": 77.0,
+          "mean": 20.125252525252524,
+          "std": 9.19631396771536,
+          "n_missing": 0,
+          "n_unique": 49,
+          "is_constant": false
+        },
+        "path_length": {
+          "min": 0.0,
+          "max": 119.0,
+          "mean": 5.456565656565656,
+          "std": 10.717475219190948,
+          "n_missing": 0,
+          "n_unique": 48,
+          "is_constant": false
+        },
+        "query_length": {
+          "min": 0.0,
+          "max": 201.0,
+          "mean": 0.9515151515151515,
+          "std": 11.642992114619142,
+          "n_missing": 0,
+          "n_unique": 14,
+          "is_constant": false
+        },
+        "subdomain_count": {
+          "min": 0.0,
+          "max": 3.0,
+          "mean": 0.7717171717171717,
+          "std": 0.51287275757512,
+          "n_missing": 0,
+          "n_unique": 4,
+          "is_constant": false
+        },
+        "digit_ratio": {
+          "min": 0.0,
+          "max": 0.5666666666666667,
+          "mean": 0.04486678668125562,
+          "std": 0.102015437771512,
+          "n_missing": 0,
+          "n_unique": 158,
+          "is_constant": false
+        },
+        "susp_token_hits": {
+          "min": 0.0,
+          "max": 2.0,
+          "mean": 0.020202020202020204,
+          "std": 0.14769597354694336,
+          "n_missing": 0,
+          "n_unique": 3,
+          "is_constant": false
+        },
+        "susp_compound_hits": {
+          "min": 0.0,
+          "max": 2.0,
+          "mean": 0.025252525252525252,
+          "std": 0.16320244250959554,
+          "n_missing": 0,
+          "n_unique": 3,
+          "is_constant": false
+        },
+        "susp_in_subdomain": {
+          "min": 0.0,
+          "max": 1.0,
+          "mean": 0.022222222222222223,
+          "std": 0.14740554623801777,
+          "n_missing": 0,
+          "n_unique": 2,
+          "is_constant": false
+        },
+        "is_shortener": {
+          "min": 0.0,
+          "max": 1.0,
+          "mean": 0.00404040404040404,
+          "std": 0.06343563017417206,
+          "n_missing": 0,
+          "n_unique": 2,
+          "is_constant": false
+        },
+        "is_punycode": {
+          "min": 0.0,
+          "max": 1.0,
+          "mean": 0.00101010101010101,
+          "std": 0.0317660306939725,
+          "n_missing": 0,
+          "n_unique": 2,
+          "is_constant": false
+        },
+        "has_port": {
+          "min": 0.0,
+          "max": 1.0,
+          "mean": 0.010101010101010102,
+          "std": 0.0999948983496128,
+          "n_missing": 0,
+          "n_unique": 2,
+          "is_constant": false
+        },
+        "has_userinfo": {
+          "min": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "std": 0.0,
+          "n_missing": 0,
+          "n_unique": 1,
+          "is_constant": true
+        },
+        "embedded_url_in_query": {
+          "min": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "std": 0.0,
+          "n_missing": 0,
+          "n_unique": 1,
+          "is_constant": true
+        },
+        "tld_risk": {
+          "min": 0.0,
+          "max": 1.0,
+          "mean": 0.02727272727272727,
+          "std": 0.162877026065172,
+          "n_missing": 0,
+          "n_unique": 2,
+          "is_constant": false
+        }
+      },
+      "high_correlation_pairs_r_ge_0_95": [],
+      "constant_features": [
+        "has_userinfo",
+        "embedded_url_in_query"
+      ]
+    }
+  },
+  "additional_feature_candidates": {
+    "note": "candidates documented; none added to the 24-feature model in this task",
+    "candidates": {
+      "path_depth": "derivable as (num_subdirs); already present",
+      "path_to_host_ratio": "derivable as path_length / host_length; high corr with path_length expected",
+      "host_entropy": "requires new extraction step (separate from URL entropy)",
+      "subdomain_to_domain_ratio": "derivable as subdomain_count / len(registrable_domain)",
+      "consecutive_digits_max": "requires per-char scan (not in 24); risk of overlap with digits_count",
+      "consecutive_hyphens_max": "requires per-char scan (not in 24)",
+      "query_key_count": "already present as num_params",
+      "encoded_char_ratio": "requires %-decode aware scan; potentially useful",
+      "qr_image_dims": "OUT OF SCOPE \u2014 image features belong to a separate model, not the URL classifier"
+    }
+  },
+  "outputs": {
+    "features_primary": "data/processed/features_primary.parquet",
+    "features_external": "data/processed/features_external.parquet"
+  }
+}
