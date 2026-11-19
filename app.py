@@ -1,455 +1,442 @@
+#!/usr/bin/env python3
+"""
+app.py — ARES Streamlit application (Phase 3).
+
+Four-tab layout preserved from main:
+  Tab 1: 1-Click Sample QR Gallery
+  Tab 2: Upload QR Image
+  Tab 3: Camera Snapshot
+  Tab 4: Direct URL Analyzer & QR Encoder
+
+Sidebar:
+  - Policy selector (heuristic thresholds from adaptive_agent)
+  - Calculus Threshold Optimizer panel (read-only results from calculus_threshold)
+
+Inference is done EXCLUSIVELY via scripts/predict_pipeline.PredictionPipeline.
+No joblib.load, no predict_proba, no feature extraction in this file.
+"""
 from __future__ import annotations
 
 import json
-import tempfile
+import sys
 from pathlib import Path
-import cv2
+
+# Ensure both scripts/ and repo root are importable
+_HERE = Path(__file__).resolve().parent
+for _p in (_HERE / "scripts", _HERE):
+    if str(_p) not in sys.path:
+        sys.path.insert(0, str(_p))
+
 import numpy as np
 import pandas as pd
 import streamlit as st
 
-from adaptive_agent import (
-    AdaptiveSecurityAgent,
-    analyze_url_risk_factors,
-    compute_model_probabilities,
-    inspect_url_anatomy,
-    load_model_bundle,
+# Authoritative inference — the ONLY inference path in this file
+from predict_pipeline import PredictionPipeline
+
+# Adaptive heuristic agent (top-level module per Decision 2)
+from adaptive_agent import HeuristicAdaptiveAgent
+
+# Calculus adapter — read-only view over results/calculus_experiment.json
+import calculus_threshold
+
+# These are used only for URL-anatomy display, not for inference
+import feature_extractor as fx
+
+# ---- Page config ----
+st.set_page_config(
+    page_title="ARES — Offline QR Phishing Analyser",
+    page_icon="🛡️",
+    layout="wide",
 )
-from feature_extractor import (
-    extract_url_features,
-    feature_names,
-    is_valid_url,
-    redact_url_for_storage,
-)
-from qr_utils import QRDecodeError, decode_qr_codes, generate_qr_image
 
-# Calculus module — optional
-try:
-    from calculus_threshold import compute_optimal_thresholds
-    HAS_CALCULUS = True
-except ImportError:
-    HAS_CALCULUS = False
+RESULTS = _HERE / "results"
+SAMPLES_DIR = _HERE / "tests" / "images"  # fallback if created by tests; otherwise generated
 
-PROJECT_DIR = Path(__file__).resolve().parent
-MODEL_PATH = PROJECT_DIR / "models" / "model.joblib"
-FEEDBACK_PATH = PROJECT_DIR / "results" / "feedback.csv"
-RL_STATE_PATH = PROJECT_DIR / "results" / "rl_policy_state.json"
-BASELINE_PATH = PROJECT_DIR / "results" / "baseline.json"
-SAMPLE_IMAGES_DIR = PROJECT_DIR / "tests" / "images"
-DATA_PATH = PROJECT_DIR / "data" / "phishing_features.csv"
 
-IMAGE_FILE_TYPES = ["png", "jpg", "jpeg"]
-MAX_IMAGE_SIZE_MB = 5
+# ---- Cached resources (called at most once per Streamlit process) ----
+@st.cache_resource
+def _pipeline_default():
+    return PredictionPipeline(policy="default")
 
-SAMPLE_CATALOG = {
-    "Low-Risk HTTPS — Google (test_qr.png)": {"file": "test_qr.png","hint": "Standard HTTPS root domain (https://google.com)","needs_bare": False,},
-    "Low-Risk HTTPS — Example (https_url.png)": {"file": "https_url.png","hint": "Standard HTTPS domain (https://example.com)","needs_bare": False,},
-    "Low-Risk HTTP — Example (http_url.png)": {"file": "http_url.png","hint": "HTTP domain without suspicious tokens (http://example.com)","needs_bare": False,},
-    "Suspicious Login Query (query_url.png)": {"file": "query_url.png","hint": "HTTPS login path with query parameter (https://example.com/login?id=123)","needs_bare": False,},
-    "High-Risk IP Phishing (ip_url.png)": {"file": "ip_url.png","hint": "Direct IPv4 address hosting a /login path (http://192.0.2.1/login)","needs_bare": False,},
-    "Bare Domain Dataset Sample (sample_benign_qr_code02.png)": {"file": "sample_benign_qr_code02.png","hint": "Bare domain without http/https scheme (www.ecslimited.com/environ.cfm)","needs_bare": True,},
-    "Non-URL Plain Text (plain_text.png)": {"file": "plain_text.png","hint": "Plain text message ('Hello ARES') — demonstrates non-URL rejection","needs_bare": False,},
-}
 
-FEATURE_METADATA = {
-    "url_length": ("Lexical", "Total character length of the URL"),
-    "num_dots": ("Structure", "Number of dot ('.') separators across the full URL"),
-    "has_https": ("Protocol", "Uses HTTPS transport scheme (1 = Yes, 0 = No; does not prove domain trust)"),
-    "has_ip": ("Host Risk", "Hostname is a raw IP address instead of a domain (1 = Yes, 0 = No)"),
-    "num_subdirs": ("Structure", "Number of path directory slashes ('/')"),
-    "num_params": ("Structure", "Number of query parameters in the URL"),
-    "suspicious_words": ("Keywords", "Total phishing keyword matches (whole tokens + compound words)"),
-    "special_char_count": ("Lexical", "Count of special characters (-, _, %, @, =, ~)"),
-    "digits_count": ("Lexical", "Count of numeric digits (0-9) in the URL"),
-    "entropy": ("Lexical", "Shannon character-distribution entropy in bits"),
-    "host_length": ("Structure", "Character length of the hostname portion"),
-    "path_length": ("Structure", "Character length of the URL path component"),
-    "query_length": ("Structure", "Character length of query string and fragment"),
-    "subdomain_count": ("Structure", "Number of subdomain levels left of the registrable domain"),
-    "digit_ratio": ("Lexical", "Ratio of numeric digits to total URL length"),
-    "susp_token_hits": ("Keywords", "Phishing keywords appearing as standalone tokens"),
-    "susp_compound_hits": ("Keywords", "Phishing keywords embedded inside compound words"),
-    "susp_in_subdomain": ("Keywords", "Phishing keyword appears inside the subdomain prefix (1 = Yes, 0 = No)"),
-    "is_shortener": ("Host Risk", "Domain matches the static URL-shortener list (1 = Yes, 0 = No)"),
-    "is_punycode": ("Host Risk", "Hostname uses Punycode/IDN 'xn--' encoding (1 = Yes, 0 = No)"),
-    "has_port": ("Protocol", "URL specifies an explicit network port (1 = Yes, 0 = No)"),
-    "has_userinfo": ("Host Risk", "Authority section contains '@' credential syntax (1 = Yes, 0 = No)"),
-    "embedded_url_in_query": ("Host Risk", "Query/fragment contains an embedded redirect URL pattern"),
-    "tld_risk": ("Host Risk", "Top-level domain is in the static high-abuse TLD list (1 = Yes, 0 = No)"),
-}
+@st.cache_resource
+def _pipeline_optimized():
+    return PredictionPipeline(policy="optimized")
 
-st.set_page_config(page_title="ARES — QR Code Phishing Detector — XGBoost + Calculus", page_icon="🛡", layout="wide")
 
-@st.cache_resource(show_spinner="Loading ARES XGBoost calibrated model...")
-def get_cached_bundle(model_path: Path) -> dict:
-    return load_model_bundle(model_path)
+@st.cache_resource
+def _agent():
+    return HeuristicAdaptiveAgent()
 
-@st.cache_data(show_spinner="Loading held-out data for calculus optimizer...")
-def get_heldout_data_for_calculus(data_path: Path, model_path: Path):
-    """
-    FIX A1 — Option A: Real held-out data (not synthetic Beta).
-    Matches results/calculus_experiment.json: 5083 test URLs, seed 42, 20% split.
-    Caveat A: @st.cache_data keys on (data_path, model_path) args, not file mtime.
-    Refreshes on app restart or Streamlit cache clear. Documented in sidebar caption.
-    Caveat B: Batch predict_proba is efficient for 5083 samples. _validate_loaded_bundle
-    confirms classes_ [0,1], so [:,1] is phishing prob. Single-URL path uses
-    compute_model_probabilities (calibrated by label). Both yield same prob.
-    """
-    from train_model import build_dataset
-    from sklearn.model_selection import GroupShuffleSplit
 
-    if not data_path.exists():
-        raise FileNotFoundError(f"Dataset not found: {data_path}")
-    bundle = load_model_bundle(model_path)
-    df_full = build_dataset(data_path, seed=42)
-    gss = GroupShuffleSplit(n_splits=1, test_size=0.20, random_state=42)
-    groups = df_full["group"].to_numpy()
-    _, test_idx = next(gss.split(df_full, groups=groups))
-    df_test = df_full.iloc[test_idx]
-    y_true = df_test["label"].to_numpy(dtype=int)
-    # Batch inference — efficient, validated class order
-    probas = bundle["model"].predict_proba(df_test[feature_names])[:, 1]
-    return y_true, probas
+# ---- Sidebar: policy + calculus panel ----
+def _render_sidebar() -> dict:
+    st.sidebar.header("Decision policy")
 
-def run_url_analysis(bundle: dict, url: str, agent: AdaptiveSecurityAgent) -> dict:
-    url_features = extract_url_features(url)
-    df = pd.DataFrame([url_features], columns=feature_names)
-    prob_info = compute_model_probabilities(bundle, df)
-    calibrated_phish_prob = prob_info["calibrated_phishing_probability"]
-    uncalibrated_rf_phish_prob = prob_info["uncalibrated_rf_phishing_probability"]
-    predicted_label = prob_info["predicted_label"]
-    risk_analysis = analyze_url_risk_factors(url, url_features, calibrated_phish_prob, uncalibrated_rf_phish_prob)
-    policy = agent.evaluate_policy(calibrated_phish_prob)
-    importances = bundle.get("feature_importances")
-    if importances is None or len(importances) != len(feature_names):
-        importances = getattr(bundle["model"], "feature_importances_", np.zeros(len(feature_names)))
-    return {
-        "url": url,
-        "anatomy": inspect_url_anatomy(url),
-        "features": url_features,
-        "feature_importances": [float(x) for x in importances],
-        "model_metadata": bundle.get("model_metadata", {}),
-        "predicted_label": predicted_label,
-        "calibrated_probabilities": prob_info["calibrated_probabilities"],
-        "uncalibrated_rf_probabilities": prob_info["uncalibrated_rf_probabilities"],
-        "calibrated_phishing_probability": calibrated_phish_prob,
-        "uncalibrated_rf_phishing_probability": uncalibrated_rf_phish_prob,
-        "risk_factors": risk_analysis["risk_factors"],
-        "protective_factors": risk_analysis["protective_factors"],
-        "policy": policy,
-    }
+    agent = _agent()
+    heuristic_thr = agent.thresholds()
+    default_thr = calculus_threshold.default_thresholds()
+    opt_thr = calculus_threshold.optimized_thresholds()
 
-def decode_and_store(image_bytes: bytes, source_id: str, strict_scheme: bool, bundle: dict, agent: AdaptiveSecurityAgent) -> None:
-    temporary_file_path = None
-    try:
-        with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tmp:
-            tmp.write(image_bytes)
-            temporary_file_path = Path(tmp.name)
-        decoded_payloads = decode_qr_codes(temporary_file_path)
-    except (QRDecodeError, ValueError, FileNotFoundError) as error:
-        st.session_state.pop("last_analysis", None)
-        st.error(f"Could not decode a QR code from this image: {error}")
-        return
-    finally:
-        if temporary_file_path is not None:
-            try: temporary_file_path.unlink(missing_ok=True)
-            except OSError as cleanup_err: st.caption(f"Note: temporary file cleanup warning ({cleanup_err}).")
-    if len(decoded_payloads) > 1:
-        st.warning(f"{len(decoded_payloads)} distinct QR codes were detected. Select which to inspect:")
-        selected_index = st.radio("Select decoded QR payload index:", options=list(range(len(decoded_payloads))), format_func=lambda idx: f"QR #{idx+1}: {decoded_payloads[idx][:80]}", key=f"multi_qr_select_{source_id}",)
-        decoded_text = decoded_payloads[int(selected_index)]
-    else:
-        decoded_text = decoded_payloads[0]
-    if not is_valid_url(decoded_text, require_scheme=strict_scheme):
-        st.session_state.pop("last_analysis", None)
-        st.error(f"Unsupported QR content: Not a valid {'HTTP/HTTPS ' if strict_scheme else ''}URL.")
-        st.markdown("**Decoded Raw Payload (inert):**")
-        st.code(decoded_text[:500], language=None)
-        if not decoded_text.lower().startswith(("http://", "https://")) and is_valid_url(decoded_text, require_scheme=False):
-            st.info("Tip: This QR contains a bare domain without http(s)://. Uncheck 'Require explicit http:// or https:// scheme' in sidebar.")
-        return
-    analysis = run_url_analysis(bundle, decoded_text, agent)
-    st.session_state["last_analysis"] = analysis
-    st.session_state["analysis_key"] = (source_id, decoded_text, strict_scheme)
-    st.session_state["feedback_submitted"] = False
-
-# Sidebar
-with st.sidebar:
-    st.header("🛡 ARES Control Panel")
-    strict_http_scheme = st.checkbox("Require explicit http:// or https:// scheme", value=True)
-    # A4 fix: detailed help text
-    enable_demo_feedback = st.checkbox(
-        "Enable local demo threshold updates",
-        value=True,
-        help="When ON: verdict buttons write query-redacted records to results/feedback.csv and update thresholds in results/rl_policy_state.json (persists across sessions). When OFF: demo is read-only, no files written. Use Reset button to restore defaults (35%/70%)."
+    policy_choice = st.sidebar.radio(
+        "Active thresholds",
+        options=["Heuristic policy (feedback-driven)",
+                 "Default (0.35, 0.70) — publication reference",
+                 "Optimized (calculus) — experimental"],
+        index=0,
+        help="All three policies use the same frozen raw_xgb model. Thresholds "
+             "only change the Allow/Review/Block mapping.",
     )
-    agent = AdaptiveSecurityAgent(feedback_csv_path=FEEDBACK_PATH, state_json_path=RL_STATE_PATH)
-    if agent.diagnostics:
-        with st.expander("⚠ Policy State Diagnostics", expanded=False):
-            for diag in agent.diagnostics: st.caption(f"- {diag}")
-    st.divider()
-    st.subheader("🎛 Adaptive Threshold Policy")
-    st.caption("Feedback-driven + Calculus-optimized controller (does not retrain classifier)")
-    mcol1, mcol2 = st.columns(2)
-    mcol1.metric("Review At", f"{agent.review_threshold:.0%}", help="Medium-risk threshold")
-    mcol2.metric("Block At", f"{agent.block_threshold:.0%}", help="High-risk threshold")
-    st.caption(f"Episodes: **{agent.total_episodes}** | Score: **{agent.cumulative_reward:+.1f}**")
 
-    if HAS_CALCULUS:
-        st.divider()
-        st.subheader("∫ Calculus Threshold Optimizer")
-        st.caption("Minimizes $C(t_r,t_b)=C_{FP}FPR + C_{FN}FNR + C_{review}ReviewRate$ via $dC/dt=0$, $d^2C/dt^2>0$ — on real held-out data (seed=42, 5083 URLs, GroupShuffleSplit 20%). Caveat A: refreshes on app restart or cache clear.")
-        with st.expander("Optimize with Calculus (v3.0 — real data)", expanded=False):
-            c_fp = st.slider("C_FP (false positive cost)", 0.5, 2.0, 1.0, key="c_fp")
-            c_fn = st.slider("C_FN (false negative cost)", 1.0, 10.0, 5.0, key="c_fn")
-            c_rev = st.slider("C_Review cost", 0.1, 1.0, 0.5, key="c_rev")
-            if st.button("∫ Compute Optimal Thresholds (real held-out)", use_container_width=True):
-                try:
-                    y_true, y_proba = get_heldout_data_for_calculus(DATA_PATH, MODEL_PATH)
-                    result = compute_optimal_thresholds(y_true, y_proba, cost_fp=c_fp, cost_fn=c_fn, cost_review=c_rev)
-                    # Caveat C fix: only show Reference at defaults (1,5,0.5)
-                    is_default = (c_fp == 1.0 and c_fn == 5.0 and c_rev == 0.5)
-                    if is_default:
-                        st.success(f"Optimal (real held-out, {len(y_true)} URLs): Review {result['review_threshold']:.2%}, Block {result['block_threshold']:.2%} | Hard cost {result.get('final_cost_hard', result.get('final_cost', 0)):.4f} | Reference (0.60, 0.75) at defaults (1,5,0.5) — results/calculus_experiment.json")
-                    else:
-                        st.success(f"Optimal (real held-out, {len(y_true)} URLs, costs FP={c_fp}, FN={c_fn}, Rev={c_rev}): Review {result['review_threshold']:.2%}, Block {result['block_threshold']:.2%} | Hard cost {result.get('final_cost_hard', result.get('final_cost', 0)):.4f}")
-                    st.json(result.get("derivative_check", {}))
-                    if result.get("boundary_hit"):
-                        st.caption(f"Boundary hit: {result['boundary_hit']}")
-                    st.session_state["calculus_result"] = result
-                except Exception as e:
-                    st.error(f"Calculus optimizer failed: {e}")
-                    st.caption("Falling back to synthetic demo is not used — fix dataset path.")
-            if "calculus_result" in st.session_state:
-                res = st.session_state["calculus_result"]
-                if st.button(f"Apply {res['review_threshold']:.0%} / {res['block_threshold']:.0%}", use_container_width=True):
-                    agent.review_threshold = res["review_threshold"]
-                    agent.block_threshold = res["block_threshold"]
-                    agent.calculus_metadata = res
-                    agent._save_state()
-                    st.toast(f"Applied calculus thresholds")
-                    st.rerun()
-
-    if st.button("↺ Reset Thresholds to Default", use_container_width=True):
-        agent.reset_policy()
-        if "last_analysis" in st.session_state:
-            st.session_state["last_analysis"]["policy"] = agent.evaluate_policy(st.session_state["last_analysis"]["calibrated_phishing_probability"])
-        st.toast("Thresholds reset to 35% / 70%")
-        st.rerun()
-
-    if BASELINE_PATH.exists():
-        with st.expander("📈 Held-Out Validation Metrics (XGBoost)"):
-            try:
-                base_data = json.loads(BASELINE_PATH.read_text(encoding="utf-8"))["baseline"]["test"]
-                st.caption("Domain-grouped split, XGBoost + 5-fold Isotonic:")
-                st.text(f"Model      : {base_data.get('model_type','XGBoost Calibrated')}\nTest URLs  : {base_data.get('n_test',0)} ({base_data.get('n_test_domains',0)} domains)\nROC-AUC    : {base_data.get('roc_auc',0):.4f}\nPR-AUC     : {base_data.get('pr_auc',0):.4f}\nBrier Loss : {base_data.get('brier',0):.4f}\nRecall/TPR : {base_data.get('tpr',0):.2%}\nFPR        : {base_data.get('fpr',0):.2%}")
-            except Exception as err:
-                st.caption(f"Could not load baseline: {err}")
-
-# Main
-st.title("🛡 ARES — QR Code Phishing (Quishing) Detector")
-st.markdown("Offline lexical URL risk analyzer for QR codes. Decodes QR without fetching link, extracts **24 URL features**, evaluates **XGBoost + isotonic-calibrated classifier**, recommends **Allow/Review/Block** via **calculus-optimized policy**.")
-st.caption("Disclaimer: Educational prototype — does not inspect live page content or external feeds.")
-
-try:
-    bundle = get_cached_bundle(MODEL_PATH)
-except (FileNotFoundError, ValueError) as error:
-    st.error(f"Model bundle error: {error} — Run `python train_model.py` first")
-    st.stop()
-
-tab_samples, tab_upload, tab_camera, tab_url = st.tabs(["🧪 1-Click Sample QR Gallery","📁 Upload QR Image","📸 Camera Snapshot","🔗 Direct URL Analyzer & QR Encoder"])
-
-with tab_samples:
-    st.markdown("##### Select a built-in test QR code to run immediate offline analysis:")
-    scol1, scol2 = st.columns([2,1])
-    with scol1:
-        selected_sample_label = st.selectbox("Choose a sample QR code:", options=list(SAMPLE_CATALOG.keys()))
-        sample_meta = SAMPLE_CATALOG[selected_sample_label]
-        st.caption(f"Scenario: {sample_meta['hint']}")
-        if sample_meta["needs_bare"] and strict_http_scheme:
-            st.caption("Note: This sample is bare domain without http(s)://. Allow below or uncheck sidebar setting.")
-        override_bare = st.checkbox("Allow bare domain for this sample", value=sample_meta["needs_bare"], key="sample_bare_override")
-        run_sample_btn = st.button("🔍 Analyze Selected Sample QR", type="primary", use_container_width=True)
-    with scol2:
-        sample_path = SAMPLE_IMAGES_DIR / sample_meta["file"]
-        if sample_path.exists(): st.image(str(sample_path), caption=sample_meta["file"], width=160)
-    if run_sample_btn:
-        if not sample_path.exists():
-            st.error(f"Sample not found: {sample_path}")
-        else:
-            effective_strict = strict_http_scheme and not override_bare
-            decode_and_store(sample_path.read_bytes(), source_id=f"sample:{sample_meta['file']}:{effective_strict}", strict_scheme=effective_strict, bundle=bundle, agent=agent)
-
-with tab_upload:
-    uploaded_image = st.file_uploader("Upload a QR-Code image (PNG, JPG, JPEG)", type=IMAGE_FILE_TYPES, accept_multiple_files=False, help=f"Maximum upload size: {MAX_IMAGE_SIZE_MB} MB")
-    if uploaded_image is not None:
-        if uploaded_image.size > MAX_IMAGE_SIZE_MB * (1024**2):
-            st.error(f"Uploaded image exceeds {MAX_IMAGE_SIZE_MB} MB limit")
-        else:
-            ucol1, ucol2 = st.columns([1,2])
-            with ucol1: st.image(uploaded_image, width=200)
-            with ucol2:
-                st.text(f"Filename : {uploaded_image.name}\nSize     : {uploaded_image.size/1024:.1f} KB")
-                if st.button("🔍 Analyze Uploaded QR Code", type="primary", use_container_width=True):
-                    decode_and_store(uploaded_image.getvalue(), source_id=f"upload:{uploaded_image.file_id}:{strict_http_scheme}", strict_scheme=strict_http_scheme, bundle=bundle, agent=agent)
-
-with tab_camera:
-    st.markdown("##### Capture a single camera snapshot of a QR code for offline decoding:")
-    st.caption("Uses Streamlit's single-frame snapshot, not continuous video.")
-    camera_photo = st.camera_input("Take a snapshot of a QR code")
-    if camera_photo is not None:
-        decode_and_store(camera_photo.getvalue(), source_id=f"camera:{camera_photo.file_id}:{strict_http_scheme}", strict_scheme=strict_http_scheme, bundle=bundle, agent=agent)
-
-with tab_url:
-    st.markdown("##### Analyze a URL string directly and optionally encode it into a QR image:")
-    st.caption("Warning: QR encoder converts text into matrix; it does not verify destination safety.")
-    ucol_input, ucol_qr = st.columns([2,1])
-    with ucol_input:
-        custom_url = st.text_input("Enter a URL to analyze:", value="https://secure-login.paypal.com.account-verify.xyz/signin?session=8942", placeholder="https://example.com/login")
-        analyze_url_btn = st.button("🔍 Analyze URL", type="primary", use_container_width=True)
-    with ucol_qr:
-        if custom_url.strip():
-            try:
-                qr_arr = generate_qr_image(custom_url.strip(), scale=6)
-                ok, png_buf = cv2.imencode(".png", qr_arr)
-                if ok:
-                    png_bytes = png_buf.tobytes()
-                    st.image(png_bytes, caption="Encoded QR Matrix (Unverified Destination)", width=160)
-                    st.download_button("⬇ Download QR PNG", data=png_bytes, file_name="encoded_qr.png", mime="image/png", use_container_width=True)
-            except (QRDecodeError, ValueError) as qr_err:
-                st.warning(f"QR generation error: {qr_err}")
-    if analyze_url_btn:
-        candidate_url = custom_url.strip()
-        if not is_valid_url(candidate_url, require_scheme=strict_http_scheme):
-            st.session_state.pop("last_analysis", None)
-            st.error(f"Not a valid {'HTTP/HTTPS ' if strict_http_scheme else ''}URL. Raw:")
-            st.code(candidate_url[:500], language=None)
-        else:
-            analysis = run_url_analysis(bundle, candidate_url, agent)
-            st.session_state["last_analysis"] = analysis
-            st.session_state["analysis_key"] = ("direct_url", candidate_url, strict_http_scheme)
-            st.session_state["feedback_submitted"] = False
-
-if "last_analysis" in st.session_state:
-    result = st.session_state["last_analysis"]
-    url = result["url"]
-    anatomy = result["anatomy"]
-    policy = agent.evaluate_policy(result["calibrated_phishing_probability"])
-    result["policy"] = policy
-    predicted_label = result["predicted_label"]
-    cal_prob = result["calibrated_phishing_probability"]
-    uncal_prob = result["uncalibrated_rf_phishing_probability"]
-    model_meta = result.get("model_metadata", {})
-
-    st.divider()
-    st.subheader("🛡 Risk Assessment & Recommended Policy Action")
-    if policy["action"] == "Block":
-        st.error(f"🚨 HIGH ESTIMATED RISK — BLOCK RECOMMENDED | Calibrated: {cal_prob:.1%} (Uncalibrated Base: {uncal_prob:.1%}) ≥ {policy['block_threshold']:.0%} Block. Model: {model_meta.get('model_type','xgboost')}")
-    elif policy["action"] == "Review":
-        st.warning(f"⚠ MEDIUM ESTIMATED RISK — MANUAL REVIEW RECOMMENDED | Calibrated: {cal_prob:.1%} (Uncalibrated: {uncal_prob:.1%}) ≥ {policy['review_threshold']:.0%} Review.")
+    if policy_choice.startswith("Heuristic"):
+        t_r, t_b = heuristic_thr
+        policy_kind = "heuristic"
+    elif policy_choice.startswith("Default"):
+        t_r, t_b = default_thr
+        policy_kind = "default"
     else:
-        st.success(f"✅ LOWER ESTIMATED RISK — ALLOW RECOMMENDED | Calibrated: {cal_prob:.1%} (Uncalibrated: {uncal_prob:.1%}) < {policy['review_threshold']:.0%} Review. Low lexical risk ≠ safe.")
+        t_r, t_b = opt_thr
+        policy_kind = "optimized"
 
-    k1, k2, k3, k4 = st.columns(4)
-    k1.metric("Model Classification (0.50 cutoff)", predicted_label)
-    k2.metric("Calibrated Phishing Prob.", f"{cal_prob:.1%}", help=f"5-fold Isotonic, Uncalibrated {uncal_prob:.1%}")
-    k3.metric("Policy Risk Tier", policy["level"])
-    k4.metric("Recommended Action", f"{policy['action']} (Advisory)")
+    st.sidebar.caption(
+        f"t_review = {t_r:.4f}  ·  t_block = {t_b:.4f}  ·  policy = {policy_kind}"
+    )
 
-    st.markdown("**Decoded Destination URL (inert plain text):**")
-    st.code(url, language=None)
-
-    st.markdown("#### 🧬 URL Structure & Host Anatomy")
-    acol1, acol2, acol3, acol4, acol5 = st.columns(5)
-    with acol1: st.caption("Scheme"); st.code(anatomy["scheme"], language=None)
-    with acol2: st.caption("Subdomain Prefix"); st.code(anatomy["subdomain"], language=None)
-    with acol3: st.caption("Registrable Domain"); st.code(anatomy["registrable_domain"], language=None)
-    with acol4: st.caption("Path Component"); st.code(anatomy["path"], language=None)
-    with acol5: st.caption("Query Component"); st.code(anatomy["query"], language=None)
-
-    rcol, pcol = st.columns(2)
-    with rcol:
-        st.markdown("#### 🚨 Triggered Risk Signals")
-        if result["risk_factors"]:
-            for factor in result["risk_factors"]: st.text(f"• [RISK] {factor}")
-        else: st.caption("No lexical or host-level risk heuristics triggered.")
-    with pcol:
-        st.markdown("#### ℹ Contextual & Transport Observations")
-        if result["protective_factors"]:
-            for factor in result["protective_factors"]: st.text(f"• [INFO] {factor}")
-        else: st.caption("No additional structural observations.")
-
-    st.markdown("#### 📊 Isotonic-Calibrated Class Probabilities")
-    for name, probability in sorted(result["calibrated_probabilities"].items(), key=lambda kv: kv[1], reverse=True):
-        st.progress(min(max(probability,0.0),1.0), text=f"{name} (Calibrated): {probability:.2%} | Uncalibrated Base: {result['uncalibrated_rf_probabilities'].get(name,0.0):.2%}")
-
-    with st.expander("🔬 View All 24 Extracted URL Features & XGBoost Importance", expanded=False):
-        st.caption("Importance from XGBoost gain (reference uncalibrated XGB fitted on training split alongside 5-fold CalibratedClassifierCV)")
-        feature_rows = []
-        for fname, imp in zip(feature_names, result["feature_importances"]):
-            val = result["features"][fname]
-            cat, desc = FEATURE_METADATA.get(fname, ("Other",""))
-            feature_rows.append({"Feature": fname, "Category": cat, "Extracted Value": round(val,4) if isinstance(val,float) else val, "XGBoost Importance (%)": round(imp*100,2), "What It Measures": desc})
-        feat_df = pd.DataFrame(feature_rows).sort_values(by="XGBoost Importance (%)", ascending=False)
-        st.dataframe(feat_df, use_container_width=True, hide_index=True)
-
-    st.divider()
-    f_left, f_right = st.columns([2,1])
-    with f_left:
-        st.markdown("#### 🔄 Feedback-Driven Threshold Adaptation")
-        st.caption("Logs query-redacted record to `results/feedback.csv` and adjusts Review/Block thresholds. Does not retrain classifier.")
-        b1, b2, b3 = st.columns(3)
-        already_done = st.session_state.get("feedback_submitted", False) or not enable_demo_feedback
-        fp_disabled = already_done or (policy["action"] == "Allow")
-        fn_disabled = already_done or (policy["action"] == "Block")
-        verdict_choice = None
-        if b1.button("✅ Verdict Correct", use_container_width=True, disabled=already_done, help="Confirm recommendation (+1.0, stabilizes thresholds)"):
-            verdict_choice = "correct"
-        if b2.button("⚠ False Positive (Benign)", use_container_width=True, disabled=fp_disabled, help="False alarm (-1.5 → raises thresholds)"):
-            verdict_choice = "false_positive"
-        if b3.button("🚨 False Negative (Phishing)", use_container_width=True, disabled=fn_disabled, help="Missed phishing (-3.0 → lowers thresholds)"):
-            verdict_choice = "false_negative"
-        if verdict_choice is not None:
-            try:
-                update_info = agent.record_feedback(url=url, probability=cal_prob, level=policy["level"], action=policy["action"], user_verdict=verdict_choice)
-                if update_info.get("duplicate"): st.info("Already submitted this verdict for this destination")
-                else:
-                    st.session_state["feedback_submitted"] = True
-                    st.session_state["last_analysis"]["policy"] = update_info["updated_policy"]
-                    st.success(f"Recorded '{verdict_choice}' (Δ {update_info['reward']:+.1f}). New — Review: {update_info['updated_policy']['review_threshold']:.1%}, Block: {update_info['updated_policy']['block_threshold']:.1%}.")
-            except ValueError as err:
-                st.warning(f"Feedback rejected: {err}")
-    with f_right:
-        st.markdown("#### 📥 Export Analysis")
-        st.caption("Download structured JSON report")
-        report_payload = {
-            "report_schema_version": "3.0_xgboost_calculus",
-            "analysis_mode": "offline_lexical_xgboost_calculus",
-            "url": url,
-            "redacted_url": redact_url_for_storage(url),
-            "model_classification_at_0_50": predicted_label,
-            "calibrated_phishing_probability": round(cal_prob,6),
-            "uncalibrated_probability": round(uncal_prob,6),
-            "recommended_policy_decision": policy,
-            "url_anatomy": anatomy,
-            "risk_factors": result["risk_factors"],
-            "contextual_observations": result["protective_factors"],
-            "extracted_features": result["features"],
-            "model_metadata": model_meta,
-            "disclaimer": "Offline lexical estimate only. Does not inspect live page content or external reputation feeds.",
-        }
-        st.download_button("📥 Download JSON Security Report", data=json.dumps(report_payload, indent=2), file_name="ares_scan_report.json", mime="application/json", use_container_width=True)
-        if st.button("🧹 Clear Current Result", use_container_width=True):
-            st.session_state.pop("last_analysis", None)
-            st.session_state.pop("feedback_submitted", None)
+    if policy_kind == "heuristic":
+        if st.sidebar.button("Reset heuristic thresholds to defaults"):
+            agent.reset_to_default()
             st.rerun()
 
-    if FEEDBACK_PATH.exists():
-        with st.expander("🗂 View Logged Feedback History (Query-Redacted)"):
+    # Calculus panel — read-only
+    with st.sidebar.expander("∫ Calculus Threshold Optimizer", expanded=False):
+        try:
+            cmp = calculus_threshold.compare_policies()
+            st.markdown(
+                f"**Default:** ({cmp['default_thresholds'][0]:.2f}, "
+                f"{cmp['default_thresholds'][1]:.2f})\n\n"
+                f"**Optimized:** ({cmp['optimized_thresholds'][0]:.2f}, "
+                f"{cmp['optimized_thresholds'][1]:.4f})"
+            )
+            opt = cmp["optimization"]
+            st.markdown(
+                f"**Hessian det:** {opt['hessian_det']:.4f}  "
+                f"({'minimum' if opt['is_minimum'] else 'not minimum'})"
+            )
+            st.markdown(
+                f"**Boundary hit:** {opt['boundary_hit']}  "
+                f"(KKT constrained: {opt['is_kkt_constrained']})"
+            )
+            if calculus_threshold.is_optimized_cost_lower():
+                st.success("Optimized policy has lower hard cost on both splits.")
+            else:
+                st.warning(
+                    "Optimized policy has **higher hard cost** than default on this "
+                    "dataset. The calculus result demonstrates the optimizer machinery, "
+                    "not a policy improvement. See docs/mathematical_techniques.md §3.6."
+                )
+        except Exception as e:                # noqa: BLE001
+            st.error(f"Calculus results unavailable: {e}")
+
+    return {"t_r": t_r, "t_b": t_b, "policy_kind": policy_kind}
+
+
+# ---- Result rendering ----
+def _render_prediction(result: dict, thresholds: dict, agent: HeuristicAdaptiveAgent):
+    """Render the PredictionPipeline.run() output."""
+    payload = result.get("payload")
+    category = result.get("payload_category")
+    action = result.get("action")
+    prob = result.get("prob_phishing")
+    reason = result.get("reason")
+
+    col1, col2, col3 = st.columns([2, 1, 1])
+    with col1:
+        st.subheader("Decoded payload")
+        if payload is None:
+            st.warning("No QR payload could be decoded from this image.")
+        else:
+            st.code(payload, language="text")
+        st.caption(f"Category: **{category}**")
+
+    with col2:
+        st.subheader("Action")
+        color = {"Allow": "green", "Review": "orange",
+                 "Block": "red", "Undecodable": "grey"}.get(action, "grey")
+        st.markdown(
+            f"<div style='font-size:2rem;font-weight:bold;color:{color}'>{action}</div>",
+            unsafe_allow_html=True,
+        )
+        if reason:
+            st.caption(reason)
+
+    with col3:
+        st.subheader("Estimated phishing probability")
+        if prob is None:
+            st.markdown("_N/A — non-URL payload does not enter the URL classifier._")
+        else:
+            st.markdown(f"**{prob:.4f}**")
+            st.progress(min(max(prob, 0.0), 1.0))
+            st.caption(
+                "Raw XGBoost `predict_proba` output — **not** isotonic-calibrated. "
+                "See `docs/mathematical_techniques.md` §3.7."
+            )
+
+    # URL anatomy + features — only when the payload is a URL
+    if category == "url" and result.get("features"):
+        feat = result["features"]
+        try:
+            anatomy = fx.parse_host_structure(payload)
+            st.subheader("URL anatomy")
+            st.json({
+                "scheme": anatomy["parsed"].scheme,
+                "hostname": anatomy["hostname"],
+                "registrable_domain": anatomy["registrable_domain"],
+                "subdomains": anatomy["subdomain_labels"],
+                "path": anatomy["parsed"].path,
+                "query": anatomy["parsed"].query,
+                "port": anatomy["port"],
+            })
+        except Exception:                     # noqa: BLE001
+            pass
+
+        with st.expander("20 kept features (4 constant features dropped before inference)",
+                         expanded=False):
+            df = pd.DataFrame(
+                [{"feature": k, "value": v} for k, v in feat.items()]
+            )
+            st.dataframe(df, hide_index=True, use_container_width=True)
+            st.caption(
+                "The 4 features `has_https`, `has_ip`, `has_userinfo`, "
+                "`embedded_url_in_query` are constant (zero variance) on this dataset "
+                "and are dropped before model inference. See "
+                "`results/feature_summary.json`."
+            )
+
+    # Feedback
+    st.subheader("Feedback (heuristic policy — not formal RL)")
+    st.caption(
+        "Your feedback adjusts the two decision thresholds only. The frozen XGBoost "
+        "model is **never retrained** by this action."
+    )
+    if payload is not None and prob is not None:
+        sample_id = f"app:{hash((payload, round(prob, 6))) & 0xFFFFFFFF:08x}"
+        c1, c2, c3 = st.columns(3)
+        if c1.button("✓ Correct", key=f"fb_correct_{sample_id}"):
+            agent.submit_feedback(sample_id, prob, action, "correct")
+            st.success("Feedback recorded.")
+        if c2.button("⚠ False positive", key=f"fb_fp_{sample_id}"):
+            agent.submit_feedback(sample_id, prob, action, "false_positive")
+            st.success("Feedback recorded. Thresholds moved slightly up.")
+        if c3.button("✗ False negative", key=f"fb_fn_{sample_id}"):
+            agent.submit_feedback(sample_id, prob, action, "false_negative")
+            st.success("Feedback recorded. Thresholds moved slightly down.")
+    else:
+        st.info("Feedback requires a URL payload with a probability — this payload does not have one.")
+
+
+# ---- Tab bodies ----
+def _run_pipeline_on(image_input, thresholds: dict, agent) -> None:
+    """Run PredictionPipeline on a file path or ndarray, then render."""
+    try:
+        # Use whichever pipeline corresponds to the active policy
+        if thresholds["policy_kind"] == "optimized":
+            pipe = _pipeline_optimized()
+        else:
+            pipe = _pipeline_default()          # also used for heuristic + default
+        result = pipe.run(image_input)
+    except SystemExit as e:
+        st.error(f"Pipeline init failed (fail-closed): {e}")
+        return
+    except Exception as e:                    # noqa: BLE001
+        st.error(f"Prediction failed: {type(e).__name__}: {e}")
+        return
+
+    # Override action decision if heuristic policy is active AND payload is a URL
+    if thresholds["policy_kind"] == "heuristic" and result["payload_category"] == "url":
+        p = result["prob_phishing"]
+        t_r, t_b = thresholds["t_r"], thresholds["t_b"]
+        if p >= t_b:
+            result["action"] = "Block"
+            result["reason"] = f"p={p:.4f} ≥ t_block={t_b:.4f}"
+        elif p >= t_r:
+            result["action"] = "Review"
+            result["reason"] = f"t_review={t_r:.4f} ≤ p={p:.4f} < t_block={t_b:.4f}"
+        else:
+            result["action"] = "Allow"
+            result["reason"] = f"p={p:.4f} < t_review={t_r:.4f}"
+        result["policy"] = {"t_review": t_r, "t_block": t_b}
+
+    _render_prediction(result, thresholds, agent)
+
+
+def tab_sample_gallery(thresholds, agent):
+    st.header("1-Click Sample QR Gallery")
+    st.write(
+        "These samples are drawn from the Trad & Chehab dataset. "
+        "Upload your own image in the next tab for evaluation of arbitrary QR codes."
+    )
+    # Build a tiny in-session gallery from the dataset (first 3 per class)
+    import pickle
+    imgs_path = _HERE / "data" / "raw" / "qr_codes_29.pickle"
+    labs_path = _HERE / "data" / "raw" / "qr_codes_29_labels.pickle"
+    if not (imgs_path.exists() and labs_path.exists()):
+        st.warning("Sample gallery requires data/raw/qr_codes_29*.pickle")
+        return
+    with open(imgs_path, "rb") as f:
+        imgs = pickle.load(f)
+    with open(labs_path, "rb") as f:
+        labs = pickle.load(f)
+    cols = st.columns(4)
+    shown = 0
+    for lbl_display, cls in ((0, "benign"), (1, "malicious")):
+        idxs = np.where(labs == lbl_display)[0][:2]
+        for i in idxs:
+            with cols[shown % 4]:
+                arr = (imgs[int(i)].astype(np.uint8) * 255)
+                st.image(arr, caption=f"sample idx={i} ({cls})", width=180)
+                if st.button("Analyse this sample", key=f"sample_{i}"):
+                    _run_pipeline_on(arr, thresholds, agent)
+            shown += 1
+
+
+def tab_upload(thresholds, agent):
+    st.header("Upload QR Image")
+    uploaded = st.file_uploader(
+        "PNG / JPG / JPEG (≤ 5 MB)", type=["png", "jpg", "jpeg"]
+    )
+    if uploaded is not None:
+        if uploaded.size > 5 * 1024 * 1024:
+            st.error("File exceeds 5 MB.")
+            return
+        from PIL import Image as PILImage
+        img = PILImage.open(uploaded).convert("L")
+        st.image(img, caption="Uploaded image", width=240)
+        arr = np.array(img)
+        _run_pipeline_on(arr, thresholds, agent)
+
+
+def tab_camera(thresholds, agent):
+    st.header("Camera Snapshot")
+    st.caption("Take a still photo of a QR code using your webcam / phone camera.")
+    img_bytes = st.camera_input("Capture QR")
+    if img_bytes is not None:
+        from PIL import Image as PILImage
+        img = PILImage.open(img_bytes).convert("L")
+        st.image(img, caption="Captured", width=240)
+        arr = np.array(img)
+        _run_pipeline_on(arr, thresholds, agent)
+
+
+def tab_direct_url(thresholds, agent):
+    st.header("Direct URL Analyzer & QR Encoder")
+    st.caption(
+        "Two utilities: analyse a URL string directly, or encode any text/URL into "
+        "a downloadable QR PNG. The QR encoder is a testing utility — **not** a safety "
+        "filter; encoding an unsafe URL does not make it safe."
+    )
+    url = st.text_input(
+        "URL or text", value="https://secure-login.paypal.com.evil.xyz/verify?id=1"
+    )
+    colA, colB = st.columns(2)
+    with colA:
+        if st.button("Analyse URL"):
+            result = {
+                "payload": url,
+                "payload_category": "url" if fx.is_valid_url(url) else "plain_text",
+                "features": None,
+                "prob_phishing": None,
+                "action": None,
+                "reason": None,
+                "policy": {"t_review": thresholds["t_r"], "t_block": thresholds["t_b"]},
+            }
+            if result["payload_category"] == "url":
+                try:
+                    pipe = (_pipeline_optimized()
+                            if thresholds["policy_kind"] == "optimized"
+                            else _pipeline_default())
+                    pred = pipe.predict(url)
+                    result["features"] = pred["features"]
+                    result["prob_phishing"] = pred["prob_phishing"]
+                    # Override decision if heuristic policy
+                    p = pred["prob_phishing"]
+                    if thresholds["policy_kind"] == "heuristic":
+                        t_r, t_b = thresholds["t_r"], thresholds["t_b"]
+                        if p >= t_b:
+                            result["action"] = "Block"
+                            result["reason"] = f"p={p:.4f} ≥ t_block={t_b:.4f}"
+                        elif p >= t_r:
+                            result["action"] = "Review"
+                            result["reason"] = f"t_review={t_r:.4f} ≤ p={p:.4f} < t_block={t_b:.4f}"
+                        else:
+                            result["action"] = "Allow"
+                            result["reason"] = f"p={p:.4f} < t_review={t_r:.4f}"
+                    else:
+                        result["action"] = pred["action"]
+                        result["reason"] = pred["reason"]
+                except SystemExit as e:
+                    st.error(f"Pipeline init failed (fail-closed): {e}")
+                    return
+            else:
+                result["action"] = "Review"
+                result["reason"] = (
+                    f"Payload not a valid http(s) URL — category={result['payload_category']}"
+                )
+            _render_prediction(result, thresholds, agent)
+    with colB:
+        if st.button("Encode to QR PNG"):
             try:
-                feedback_df = pd.read_csv(FEEDBACK_PATH)
-                if "url" in feedback_df.columns:
-                    feedback_df["url"] = feedback_df["url"].astype(str).apply(lambda u: redact_url_for_storage(u)[:120])
-                st.dataframe(feedback_df.tail(20), use_container_width=True, hide_index=True)
-            except Exception as err:
-                st.caption(f"Could not read feedback log: {err}")
+                import qr_utils
+                arr = qr_utils.generate_qr_image(url, scale=8)
+                st.image(arr, caption="Encoded QR", width=240)
+                from io import BytesIO
+                from PIL import Image as PILImage
+                buf = BytesIO()
+                PILImage.fromarray(arr).save(buf, format="PNG")
+                st.download_button(
+                    "Download QR PNG",
+                    data=buf.getvalue(),
+                    file_name="ares_qr.png",
+                    mime="image/png",
+                )
+            except Exception as e:            # noqa: BLE001
+                st.error(f"Encode failed: {type(e).__name__}: {e}")
+
+
+def main():
+    st.title("ARES — Offline QR Phishing Risk Analyser")
+    st.caption(
+        "Research prototype — R V University. Advisory-only. Never use as the sole basis "
+        "for trusting an unknown link. ARES does not visit or fetch scanned URLs."
+    )
+
+    thresholds = _render_sidebar()
+    agent = _agent()
+
+    tabs = st.tabs([
+        "🖼 1-Click Samples",
+        "⬆ Upload QR",
+        "📷 Camera Snapshot",
+        "🔗 URL Analyser & QR Encoder",
+    ])
+    with tabs[0]:
+        tab_sample_gallery(thresholds, agent)
+    with tabs[1]:
+        tab_upload(thresholds, agent)
+    with tabs[2]:
+        tab_camera(thresholds, agent)
+    with tabs[3]:
+        tab_direct_url(thresholds, agent)
+
+    st.divider()
+    st.caption(
+        "Model: `models/raw_xgb.joblib` (frozen; sha256 enforced by "
+        "`results/model_manifest.json`). "
+        "Probability is raw XGBoost — not isotonic-calibrated. "
+        "Threshold policy is a **heuristic, feedback-driven** controller — not formal RL. "
+        "See `docs/mathematical_techniques.md` §3.6–3.7 and `docs/application_guide.md`."
+    )
+
+
+if __name__ == "__main__":
+    main()
