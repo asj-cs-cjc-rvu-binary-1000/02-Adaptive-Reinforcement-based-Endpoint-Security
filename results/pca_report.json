@@ -1,0 +1,178 @@
+{
+  "generated_utc": "2026-11-19T06:48:16.663379+00:00",
+  "variance_target": 0.95,
+  "features": {
+    "all": [
+      "url_length",
+      "num_dots",
+      "has_https",
+      "has_ip",
+      "num_subdirs",
+      "num_params",
+      "suspicious_words",
+      "special_char_count",
+      "digits_count",
+      "entropy",
+      "host_length",
+      "path_length",
+      "query_length",
+      "subdomain_count",
+      "digit_ratio",
+      "susp_token_hits",
+      "susp_compound_hits",
+      "susp_in_subdomain",
+      "is_shortener",
+      "is_punycode",
+      "has_port",
+      "has_userinfo",
+      "embedded_url_in_query",
+      "tld_risk"
+    ],
+    "kept": [
+      "url_length",
+      "num_dots",
+      "num_subdirs",
+      "num_params",
+      "suspicious_words",
+      "special_char_count",
+      "digits_count",
+      "entropy",
+      "host_length",
+      "path_length",
+      "query_length",
+      "subdomain_count",
+      "digit_ratio",
+      "susp_token_hits",
+      "susp_compound_hits",
+      "susp_in_subdomain",
+      "is_shortener",
+      "is_punycode",
+      "has_port",
+      "tld_risk"
+    ],
+    "dropped": [
+      "has_https",
+      "has_ip",
+      "has_userinfo",
+      "embedded_url_in_query"
+    ],
+    "drop_reasons": {
+      "has_https": "constant on primary training feature matrix (see results/feature_summary.json)",
+      "has_ip": "constant on primary training feature matrix (see results/feature_summary.json)",
+      "has_userinfo": "constant on primary training feature matrix (see results/feature_summary.json)",
+      "embedded_url_in_query": "constant on primary training feature matrix (see results/feature_summary.json)"
+    }
+  },
+  "n_features_kept": 20,
+  "n_components_selected": 13,
+  "explained_variance_ratio": [
+    0.3279437293310322,
+    0.12772455236786276,
+    0.09573823787972499,
+    0.07116292539628219,
+    0.050589035261097495,
+    0.04996556968556453,
+    0.04956892783988601,
+    0.048416911949435204,
+    0.04235516540833608,
+    0.03582451818206257,
+    0.0210471584702948,
+    0.019699400881604316,
+    0.018560966431762162,
+    0.015137343077357706,
+    0.01157596714266996,
+    0.008699776014295089,
+    0.003983516835340835,
+    0.0020058073327889436,
+    4.905126019985265e-07,
+    1.308041724717663e-32
+  ],
+  "explained_variance_ratio_selected": [
+    0.3279437293310322,
+    0.12772455236786276,
+    0.09573823787972499,
+    0.07116292539628219,
+    0.050589035261097495,
+    0.04996556968556453,
+    0.04956892783988601,
+    0.048416911949435204,
+    0.04235516540833608,
+    0.03582451818206257,
+    0.0210471584702948,
+    0.019699400881604316,
+    0.018560966431762162
+  ],
+  "cumulative_explained_variance": [
+    0.3279437293310322,
+    0.45566828169889495,
+    0.55140651957862,
+    0.6225694449749022,
+    0.6731584802359997,
+    0.7231240499215642,
+    0.7726929777614502,
+    0.8211098897108854,
+    0.8634650551192214,
+    0.899289573301284,
+    0.9203367317715788,
+    0.9400361326531831,
+    0.9585970990849453,
+    0.973734442162303,
+    0.9853104093049729,
+    0.994010185319268,
+    0.9979937021546088,
+    0.9999995094873978,
+    0.9999999999999998,
+    0.9999999999999998
+  ],
+  "cumulative_explained_variance_selected": 0.9585970990849453,
+  "singular_values": [
+    208.9712587838821,
+    130.41396165021823,
+    112.9092722324618,
+    97.34503143853274,
+    82.07579384549221,
+    81.56846976209476,
+    81.2440670520575,
+    80.29443315191152,
+    75.10002547119427,
+    69.0680305287725,
+    52.93996242824936,
+    51.216913430959785,
+    49.71497048227473
+  ],
+  "fit_on": "split_train.parquet (grouped 70 % split, seed 42)",
+  "transform_splits": [
+    "train",
+    "val",
+    "test",
+    "external"
+  ],
+  "scaler": {
+    "type": "StandardScaler",
+    "fit_on_train_only": true,
+    "n_samples_fit": 6658
+  },
+  "pca": {
+    "type": "sklearn.decomposition.PCA",
+    "svd_solver": "full",
+    "fit_on_train_only": true
+  },
+  "split_shapes": {
+    "train": [
+      6658,
+      17
+    ],
+    "val": [
+      1425,
+      17
+    ],
+    "test": [
+      1339,
+      17
+    ],
+    "external": [
+      990,
+      17
+    ]
+  }
+}

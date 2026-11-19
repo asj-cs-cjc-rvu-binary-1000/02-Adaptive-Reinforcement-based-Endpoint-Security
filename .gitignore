@@ -39,3 +39,8 @@ data/processed/*.parquet
 !data/processed/.gitkeep
 data/processed/split_*.parquet
 !results/dataset_split_report.json
+data/processed/split_*_pca.parquet
+!results/pca_report.json
+!results/pca_explained_variance.png
+!results/pca_feature_loadings.csv
+!results/pca_scaler_params.json

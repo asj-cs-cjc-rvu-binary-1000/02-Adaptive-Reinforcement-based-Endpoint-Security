@@ -165,3 +165,19 @@ plus `split_excluded.parquet` (non-URL samples) and `split_external.parquet`
 proportions at the row level; deviations are reported in the split report and
 must remain within ±5 % of target. Exceeding ±5 % requires re-seeding — documented
 as a design constraint, not silently accepted.
+
+---
+
+## Phase 2 Task 5 — PCA execution record
+
+**Method:** `StandardScaler` + `PCA` (sklearn, `svd_solver="full"`).
+**Fit data:** `split_train.parquet` **only** — never val, test, or external.
+**Component count rule:** smallest `k` with cumulative explained variance ≥ 95 %.
+
+**Feature policy:** 4 constant features dropped before standardization
+(`has_https`, `has_ip`, `has_userinfo`, `embedded_url_in_query`) — zero variance
+on the primary training feature matrix; drop list is in `results/pca_report.json`.
+
+**Transformed splits:** `data/processed/split_{train,val,test,external}_pca.parquet`.
+
+**Reported values (from `results/pca_report.json`):** *(filled after run)*
