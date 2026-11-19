@@ -1,0 +1,80 @@
+{
+  "generated_utc": "2026-11-19T06:44:50.929823+00:00",
+  "seed": 42,
+  "ratios_target": {
+    "train": 0.7,
+    "val": 0.15,
+    "test": 0.15
+  },
+  "splitting_method": "GroupShuffleSplit by registrable_domain (2 steps: 70/30, then 30 -> 15/15)",
+  "splitting_seed_gss1": 42,
+  "splitting_seed_gss2": 43,
+  "primary": {
+    "source": "data/processed/features_primary.parquet",
+    "full_stats": {
+      "n_rows": 9422,
+      "n_benign": 4912,
+      "n_malicious": 4510,
+      "n_domains": 5985,
+      "n_empty_domain": 0,
+      "n_unique_sample_ids": 9422
+    },
+    "train_stats": {
+      "n_rows": 6658,
+      "n_benign": 3484,
+      "n_malicious": 3174,
+      "n_domains": 4189,
+      "n_empty_domain": 0,
+      "n_unique_sample_ids": 6658
+    },
+    "val_stats": {
+      "n_rows": 1425,
+      "n_benign": 792,
+      "n_malicious": 633,
+      "n_domains": 898,
+      "n_empty_domain": 0,
+      "n_unique_sample_ids": 1425
+    },
+    "test_stats": {
+      "n_rows": 1339,
+      "n_benign": 636,
+      "n_malicious": 703,
+      "n_domains": 898,
+      "n_empty_domain": 0,
+      "n_unique_sample_ids": 1339
+    },
+    "domain_disjointness": {
+      "train_val_domain_overlap": 0,
+      "train_test_domain_overlap": 0,
+      "val_test_domain_overlap": 0,
+      "domain_overlap_examples": []
+    },
+    "sample_disjointness": {
+      "train_val_sample_overlap": 0,
+      "train_test_sample_overlap": 0,
+      "val_test_sample_overlap": 0
+    },
+    "full_coverage_verified": true
+  },
+  "external": {
+    "source": "data/processed/features_external.parquet",
+    "role": "external_validation_only \u2014 never enters train/val/test",
+    "stats": {
+      "n_rows": 990,
+      "n_benign": 499,
+      "n_malicious": 491,
+      "n_domains": 709,
+      "n_empty_domain": 0,
+      "n_unique_sample_ids": 990
+    }
+  },
+  "excluded": {
+    "source": "results/excluded_samples.json",
+    "n_rows": 575,
+    "categories": {
+      "plain_text": 432,
+      "undecodable": 143
+    },
+    "note": "Not part of any ML split. Documented in docs/feature_engineering.md."
+  }
+}

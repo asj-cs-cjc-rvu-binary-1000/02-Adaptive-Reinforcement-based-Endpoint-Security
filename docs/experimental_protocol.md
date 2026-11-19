@@ -137,3 +137,31 @@ python scripts/run_gates.py check --dataset trad_chehab --external mendeley
 - **No app / deployment spec** — out of scope for Phase 1.
 
 The protocol fixes **how to split, deduplicate, gate, evaluate, and report** — nothing else. Everything else remains a Phase 2 decision made against these fixed rules, not a re-litigation of them.
+
+---
+
+## Phase 2 Task 4 — Split execution record
+
+**Split method:** `GroupShuffleSplit` at the `registrable_domain` group level,
+two stages (70 % vs 30 %, then 30 % → 15 % + 15 %), `random_state=42` and
+`random_state=43` respectively. Reproducible.
+
+**Script:** `scripts/split_dataset.py`. Requires both gate markers
+(`.gate1_pass`, `.gate2_pass`) — aborts without them.
+
+**Outputs:** `data/processed/split_{train,val,test}.parquet`
+plus `split_excluded.parquet` (non-URL samples) and `split_external.parquet`
+(Mendeley, never part of any ML split).
+
+**Assertions enforced (hard-fail on violation):**
+- Registrable-domain sets across `train`, `val`, `test` are pairwise disjoint
+- Sample-ID sets across `train`, `val`, `test` are pairwise disjoint
+- `set(train_ids) ∪ set(val_ids) ∪ set(test_ids) == set(full_feature_ids)`
+- No row with empty `registrable_domain` enters the split
+
+**Actual counts (from `results/dataset_split_report.json`):** *(filled after run)*
+
+**Deviation from 70/15/15:** domain-grouped splits cannot preserve exact
+proportions at the row level; deviations are reported in the split report and
+must remain within ±5 % of target. Exceeding ±5 % requires re-seeding — documented
+as a design constraint, not silently accepted.

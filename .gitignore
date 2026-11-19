@@ -37,3 +37,5 @@ data/processed/*.parquet
 !results/feature_summary.json
 !results/excluded_samples.json
 !data/processed/.gitkeep
+data/processed/split_*.parquet
+!results/dataset_split_report.json

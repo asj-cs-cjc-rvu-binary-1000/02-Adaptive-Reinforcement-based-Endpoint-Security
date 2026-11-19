@@ -42,7 +42,8 @@ python scripts/check_qr_compatibility.py # → results/qr_decode_report.json  (~
 **Phase 2 progress:**
 - ✅ Task 1 (Gate 1 — duplicate + label audit): 0 conflicts, `gate1_pass=True`.
 - ✅ Task 2 (Gate 2 — decode audit): primary 0.990/0.9829, external 0.998/0.986, `gate2_pass=True`. `run_gates.py check` runs in ~3 s.
-- ⏳ Task 3 (feature extraction): `scripts/prepare_features.py` produces `data/processed/features_{primary,external}.parquet`, `results/feature_summary.json`, `results/excluded_samples.json`.
+- ✅ Task 3 (feature extraction): `features_primary.parquet` (9,422 URL rows), `features_external.parquet` (990), `excluded_samples.json` (565 + 10 non-URL samples), `feature_summary.json` (4 constant features detected: has_https, has_ip, has_userinfo, embedded_url_in_query). Commit `e6836e7`.
+- ⏳ Task 4 (grouped split): `scripts/split_dataset.py` produces 70/15/15 split by registrable domain, seed 42. Enforces zero domain/sample leakage via assertions.
 
 **BRIEF EXPLANATION:**
 
