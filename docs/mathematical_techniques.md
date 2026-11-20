@@ -201,6 +201,12 @@ $$
 
 **The optimized policy has *worse* hard cost than default on both splits.** This is an honest, documented result — not a bug. It is the direct consequence of §3.6 below.
 
+*Provenance:* all values in this table were re-derived on 2026-11-20 from
+`results/calculus_experiment.json` at sha256 `5830343f68ada6160d41cc820e2fb87bd10efdfcc5f32b66d194f897c6b3d592`.
+The `default` and `optimized` sub-keys under `validation_metrics` and
+`test_metrics` in that file are the source of truth; this document mirrors
+them, not vice versa.
+
 ### 3.6 Honest caveat — smoothed vs hard cost divergence, with measured evidence
 
 The gradient-descent path minimizes the smoothed surrogate `C̃`, not the hard cost `C`. Because of `τ = 0.05`, small moves in `(t_r, t_b)` can shift the *soft* thresholds without changing which samples cross them, so `C̃` and `C` can diverge.
@@ -221,18 +227,6 @@ The net effect is that **hard cost rose from 0.6076 to 0.9162 on validation (+51
 **Alternative reported policy — for the manuscript to consider:**
 
 Given the observed FPR-vs-FNR trade-off on validation (FPR 6.94 %, FNR 9.95 %), and the `C_FN / C_FP = 5` ratio, the **default policy (0.35, 0.70) is already near the practical optimum for this model.** The Bayesian single-threshold optimum is `t* = C_FP / (C_FP + C_FN) = 1/6 = 0.1667` — but that ignores the review band. With `t_r = 0.35, t_b = 0.70`, the review band `[0.35, 0.70)` captures 8.14 % of validation samples — a reasonable operations posture. **Recommendation: keep the default policy in deployment; use the calculus result as a methodological contribution and diagnostic.**
-
-### 3.6 Honest caveat — smoothed vs hard cost
-
-The gradient-descent path minimizes the **smooth** surrogate `C̃`, not the
-**hard** cost `C`. Because of `τ`, small changes in `(t_r, t_b)` move the soft
-thresholds without changing which samples cross them, so `C̃` and `C` can
-diverge during optimization. **This is expected and documented**: the smooth
-surrogate guides the search; the hard cost validates the result. Final
-selection between default and optimized policies is made on the **hard cost
-reported at the end of optimization**, not on the smooth surrogate path.
-
-*(See `results/calculus_experiment.json` for both costs at both policies.)*
 
 ### 3.7 Probability semantics — not calibrated in the isotonic sense
 

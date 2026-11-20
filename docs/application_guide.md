@@ -1,140 +1,187 @@
-# ARES Application Guide (Phase 3)
+# ARES Application Guide
 
-**Application:** `app.py` (Streamlit)
-**Inference pipeline:** `scripts/predict_pipeline.py` (authoritative; sole `joblib.load` in the project)
-**Model:** `models/raw_xgb.joblib` (frozen; sha256 enforced by `results/model_manifest.json`)
-**Adaptive agent:** `adaptive_agent.py` (top-level; heuristic feedback-driven policy)
-**Calculus adapter:** `calculus_threshold.py` (top-level; read-only view)
+**Version:** Phase 3 (2026-11)
+**Model:** `models/raw_xgb.joblib` (frozen, sha256 `648438e2…c26a21`)
+**Entry point:** `app.py` (Streamlit)
 
 ---
 
-## Launch
+## 1. What this app is (and is not)
+
+ARES is an **offline** QR-phishing risk analyser. It decodes a QR image, inspects
+the payload, and — when the payload is a URL — extracts 20 lexical/structural
+features and returns an **estimated** phishing probability from a frozen XGBoost
+model. Based on that probability and two thresholds `(t_review, t_block)` it
+displays an advisory action: **Allow**, **Review**, **Block**, or **Undecodable**.
+
+ARES is **not**:
+
+- A live threat-intelligence scanner. It does **not** visit or fetch URLs.
+- A browser sandbox. It has no JavaScript engine and does not render pages.
+- A formal reinforcement-learning agent. The threshold policy is a **heuristic,
+  feedback-driven controller** with two scalars — not an MDP, not Q-learning.
+- A guarantee. `Allow` means "the frozen model assigned a low estimated
+  probability under the current threshold policy". It is advisory, not a safety
+  certification. HTTPS alone is not evidence of legitimacy.
+
+---
+
+## 2. Launching
+
+From the repository root:
 
 ```bash
-./run.sh              # macOS / Linux
-run.bat               # Windows
-# or directly:
-streamlit run app.py
+bash run.sh
 ```
 
-run.sh verifies the model manifest before launching and fails closed if any
-artifact drifted. That is the only supported launch path for reproducible runs.
+run.sh will:
 
-The four tabs
-Tab 1 — 1-Click Sample QR Gallery
-Two benign and two malicious samples drawn from data/raw/qr_codes_29.pickle.
-Click Analyse this sample to run the pipeline. This is the fastest way to
-exercise the pipeline without an external file.
+Prefer .venv/bin/python if present; otherwise fall back to python3 from PATH.
 
-Tab 2 — Upload QR Image
-Drop a PNG/JPG/JPEG (≤ 5 MB). The app decodes the QR, extracts features, and
-runs inference. Uses qr_utils.decode_qr_codes — no network request is made to
-any scanned URL.
+Check that models/raw_xgb.joblib and the four results/*.json artifacts exist.
 
-Tab 3 — Camera Snapshot
-Capture a still QR code with the device camera. Same pipeline as Upload.
+Run python scripts/model_manifest.py --check — fails closed on drift.
 
-Tab 4 — Direct URL Analyzer & QR Encoder
-Analyse a URL string typed by the user; or encode any string into a downloadable
-QR PNG. The encoder is a testing utility, not a safety filter — encoding an
-unsafe URL does not make it safe.
+Check that streamlit is importable.
 
-Sidebar — Active thresholds
-Three policies are selectable:
+Launch Streamlit on port ${ARES_PORT:-8501}.
 
-Policy	Source	Thresholds	Purpose
-Heuristic policy (default)	results/heuristic_policy_state.json	starts at (0.35, 0.70), adjusts ±0.01 per feedback event	Adaptive operational tuning
-Default	results/calculus_experiment.json	(0.35, 0.70)	Reproduction of published baseline
-Optimized	results/calculus_experiment.json	(0.60, 0.7911)	Calculus-experiment result
-All three use the same frozen raw_xgb model. Thresholds only change the
-Allow/Review/Block mapping; the estimated phishing probability is identical
-across the three policies for the same URL.
+Typical session:
 
-Sidebar — Calculus Threshold Optimizer panel
-Reads results/calculus_experiment.json. Displays:
+$ bash run.sh
+Using .venv/bin/python
+Verifying model manifest…
+manifest OK — artifacts and packages match
+Launching ARES (Streamlit)…
+  You can now view your Streamlit app in your browser.
+  URL: http://localhost:8501
 
-Default thresholds (0.35, 0.70)
+Note on --server.headless true: in a GitHub Codespace (or any remote
+environment), Streamlit does not auto-open a browser; you forward the port
+or click the Codespace's "Open in browser" prompt. On a laptop running locally,
+open http://localhost:8501 manually. This is intentional — it avoids
+auto-opening a browser from a remote shell.
 
-Optimized thresholds (0.60, 0.7911) — KKT constrained optimum
+If run.sh fails at the manifest check, do not delete the manifest or
+the model. The manifest is the fail-closed guard. See §7 below.
 
-Hessian determinant and whether it is a minimum
+3. The four tabs
+3.1 1-Click Sample Gallery
+Displays the first two benign and first two malicious samples from
+data/raw/qr_codes_29.pickle (Trad & Chehab dataset). Each thumbnail has an
+Analyse this sample button that routes the decoded image through the
+authoritative PredictionPipeline.run() — same code path as any uploaded file.
 
-Whether the boundary was hit (review_box_0.60)
+Requires: data/raw/qr_codes_29.pickle and data/raw/qr_codes_29_labels.pickle.
 
-Whether the optimized policy has lower hard cost than default
+3.2 Upload QR
+Accepts png, jpg, jpeg up to 5 MB. The uploaded image is converted to
+grayscale, displayed, and passed to PredictionPipeline.run().
 
-On this dataset, the optimized policy has higher hard cost than default
-(see docs/mathematical_techniques.md §3.6). The panel shows a warning to that
-effect. This is documented behaviour, not a bug.
+What you'll see: decoded payload, payload category (url, plain_text,
+non_url_scheme, undecodable, empty), advisory action, and — if URL —
+the estimated phishing probability, URL anatomy (scheme, host, registrable
+domain, path, query, port), and the 20 kept features.
 
-Feedback
-Feedback is a heuristic policy adjustment, not retraining and not formal RL:
+3.3 Camera Snapshot
+Uses st.camera_input — requires a device with a webcam or a browser that
+supports camera access. Same downstream path as Upload.
 
-The frozen XGBoost model is never retrained.
+3.4 Direct URL Analyzer & QR Encoder
+Two utilities:
 
-Thresholds are adjusted by ±0.01 per event (see adaptive_agent.py LR constants).
+Analyse URL — runs PredictionPipeline.predict(url) on a URL string
+directly, bypassing QR decoding. Same feature extraction and same frozen
+model. Result rendering is identical to Upload.
 
-Feedback is persisted to results/feedback.csv (append-only) and to
-results/heuristic_policy_state.json (atomic write).
+Encode to QR PNG — generates a QR image from the input text using
+qr_utils.generate_qr_image(). Downloads as PNG. This is a testing
+utility, not a safety filter: encoding an unsafe URL does not make it safe.
 
-Malformed or missing state falls back to defaults — never crashes.
+4. The sidebar
+4.1 Policy selector
+Three radio options, all using the same frozen models/raw_xgb.joblib:
 
-Terminology note: the feedback mechanism is a heuristic threshold controller.
-It is not reinforcement learning: there is no MDP, no Bellman equation, no
-Q-learning, no value function.
+Option	Thresholds	Where they come from
+Heuristic policy (feedback-driven)	Live state	results/heuristic_policy_state.json, updated by feedback
+Default (0.35, 0.70)	(0.35, 0.70)	results/calculus_experiment.json → default_thresholds
+Optimized (calculus)	(0.60, 0.7911…)	results/calculus_experiment.json → optimized_thresholds
+The active thresholds are shown in a caption: t_review = … · t_block = … · policy = ….
 
-Safety guarantees
-Guarantee	How it is enforced
-No network access to scanned URLs	qr_utils, feature_extractor, predict_pipeline import neither requests nor urllib nor socket. Bundle B's pytest will grep-assert this.
-Non-URL QR payloads never receive Allow	PredictionPipeline.run() returns action="Review" for plain_text, non_url_scheme, empty categories. app.py displays that action unchanged.
-Undecodable QR never crashes	PredictionPipeline.decode_image catches QRDecodeError and returns action="Undecodable".
-Model cannot silently drift	PredictionPipeline.__init__ calls model_manifest.check_manifest(); any sha256 mismatch raises SystemExit with a clear message.
-Stale model artifact cannot be loaded by the app	Same mechanism as above; the app catches SystemExit and shows an error rather than proceeding.
-Troubleshooting
+4.2 Reset heuristic policy
+Visible only when the heuristic policy is active. Resets
+results/heuristic_policy_state.json to defaults (0.35, 0.70) and reruns the page.
+
+4.3 Calculus panel
+Read-only display of the Phase 2 threshold-optimization results:
+
+Default and optimized thresholds.
+
+Hessian determinant and is_minimum flag.
+
+boundary_hit and is_kkt_constrained flags.
+
+A green success banner only when is_optimized_cost_lower() returns True.
+
+Otherwise (as on this dataset): a warning banner —
+
+Optimized policy has higher hard cost than default on this dataset. The
+calculus result demonstrates the optimizer machinery, not a policy
+improvement.
+
+That warning is correct. The optimized policy has higher hard cost on both
+validation and test splits. It is not a bug, and the app must not be edited to
+hide it.
+
+5. Feedback
+Below every URL prediction are three buttons:
+
+✓ Correct — records n_correct += 1; no threshold change.
+
+⚠ False positive — records n_false_positive += 1; raises both thresholds by 0.01.
+
+✗ False negative — records n_false_negative += 1; lowers both thresholds by 0.01.
+
+Every click:
+
+Appends a row to results/feedback.csv (audit log).
+
+Persists results/heuristic_policy_state.json.
+
+Emits a small success toast — nothing else.
+
+The frozen XGBoost model is never retrained, mutated, or re-serialized by
+feedback. This is enforced by the absence of any joblib.dump, fit(, or
+predict_proba call inside adaptive_agent.py, and by
+tests/test_adaptive_agent.py::test_adaptive_agent_imports_no_ml.
+
+Sample ID stability: the sample_id in feedback.csv is derived from
+hashlib.sha256(payload | probability) — stable across app restarts. Two
+feedback events on the same payload + probability will share an app:<hash>
+prefix.
+
+6. Probability and calibration
+prob_phishing is the raw predict_proba output of models/raw_xgb.joblib.
+It is not isotonic-calibrated. Brier scores on validation and test (0.0880,
+0.0841) describe empirical behaviour; they are not a formal calibration
+claim.
+
+If ARES ever ships a calibrated model, that will be a separately documented
+experiment with its own model artifact, manifest entry, and validation metrics.
+
+7. Troubleshooting
 Symptom	Cause	Fix
-"FATAL: Pipeline init failed (fail-closed)"	results/model_manifest.json mismatch	Restore the artifact or re-run python scripts/model_manifest.py only after confirming the change was intentional
-"FATAL: results/calculus_experiment.json missing"	the experiment has not been run	python scripts/run_calculus_experiment.py
-"FATAL: data/raw/qr_codes_29.pickle missing"	raw dataset not present	see docs/dataset_sources.md
-"streamlit not installed"	fresh .venv	pip install -r requirements.txt
-Sample gallery empty	data/raw/qr_codes_29*.pickle not present	restore dataset; the gallery silently skips
-Reproducible environment
-bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-python -c "import xgboost, sklearn; print(xgboost.__version__, sklearn.__version__)"
-# MUST print: 3.0.2 1.9.1
-text
-
-### 9. `README.md`
-
-Append:
-
-```markdown
-- ✅ Phase 3 Bundle A (Tasks 1+2+3+5) — four-tab Streamlit app (`app.py`) ports `main`'s
-  UI but uses the Phase 2 authoritative `PredictionPipeline` exclusively. Top-level
-  `adaptive_agent.py` (heuristic feedback policy — **not** formal RL) and top-level
-  `calculus_threshold.py` (read-only view over `results/calculus_experiment.json`).
-  `run.sh` / `run.bat` verify the model manifest before launch. See
-  `docs/application_guide.md`.
-BRIEF EXPLANATION:
-
-app.py imports only PredictionPipeline for inference. The audit's output_keys contract drives the _render_prediction signature — every key in the pipeline output is present and consumed. There is no joblib.load, no predict_proba, no extract_url_features call in app.py. Task 4's pytest suite will grep this.
-
-The ported UI is preserved recognizably. Four tabs, sidebar calculus panel, 24-feature display. The feature display now says "20 kept features (4 constant features dropped before inference)" — the reader sees what was dropped and why. This is the exact phrasing Decision A1 required.
-
-adaptive_agent.py is genuinely heuristic, and the code says so. The docstring, the update rule comments, and the CSV column names all use "heuristic." There is no Bellman, no Q(s,a), no MDP anywhere. The reward column in feedback.csv exists for the audit trail only — the model is never shown it. This satisfies Task 2's "not formal RL" constraint.
-
-Feedback cannot retrain the model, structurally. HeuristicAdaptiveAgent imports only fcntl, json, os, tempfile, dataclasses, datetime, pathlib, csv. No joblib, no xgboost, no sklearn. A reviewer can verify by reading the imports at the top of the file.
-
-calculus_threshold.py is a thin adapter, not a reimplementation. It exposes load_experiment, default_thresholds, optimized_thresholds, compare_policies, is_optimized_cost_lower. No _sigmoid, no _grad_finite_diff, no _project, no optimize. The GD lives in scripts/calculus_threshold.py (Phase 2). The Task 3 brief said "preserve its functionality" — preserved, in scripts/, untouched.
-
-The sidebar accurately reports that optimized has higher hard cost. is_optimized_cost_lower() returns False because the arithmetic at the current thresholds really does produce higher cost. The panel shows a warning message. The app cannot accidentally claim "optimized is better" because the computation directly contradicts that on this dataset. Satisfies Task 3's "The application does not claim the optimized policy improves hard cost."
-
-run.sh and run.bat fail closed for the same reasons Phase 2b's guard fails closed. Manifest check first, then streamlit check, then launch. Missing artifacts, missing deps, drifted model — each produces a specific, actionable error. exec "$PY" -m streamlit uses exec so the parent shell is replaced and Ctrl-C in the terminal kills Streamlit directly (no orphan processes).
-
-Heuristic policy override is applied in _run_pipeline_on, not in PredictionPipeline. PredictionPipeline stays unchanged — its policy parameter only supports "default" and "optimized" (the two threshold sets from calculus_experiment.json). The heuristic policy is applied as a post-decision override in app.py. This means PredictionPipeline remains frozen as a Phase 2 artifact, which is exactly what the "keep the frozen model and pipeline" constraint requires. A future Bundle B test will assert that the pipeline's action matches app.py's action for policy_kind != "heuristic", and that for policy_kind == "heuristic" the action is consistent with adaptive_agent.thresholds().
-
-No .streamlit/config.toml is created. I do not add config that wasn't specified. main had one; the port can add it in a follow-up if needed, but the brief doesn't require it and I won't invent it.
-
-No gitignore change for data/raw/*.png — only results/*.json, *.csv, .pytest_cache/, and .streamlit/. data/raw/ is already globally ignored from Phase 1.
+run.sh: manifest MISMATCH: scripts__predict_pipeline: sha256 changed	A source file was intentionally edited	Run python scripts/model_manifest.py (no flag) to refresh. Verify models/raw_xgb.joblib sha256 remains 648438e2…c26a21. Commit both.
+run.sh: required artifact missing: models/raw_xgb.joblib	Model artifact absent	Restore from git. Never retrain as a workaround.
+run.sh: streamlit not installed	venv missing the package	pip install -r requirements.txt in the venv.
+Sidebar calculus panel: Calculus results unavailable: …	results/calculus_experiment.json missing or malformed	Restore from git. Do not re-run optimization as a shortcut — the JSON is Phase 2 evidence.
+Sample gallery: Sample gallery requires data/raw/qr_codes_29*.pickle	Dataset not downloaded	See docs/testing_guide.md for the dataset acquisition steps.
+Camera tab shows no image	Browser blocked camera or no webcam	Grant camera permission, or use Upload / Sample tabs.
+Feedback state stuck	results/heuristic_policy_state.json corrupt	Click Reset heuristic policy in the sidebar, or delete the file — the agent falls back to defaults safely.
+PredictionPipeline failed closed: FATAL: … artifact mismatch when launching direct	Manifest drift caught by pipeline at runtime	Same fix as the first row.
+8. Reproducibility
+Any result produced through this app can be reproduced with the pytest suite
+(pytest -q — 79 tests, deterministic) plus the manual scenarios recorded in
+results/phase3_e2e_test_report.md. The model artifact, feature order, and
+threshold policy are all hashed and pinned. Nothing in this app depends on
+network access at inference time.

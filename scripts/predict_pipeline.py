@@ -91,7 +91,12 @@ class PredictionPipeline:
 
     # ---- payload extraction ----
     def decode_image(self, image_input) -> tuple[str | None, str]:
-        """Return (payload, category). image_input: file path (str | Path) or np.ndarray."""
+        """Return (payload, category). image_input: file path (str | Path) or np.ndarray.
+
+        Missing or unreadable files map to (None, "undecodable") — fail closed,
+        never raise. The low-level qr_utils.decode_qr_codes still raises
+        FileNotFoundError for direct callers (tests/test_qr.py depends on that).
+        """
         if isinstance(image_input, np.ndarray):
             # Write to a temp PNG for the production decoder (path-based API)
             import tempfile, cv2
@@ -105,14 +110,17 @@ class PredictionPipeline:
                 cv2.imwrite(str(tmp), np.ascontiguousarray(arr))
                 try:
                     payloads = qr_utils.decode_qr_codes(tmp)
-                except qr_utils.QRDecodeError:
+                except (qr_utils.QRDecodeError, FileNotFoundError, OSError):
                     payloads = []
             finally:
                 tmp.unlink(missing_ok=True)
         else:
+            path = Path(image_input)
+            if not path.exists():
+                return None, "undecodable"
             try:
-                payloads = qr_utils.decode_qr_codes(Path(image_input))
-            except qr_utils.QRDecodeError:
+                payloads = qr_utils.decode_qr_codes(path)
+            except (qr_utils.QRDecodeError, FileNotFoundError, OSError):
                 payloads = []
 
         if not payloads:
@@ -147,12 +155,34 @@ class PredictionPipeline:
             "reason": reason,
         }
 
+    @staticmethod
+    def decide(prob: float, t_r: float, t_b: float) -> tuple[str, str]:
+        """Map an estimated phishing probability to an advisory action.
+
+        Pure function — the single source of truth for the Allow/Review/Block
+        mapping across the pipeline and the Streamlit app. Callers that need a
+        threshold policy other than the pipeline's baked-in (t_r, t_b) pass
+        those thresholds explicitly.
+
+        Raises ValueError if t_r > t_b or either value is outside [0, 1].
+        """
+        if not (0.0 <= t_r <= 1.0) or not (0.0 <= t_b <= 1.0):
+            raise ValueError(
+                f"thresholds must be in [0, 1]; got t_r={t_r}, t_b={t_b}"
+            )
+        if t_r > t_b:
+            raise ValueError(
+                f"t_review ({t_r}) must be <= t_block ({t_b})"
+            )
+        if prob >= t_b:
+            return "Block", f"p={prob:.4f} ≥ t_block={t_b:.4f}"
+        if prob >= t_r:
+            return ("Review",
+                    f"t_review={t_r:.4f} ≤ p={prob:.4f} < t_block={t_b:.4f}")
+        return "Allow", f"p={prob:.4f} < t_review={t_r:.4f}"
+
     def _decide(self, p: float) -> tuple[str, str]:
-        if p >= self.t_block:
-            return "Block", f"p={p:.4f} ≥ t_block={self.t_block:.4f}"
-        if p >= self.t_review:
-            return "Review", f"t_review={self.t_review:.4f} ≤ p={p:.4f} < t_block={self.t_block:.4f}"
-        return "Allow", f"p={p:.4f} < t_review={self.t_review:.4f}"
+        return self.decide(p, self.t_review, self.t_block)
 
     # ---- end-to-end ----
     def run(self, image_input) -> dict:

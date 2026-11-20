@@ -1,6 +1,6 @@
 {
-  "generated_utc": "2026-11-19T19:44:03.781897+00:00",
-  "git_commit_hash": "695015f098d3b6f8061a40f3e0ead45200fe57a7",
+  "generated_utc": "2026-11-20T17:20:03.570521+00:00",
+  "git_commit_hash": "701aa345315685a300b52fc4076f3f4ea1d11996",
   "python_version": "3.14.2",
   "packages": {
     "scikit-learn": "1.9.1",
@@ -32,8 +32,8 @@
     },
     "scripts__predict_pipeline": {
       "path": "scripts/predict_pipeline.py",
-      "sha256": "37c0d6b4947a323c41452b6565dcdb9d1c9d02c0fe1f7399e5fa7ebaaae86f42",
-      "bytes": 7823
+      "sha256": "c22c9db908c78ced925cbe33d3524f8a8aaf3670fce47761fd1d768283e964ad",
+      "bytes": 9102
     },
     "scripts__calculus_threshold": {
       "path": "scripts/calculus_threshold.py",

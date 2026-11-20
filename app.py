@@ -18,6 +18,7 @@ No joblib.load, no predict_proba, no feature extraction in this file.
 from __future__ import annotations
 
 import json
+import hashlib
 import sys
 from pathlib import Path
 
@@ -37,8 +38,30 @@ from predict_pipeline import PredictionPipeline
 # Adaptive heuristic agent (top-level module per Decision 2)
 from adaptive_agent import HeuristicAdaptiveAgent
 
-# Calculus adapter — read-only view over results/calculus_experiment.json
-import calculus_threshold
+# Calculus adapter — read-only view over results/calculus_experiment.json.
+#
+# IMPORTANT: there are two modules named `calculus_threshold` in this project:
+#   - calculus_threshold.py            (repo root — the READ-ONLY adapter, has
+#                                       default_thresholds(), compare_policies(),
+#                                       is_optimized_cost_lower())
+#   - scripts/calculus_threshold.py    (Phase 2 optimizer — has optimize(), BOUNDS)
+#
+# app.py puts scripts/ on sys.path, so `import calculus_threshold` would resolve
+# to the optimizer and AttributeError on default_thresholds(). We therefore load
+# the adapter by explicit file path so sys.path ordering can never shadow it.
+import importlib.util as _ilu
+
+_adapter_path = _HERE / "calculus_threshold.py"
+if not _adapter_path.exists():
+    raise ImportError(
+        f"FATAL: calculus adapter missing at {_adapter_path}. "
+        "Restore calculus_threshold.py from git; do not substitute the optimizer."
+    )
+_spec = _ilu.spec_from_file_location("ares_calculus_adapter", _adapter_path)
+if _spec is None or _spec.loader is None:
+    raise ImportError(f"FATAL: cannot construct module spec for {_adapter_path}")
+calculus_threshold = _ilu.module_from_spec(_spec)
+_spec.loader.exec_module(calculus_threshold)
 
 # These are used only for URL-anatomy display, not for inference
 import feature_extractor as fx
@@ -51,8 +74,6 @@ st.set_page_config(
 )
 
 RESULTS = _HERE / "results"
-SAMPLES_DIR = _HERE / "tests" / "images"  # fallback if created by tests; otherwise generated
-
 
 # ---- Cached resources (called at most once per Streamlit process) ----
 @st.cache_resource
@@ -66,8 +87,20 @@ def _pipeline_optimized():
 
 
 @st.cache_resource
-def _agent():
+def _agent(state_version: int = 0):
+    """state_version is a cache-buster: increment it after feedback to force
+    a fresh agent instance that re-reads results/heuristic_policy_state.json."""
     return HeuristicAdaptiveAgent()
+
+
+def _bump_agent_state() -> None:
+    st.session_state["agent_state_version"] = (
+        st.session_state.get("agent_state_version", 0) + 1
+    )
+
+
+def _get_agent():
+    return _agent(st.session_state.get("agent_state_version", 0))
 
 
 # ---- Sidebar: policy + calculus panel ----
@@ -106,6 +139,7 @@ def _render_sidebar() -> dict:
     if policy_kind == "heuristic":
         if st.sidebar.button("Reset heuristic thresholds to defaults"):
             agent.reset_to_default()
+            _bump_agent_state()
             st.rerun()
 
     # Calculus panel — read-only
@@ -220,17 +254,23 @@ def _render_prediction(result: dict, thresholds: dict, agent: HeuristicAdaptiveA
         "model is **never retrained** by this action."
     )
     if payload is not None and prob is not None:
-        sample_id = f"app:{hash((payload, round(prob, 6))) & 0xFFFFFFFF:08x}"
+        # Stable, process-independent sample_id so feedback.csv rows for the same
+        # payload correlate across app restarts. Python's hash() is salted per
+        # process (PYTHONHASHSEED) and must NOT be used for cross-session identity.
+        digest = hashlib.sha256(
+            f"{payload}|{prob:.6f}".encode("utf-8")
+        ).hexdigest()[:8]
+        sample_id = f"app:{digest}"
         c1, c2, c3 = st.columns(3)
         if c1.button("✓ Correct", key=f"fb_correct_{sample_id}"):
             agent.submit_feedback(sample_id, prob, action, "correct")
-            st.success("Feedback recorded.")
+            st.rerun()          # re-read thresholds from disk so the sidebar updates
         if c2.button("⚠ False positive", key=f"fb_fp_{sample_id}"):
             agent.submit_feedback(sample_id, prob, action, "false_positive")
-            st.success("Feedback recorded. Thresholds moved slightly up.")
+            st.rerun()
         if c3.button("✗ False negative", key=f"fb_fn_{sample_id}"):
             agent.submit_feedback(sample_id, prob, action, "false_negative")
-            st.success("Feedback recorded. Thresholds moved slightly down.")
+            st.rerun()
     else:
         st.info("Feedback requires a URL payload with a probability — this payload does not have one.")
 
@@ -252,19 +292,14 @@ def _run_pipeline_on(image_input, thresholds: dict, agent) -> None:
         st.error(f"Prediction failed: {type(e).__name__}: {e}")
         return
 
-    # Override action decision if heuristic policy is active AND payload is a URL
+    # Override action decision if heuristic policy is active AND payload is a URL.
+    # Uses the single source of truth for the threshold mapping — never re-implements it.
     if thresholds["policy_kind"] == "heuristic" and result["payload_category"] == "url":
         p = result["prob_phishing"]
         t_r, t_b = thresholds["t_r"], thresholds["t_b"]
-        if p >= t_b:
-            result["action"] = "Block"
-            result["reason"] = f"p={p:.4f} ≥ t_block={t_b:.4f}"
-        elif p >= t_r:
-            result["action"] = "Review"
-            result["reason"] = f"t_review={t_r:.4f} ≤ p={p:.4f} < t_block={t_b:.4f}"
-        else:
-            result["action"] = "Allow"
-            result["reason"] = f"p={p:.4f} < t_review={t_r:.4f}"
+        action, reason = PredictionPipeline.decide(p, t_r, t_b)
+        result["action"] = action
+        result["reason"] = reason
         result["policy"] = {"t_review": t_r, "t_block": t_b}
 
     _render_prediction(result, thresholds, agent)
@@ -273,10 +308,9 @@ def _run_pipeline_on(image_input, thresholds: dict, agent) -> None:
 def tab_sample_gallery(thresholds, agent):
     st.header("1-Click Sample QR Gallery")
     st.write(
-        "These samples are drawn from the Trad & Chehab dataset. "
-        "Upload your own image in the next tab for evaluation of arbitrary QR codes."
+        "These samples are drawn from the Trad & Chehab dataset. Click a thumbnail "
+        "to analyse it. Upload your own image in the next tab for arbitrary QR codes."
     )
-    # Build a tiny in-session gallery from the dataset (first 3 per class)
     import pickle
     imgs_path = _HERE / "data" / "raw" / "qr_codes_29.pickle"
     labs_path = _HERE / "data" / "raw" / "qr_codes_29_labels.pickle"
@@ -287,17 +321,44 @@ def tab_sample_gallery(thresholds, agent):
         imgs = pickle.load(f)
     with open(labs_path, "rb") as f:
         labs = pickle.load(f)
+
+    # Persist the "active sample" across reruns so only one result is ever on screen
+    if "active_sample_idx" not in st.session_state:
+        st.session_state["active_sample_idx"] = None
+
+    # Thumbnail grid — 4 per row, no result panel in the columns
     cols = st.columns(4)
     shown = 0
+    sample_meta = {}
     for lbl_display, cls in ((0, "benign"), (1, "malicious")):
         idxs = np.where(labs == lbl_display)[0][:2]
         for i in idxs:
+            i_int = int(i)
+            sample_meta[i_int] = cls
             with cols[shown % 4]:
-                arr = (imgs[int(i)].astype(np.uint8) * 255)
-                st.image(arr, caption=f"sample idx={i} ({cls})", width=180)
-                if st.button("Analyse this sample", key=f"sample_{i}"):
-                    _run_pipeline_on(arr, thresholds, agent)
+                arr = (imgs[i_int].astype(np.uint8) * 255)
+                st.image(arr, caption=f"sample idx={i_int} ({cls})", width=180)
+                if st.button("Analyse", key=f"sample_{i_int}"):
+                    # Replace, not append: clicking a new sample clears the previous
+                    st.session_state["active_sample_idx"] = i_int
             shown += 1
+
+    # Single full-width result panel for the currently active sample only
+    active = st.session_state.get("active_sample_idx")
+    if active is None:
+        st.info("Click **Analyse** under any thumbnail to see the result here.")
+        return
+
+    st.divider()
+    st.subheader(
+        f"Result for sample idx={active} ({sample_meta.get(active, 'unknown')})"
+    )
+    active_arr = (imgs[int(active)].astype(np.uint8) * 255)
+    col_img, col_result = st.columns([1, 3])
+    with col_img:
+        st.image(active_arr, caption=f"sample idx={active}", width=180)
+    with col_result:
+        _run_pipeline_on(active_arr, thresholds, agent)
 
 
 def tab_upload(thresholds, agent):
@@ -358,19 +419,16 @@ def tab_direct_url(thresholds, agent):
                     pred = pipe.predict(url)
                     result["features"] = pred["features"]
                     result["prob_phishing"] = pred["prob_phishing"]
-                    # Override decision if heuristic policy
-                    p = pred["prob_phishing"]
+                    # Decision via the single source of truth. For the pipeline's
+                    # baked-in policy the pipeline already decided; for the
+                    # heuristic policy override with the live agent thresholds.
                     if thresholds["policy_kind"] == "heuristic":
                         t_r, t_b = thresholds["t_r"], thresholds["t_b"]
-                        if p >= t_b:
-                            result["action"] = "Block"
-                            result["reason"] = f"p={p:.4f} ≥ t_block={t_b:.4f}"
-                        elif p >= t_r:
-                            result["action"] = "Review"
-                            result["reason"] = f"t_review={t_r:.4f} ≤ p={p:.4f} < t_block={t_b:.4f}"
-                        else:
-                            result["action"] = "Allow"
-                            result["reason"] = f"p={p:.4f} < t_review={t_r:.4f}"
+                        action, reason = PredictionPipeline.decide(
+                            pred["prob_phishing"], t_r, t_b
+                        )
+                        result["action"] = action
+                        result["reason"] = reason
                     else:
                         result["action"] = pred["action"]
                         result["reason"] = pred["reason"]
@@ -411,7 +469,7 @@ def main():
     )
 
     thresholds = _render_sidebar()
-    agent = _agent()
+    agent = _get_agent()
 
     tabs = st.tabs([
         "🖼 1-Click Samples",
